@@ -33,20 +33,38 @@
 }
 
 .mainImage {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   display: block;
   filter: brightness(0.88);
   transition: transform 10s linear, filter 300ms ease;
   will-change: transform;
 }
 
+
 /* subtle slow zoom for cinematic feel */
 .mainSlide .mainImage {
   transform-origin: center;
 }
+
+.mainSlide:hover .mainImage {
+  transform: scale(1.06);
+  filter: brightness(0.95);
+}
+
+.mainHero {
+  overflow: hidden;
+  background: #000; /* fallback color behind images */
+}
+.mainSlide .mainImage {
+  transform: scale(1.05); /* subtle initial zoom for full fill */
+}
+
+
 
 /* overlay gradient */
 .mainOverlay {

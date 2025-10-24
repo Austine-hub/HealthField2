@@ -125,13 +125,16 @@ const App: FC = () => (
             element={
               <>
                 <Hero />
-                <ShopByCategory />
+
+
                 <Offers1/>
-                <Offers />
                 <ProductCarousel />
-                 <Offers2 />
+                <Offers />               
                 <BestSellers />
+                <Offers2 />               
+                <ShopByCategory />
                 <BeautyProducts />
+
               </>
             }
           />

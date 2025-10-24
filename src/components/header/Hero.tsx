@@ -142,6 +142,8 @@ const Hero: React.FC = () => {
           <ChevronLeft size={20} />
         </button>
 
+        
+
         <button
           className={clsx(styles.arrowBtn, styles.rightArrow)}
           onClick={nextMain}
