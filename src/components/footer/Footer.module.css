@@ -1,0 +1,259 @@
+/* ==========================================================================
+   FOOTER MODULE CSS — Modern, Scalable & Responsive (2025)
+   ========================================================================= */
+
+:root {
+  --footer-bg: #062b36;
+  --footer-text: #f9fafb;
+  --footer-accent: #00a8e1;
+  --footer-accent-hover: #0090c7;
+  --footer-muted: rgba(255, 255, 255, 0.7);
+  --max-width: 1200px;
+  --transition: all 0.3s ease-in-out;
+  --font-main: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: var(--font-main);
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* ---------- Section ---------- */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--footer-accent);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Links ---------- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.link {
+  color: var(--footer-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.link:hover {
+  color: var(--footer-accent);
+  text-decoration: underline;
+}
+
+/* ---------- About ---------- */
+.description {
+  color: var(--footer-muted);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* ---------- Social ---------- */
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: var(--footer-text);
+  transition: var(--transition);
+}
+
+.socialLink:hover {
+  background-color: var(--footer-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.socialIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Phone ---------- */
+.phoneDescription {
+  color: var(--footer-muted);
+  font-size: 0.9rem;
+}
+
+.phoneInfo {
+  color: var(--footer-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.phoneLink {
+  color: var(--footer-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.phoneLink:hover {
+  color: var(--footer-accent-hover);
+}
+
+/* ---------- Copyright ---------- */
+.copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: var(--footer-muted);
+  font-size: 0.85rem;
+}
+
+.copyText {
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .container {
+    text-align: center;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+}
+
+
+.footer {
+  background: linear-gradient(135deg, #f7fdfd 0%, #e0f7f8 100%);
+  color: #043b4a;
+  padding: 3rem 1.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.logoIcon {
+  color: #05bfdb;
+  font-size: 1.5rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #067d89;
+}
+
+.linksGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 2rem;
+}
+
+.linkSection h3 {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #065a6f;
+}
+
+.linkSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.linkSection a {
+  display: inline-block;
+  color: #046773;
+  text-decoration: none;
+  margin: 0.3rem 0;
+}
+
+.linkSection a:hover {
+  text-decoration: underline;
+  color: #03a9b4;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+.socials a {
+  color: #046773;
+  transition: color 0.2s ease;
+}
+
+.socials a:hover {
+  color: #05bfdb;
+}
+
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #05bfdb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.phoneLink:hover {
+  text-decoration: underline;
+}
+
+.bottomBar {
+  border-top: 1px solid #cfe7ea;
+  text-align: center;
+  padding-top: 1rem;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #067d89;
+}

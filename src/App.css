@@ -1,0 +1,173 @@
+/* ===========================================================
+   App.module.css — Modern Medical / Pharmacy Theme (2025)
+   Lightweight • Responsive • Accessible • Scalable
+   =========================================================== */
+
+/* ---------- THEME VARIABLES ---------- */
+:root {
+  --color-primary: #7a0c2e; /* Deep maroon — healthcare warmth */
+  --color-primary-600: #8e1432;
+  --color-accent: #00a8e1; /* Clean clinical blue */
+  --color-bg: #ffffff;
+  --color-surface: #f9fafc;
+  --color-text: #0f172a;
+  --color-muted: #6b7280;
+  --color-border: rgba(0, 0, 0, 0.05);
+
+  --max-width: 1400px;
+  --radius: 0.75rem;
+  --transition: 240ms ease-in-out;
+}
+
+/* ---------- GLOBAL CONTAINER ---------- */
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+/* ---------- MAIN AREA ---------- */
+.main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(1rem, 2.5vw, 2rem) 1rem;
+  box-sizing: border-box;
+}
+
+/* ---------- SECTION WRAPPER ---------- */
+.section {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(2rem, 3vw, 3rem) 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+  transition: background-color var(--transition);
+}
+
+.section:hover {
+  background-color: color-mix(in srgb, var(--color-surface) 90%, var(--color-accent) 5%);
+}
+
+/* ---------- HEADINGS ---------- */
+.sectionTitle {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- CONTENT WRAPPER ---------- */
+.contentWrapper {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 2.5vw, 2rem);
+  box-sizing: border-box;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+}
+
+/* ---------- SMOOTH SCROLL & LAYOUT STABILITY ---------- */
+html {
+  overflow-y: scroll; /* Prevents layout shift */
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* ---------- ACCESSIBILITY ENHANCEMENTS ---------- */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+  transition: outline var(--transition);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  :focus-visible {
+    outline-color: var(--color-accent);
+  }
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 1024px) {
+  .main {
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .section {
+    padding: clamp(1.5rem, 3vw, 2rem) 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .contentWrapper {
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------- DARK MODE SUPPORT ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #101418;
+    --color-surface: #181d22;
+    --color-text: #e4e7eb;
+    --color-muted: #a0a7b1;
+    --color-border: rgba(255, 255, 255, 0.08);
+  }
+
+  .section {
+    background-color: var(--color-surface);
+  }
+
+  .footer {
+    background-color: var(--color-surface);
+    color: var(--color-muted);
+  }
+}
+
