@@ -41,6 +41,8 @@ import Topbar from "./components/header/Topbar";
 import BottomNav from "./components/footer/BottomNav";
 import Offers1 from "./pages/Offers1";
 import Offers2 from "./pages/Hygiene";
+import Cart from "./components/Cart";
+import Wishlist from "./components/WishList";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -178,6 +180,10 @@ const App: FC = () => (
           {/* === OFFERS  Page === */}
           <Route path="/offers" element={<OffersWrapper/>} />
           <Route path="/best-sellers" element={<BestSellers/>} />
+
+          {/* === Cart Page === */}
+          <Route path="/cart" element={<Cart/>} />  
+          <Route path="/wishlist" element={<Wishlist/>} />
 
 
           {/* === 404 — Not Found === */}

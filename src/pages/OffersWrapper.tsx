@@ -12,10 +12,56 @@ import Offers from "./Offers";
 import BestSellers from "./BestSellers";
 import BeautyProducts from "./BeautyProducts";
 import ProductsWrapper from "../components/ProductsWrapper";
+import Offers1 from "./Offers1";
+import Offers2 from "./Hygiene";
+import MensHealth from "../dropdowns/Men";
+import WomenHealthShop from "../dropdowns/Women";
+import Vitamins from "../dropdowns/Vitamins";
 
 const OffersWrapper = () => {
   return (
     <main className={styles.container}>
+
+     {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Sexual & Reproductive Health Section
+        </h2>
+        <Offers1/>
+      </section>
+
+           {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Sexual & Reproductive Health Section
+        </h2>
+        <BestSellers/>
+      </section>
+
+           {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Sexual & Reproductive Health Section
+        </h2>
+        <MensHealth/>
+      </section>
+           {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Sexual & Reproductive Health Section
+        </h2>
+        <WomenHealthShop/>
+      </section>
+
+
+       {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Sexual & Reproductive Health Section
+        </h2>
+        <Offers2/>
+      </section>
+
 
          {/* Featured Grid Section */}
       <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
@@ -23,6 +69,22 @@ const OffersWrapper = () => {
           Sexual & Reproductive Health Section
         </h2>
         <Offers/>
+      </section>
+
+            {/* Best Selling Section */}
+      <section aria-labelledby="best-selling" className={styles.section}>
+        <h2 id="best-selling" className={styles.title}>
+          Best Selling Products
+        </h2>
+        <Vitamins/>
+      </section>
+
+     {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Heart and Cardiovascular Section
+        </h2>
+        <CVS />
       </section>
 
       {/* Best Selling Section */}

@@ -1,60 +1,82 @@
+/* ==========================================================
+   BottomNav.module.css — Modern Mobile-Optimized (2025)
+   - Fully responsive and touch-friendly
+   - Uses CSS variables for easy theming
+   - Subtle motion and accessibility enhancements
+   ========================================================== */
+
+/* ---------- Root Theme Variables ---------- */
+:root {
+  --accent-color: #ff7a00; /* Orange accent — customize globally */
+  --text-muted: #777;
+  --bg-light: #ffffff;
+  --shadow-soft: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  --border-light: 1px solid #e5e5e5;
+}
+
+/* ---------- Navigation Container ---------- */
 .bottomNav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   height: 64px;
-  background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+  background-color: var(--bg-light);
+  border-top: var(--border-light);
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-soft);
+  padding: 0 0.4rem;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+/* ---------- Nav Item ---------- */
 .navItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: var(--text-muted);
   font-size: 12px;
-  color: #777;
+  text-decoration: none;
+  position: relative;
+  min-width: 56px;
+  padding: 6px 0;
+  transition: color 0.3s ease, transform 0.2s ease;
+  touch-action: manipulation;
+}
+
+.navItem:active {
+  transform: scale(0.96);
+}
+
+/* ---------- Icons ---------- */
+.iconWrapper {
   position: relative;
 }
 
 .icon {
   width: 22px;
   height: 22px;
-  color: #777;
-  transition: color 0.3s ease;
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* ---------- Labels ---------- */
 .label {
   margin-top: 3px;
   font-size: 11px;
+  line-height: 1;
 }
 
-.activeIcon {
-  color: #e63946;
-}
-
-.activeLabel {
-  color: #e63946;
-  font-weight: 500;
-  font-size: 11px;
-  margin-top: 3px;
-}
-
-.iconWrapper {
-  position: relative;
-}
-
+/* ---------- Badges ---------- */
 .badge {
   position: absolute;
   top: -6px;
   right: -10px;
-  background-color: #ffb703;
+  background-color: var(--accent-color);
   color: #fff;
   font-size: 9px;
   font-weight: 600;
@@ -63,21 +85,64 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Hide on larger screens */
+/* ---------- Active / Highlighted ---------- */
+.active .icon {
+  color: var(--accent-color);
+  transform: scale(1.15);
+}
+
+.active .label {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* ---------- Responsiveness ---------- */
+
+/* Hide nav on larger screens */
 @media (min-width: 768px) {
   .bottomNav {
     display: none;
   }
 }
 
-/* Improve touch targets for small devices */
+/* Medium devices — better spacing */
+@media (max-width: 768px) {
+  .bottomNav {
+    height: 60px;
+    justify-content: space-evenly;
+  }
+
+  .icon {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* Small devices — improve touch area & readability */
 @media (max-width: 480px) {
+  .bottomNav {
+    height: 58px;
+    padding: 0 0.2rem;
+  }
+
   .icon {
     width: 20px;
     height: 20px;
   }
-  .label,
-  .activeLabel {
+
+  .label {
     font-size: 10px;
+  }
+}
+
+/* Extra small — ultra compact view */
+@media (max-width: 360px) {
+  .label {
+    display: none;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 }

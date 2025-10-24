@@ -1,42 +1,35 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Home, ShoppingBag, ShoppingCart, FileText, MapPin, User } from "lucide-react";
 import styles from "./BottomNav.module.css";
 
 const BottomNav: React.FC = () => {
+  const navItems = [
+    { to: "/", label: "Home", icon: <Home /> },
+    { to: "/offers", label: "Offers", icon: <ShoppingBag />, badge: "New" },
+    { to: "/cart", label: "Checkout", icon: <ShoppingCart /> },
+    { to: "/prescription/upload", label: "Prescription", icon: <FileText /> },
+    { to: "/stores", label: "Stores", icon: <MapPin /> },
+    { to: "/account", label: "Account", icon: <User /> },
+  ];
+
   return (
     <nav className={styles.bottomNav}>
-      <div className={styles.navItem}>
-        <Home className={`${styles.icon} ${styles.activeIcon}`} />
-        <span className={styles.activeLabel}>Home</span>
-      </div>
-
-      <div className={styles.navItem}>
-        <div className={styles.iconWrapper}>
-          <ShoppingBag className={styles.icon} />
-          <span className={styles.badge}>New</span>
-        </div>
-        <span className={styles.label}>Offers</span>
-      </div>
-
-      <div className={styles.navItem}>
-        <ShoppingCart className={styles.icon} />
-        <span className={styles.label}>Checkout</span>
-      </div>
-
-      <div className={styles.navItem}>
-        <FileText className={styles.icon} />
-        <span className={styles.label}>Prescription</span>
-      </div>
-
-      <div className={styles.navItem}>
-        <MapPin className={styles.icon} />
-        <span className={styles.label}>Stores</span>
-      </div>
-
-      <div className={styles.navItem}>
-        <User className={styles.icon} />
-        <span className={styles.label}>Account</span>
-      </div>
+      {navItems.map(({ to, label, icon, badge }) => (
+        <NavLink
+          key={to}
+          to={to}
+          className={({ isActive }) =>
+            `${styles.navItem} ${isActive ? styles.active : ""}`
+          }
+        >
+          <div className={styles.iconWrapper}>
+            <span className={styles.icon}>{icon}</span>
+            {badge && <span className={styles.badge}>{badge}</span>}
+          </div>
+          <span className={styles.label}>{label}</span>
+        </NavLink>
+      ))}
     </nav>
   );
 };
