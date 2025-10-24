@@ -6,7 +6,7 @@
 /* Navbar directly below Topbar */
 .navbar {
   position: sticky;
-  top: 0; /* sits directly below Topbar */
+  top: 5px; /* sits directly below Topbar */
   z-index: 1000; /* below Topbar (z-index 1300+) but above content */
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
