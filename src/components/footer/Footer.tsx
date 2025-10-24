@@ -91,7 +91,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             </div>
           </section>
 
-          <section className={styles.linkSection}>
+
+             <section className={`${styles.linkSection} ${styles.phoneSection}`}>
             <h3 className={styles.sectionTitle}>Order by Phone</h3>
             <p className={styles.phoneText}>
               Need help placing an order? Our support team is here for you.
