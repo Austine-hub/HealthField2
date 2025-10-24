@@ -14,125 +14,88 @@ import styles from "./Topbar.module.css";
 
 const Topbar: React.FC = () => {
   return (
-    <header className={styles.topbar}>
+    <header className={styles.topbar} role="banner">
       <div className={styles.innerWrapper}>
-        {/* ---------- Left: Brand ---------- */}
+        {/* Left: Brand */}
         <div className={styles.brandSection}>
-          <div className={styles.logoWrapper}>
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M12 2L2 7L12 12L22 7L12 2Z"
-                fill="currentColor"
-                opacity="0.8"
-              />
-              <path
-                d="M2 17L12 22L22 17"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M2 12L12 17L22 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <span className={styles.brandName}>HEALTHFIELD PHARMACY JUJA</span>
+          <a href="/" className={styles.brandLink} aria-label="Healthfield Pharmacy Juja home">
+            <span className={styles.logoWrapper} aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" focusable="false">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" opacity="0.8" />
+                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <span className={styles.brandName}>HEALTHFIELD PHARMACY JUJA</span>
+          </a>
         </div>
 
-        {/* ---------- Center: Tagline ---------- */}
+        {/* Center: Tagline */}
         <div className={styles.taglineSection}>
-          <p className={styles.tagline}>
-            Your Health, Our Mission — Reliable Care. Anytime.
-          </p>
+          <p className={styles.tagline}>Your Health, Our Mission — Reliable Care. Anytime.</p>
         </div>
 
-        {/* ---------- Right: Actions + Social + Search ---------- */}
+        {/* Right: Actions + Social + Search */}
         <div className={styles.actionsSection}>
-          <div className={styles.contactButtons}>
-            <button className={styles.ctaButton}>
+          <div className={styles.contactButtons} role="group" aria-label="Contact options">
+            <a href="tel:+254796787207" className={styles.ctaButton} aria-label="Call to order">
               <Phone size={16} aria-hidden="true" />
-              <span>Call to Order</span>
-            </button>
-            <button className={`${styles.ctaButton} ${styles.whatsappButton}`}>
+              <span className={styles.ctaText}>Call to Order</span>
+            </a>
+            <a href="https://wa.me/254796787207" className={`${styles.ctaButton} ${styles.whatsappButton}`} aria-label="WhatsApp order">
               <MessageCircle size={16} aria-hidden="true" />
-              <span>WhatsApp Order</span>
-            </button>
+              <span className={styles.ctaText}>WhatsApp Order</span>
+            </a>
           </div>
 
-          <div className={styles.socialGroup}>
-            <a href="#" className={styles.socialIcon} aria-label="WhatsApp">
+          <div className={styles.socialGroup} aria-hidden={false}>
+            <a href="https://wa.me/254796787207" className={styles.iconButton} aria-label="WhatsApp">
               <MessageCircle size={16} />
             </a>
-            <a href="#" className={styles.socialIcon} aria-label="Facebook">
+            <a href="https://www.facebook.com/theggodofwolves/" className={styles.iconButton} aria-label="Facebook">
               <Facebook size={16} />
             </a>
-            <a href="#" className={styles.socialIcon} aria-label="Twitter">
+            <a href="https://x.com/home" className={styles.iconButton} aria-label="X / Twitter">
               <Twitter size={16} />
             </a>
-            <a href="#" className={styles.socialIcon} aria-label="Instagram">
+            <a href="https://www.instagram.com/" className={styles.iconButton} aria-label="Instagram">
               <Instagram size={16} />
             </a>
-            <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/" className={styles.iconButton} aria-label="LinkedIn">
               <Linkedin size={16} />
             </a>
 
-            {/* ---------- Wishlist + Cart ---------- */}
             <a href="/wishlist" className={styles.cartIcon} aria-label="Wishlist">
-              <Heart size={16} />
-              <span>Wishlist</span>
+              <Heart size={16} aria-hidden="true" />
+              <span className={styles.cartText}>Wishlist</span>
             </a>
             <a href="/cart" className={styles.cartIcon} aria-label="Cart">
-              <ShoppingCart size={16} />
-              <span>Cart</span>
+              <ShoppingCart size={16} aria-hidden="true" />
+              <span className={styles.cartText}>Cart</span>
             </a>
 
             <button className={styles.searchButton} aria-label="Search site">
-              <Search size={16} />
-              <span>Search</span>
+              <Search size={16} aria-hidden="true" />
+              <span className={styles.searchText}>Search</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* ---------- Bottom Contact Bar ---------- */}
-      <div className={styles.bottomBar}>
+      {/* Bottom Contact Bar */}
+      <div className={styles.bottomBar} role="contentinfo" aria-label="Contact information">
         <div className={styles.contactWrapper}>
-          <a
-            href="mailto:hosp@nbihosp.org"
-            className={styles.contactLink}
-            aria-label="Email hospital"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
+          <a href="mailto:hosp@nbihosp.org" className={styles.contactLink}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" focusable="false" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M22 7L13.03 12.7a2 2 0 01-2.06 0L2 7" />
             </svg>
-            hosp@nbihosp.org
+            <span className={styles.contactText}>hosp@nbihosp.org</span>
           </a>
-          <a
-            href="tel:+254703082000"
-            className={styles.contactLink}
-            aria-label="Call hospital"
-          >
-            <Phone size={14} />
-            (+254) 792 766 779
+
+          <a href="tel:+254792766779" className={styles.contactLink}>
+            <Phone size={14} aria-hidden="true" />
+            <span className={styles.contactText}>(+254) 792 766 779</span>
           </a>
         </div>
       </div>

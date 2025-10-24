@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               <li><a href="/terms">Terms & Conditions</a></li>
               <li><a href="/privacy">Privacy Policy</a></li>
               <li><a href="/delivery">Delivery & Returns</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/contact-us">Contact Us</a></li>
             </ul>
           </nav>
 
@@ -65,7 +65,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             <h3 className={styles.sectionTitle}>Connect</h3>
             <div className={styles.socials}>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/theggodofwolves/"
                 aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -73,7 +73,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                 <FaFacebookF />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/"
                 aria-label="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
