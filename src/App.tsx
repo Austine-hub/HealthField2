@@ -39,6 +39,8 @@ import ProductCarousel from "./pages/ProductCarousel";
 import OffersWrapper from "./pages/OffersWrapper";
 import Topbar from "./components/header/Topbar";
 import BottomNav from "./components/footer/BottomNav";
+import Offers1 from "./pages/Offers1";
+import Offers2 from "./pages/Hygiene";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -124,8 +126,10 @@ const App: FC = () => (
               <>
                 <Hero />
                 <ShopByCategory />
+                <Offers1/>
                 <Offers />
                 <ProductCarousel />
+                 <Offers2 />
                 <BestSellers />
                 <BeautyProducts />
               </>
