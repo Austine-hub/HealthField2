@@ -370,7 +370,7 @@
 
   .navContainer {
     padding: 0 1rem;
-    height: 64px;
+    height: 58px;
   }
 
   .logoIcon {
@@ -411,7 +411,7 @@
   transition: max-height 0.28s ease;
 }
 .mobileSubmenu.open {
-  max-height: 600px; /* large enough for content */
+  max-height: 550px; /* large enough for content */
 }
 
 /* Desktop dropdown fade/slide (example) */
