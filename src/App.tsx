@@ -6,6 +6,8 @@ import { Suspense, lazy, useEffect, type FC } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { CartProvider } from "./context/CartContext";
+
 
 // ===============================================================
 // 🎨 Theme Context Provider
@@ -73,8 +75,10 @@ const ScrollToTop: FC = () => {
 // 🏥 Root Application Component
 // ===============================================================
 const App: FC = () => (
-  <ThemeProvider>
+<ThemeProvider>
+  <CartProvider>
     <ScrollToTop />
+
 
     {/* === Global Toast Notifications === */}
     <Toaster
@@ -130,8 +134,6 @@ const App: FC = () => (
             element={
               <>
                 <Hero />
-
-
                 <Offers1/>
                 <ProductCarousel />
                 <Offers />               
@@ -232,8 +234,11 @@ const App: FC = () => (
     <footer role="contentinfo">
       <Footer />
     </footer>
-     <BottomNav/>
-  </ThemeProvider>
+      <BottomNav/>
+  </CartProvider>
+</ThemeProvider>
+
+
 );
 
 export default App;

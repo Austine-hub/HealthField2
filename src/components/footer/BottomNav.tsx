@@ -1,32 +1,62 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Home,
-  ShoppingBag,
-  ShoppingCart,
-  FileText,
-  MapPin,
-} from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Home, ShoppingBag, ShoppingCart, FileText, MapPin } from "lucide-react";
+import toast from "react-hot-toast";
 import styles from "./BottomNav.module.css";
 
-const BottomNav: React.FC = () => {
+interface BottomNavProps {
+  onCartToggle?: () => void; // 👈 optional cart drawer toggle
+}
+
+const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
+  const navigate = useNavigate();
+
   const navItems = [
-    { to: "/", label: "Home", icon: <Home /> },
-    { to: "/offers", label: "Offers", icon: <ShoppingBag />, badge: "New" },
-    { to: "/cart", label: "Checkout", icon: <ShoppingCart /> },
-    { to: "/prescription/upload", label: "Prescription", icon: <FileText /> },
+    { to: "/", label: "Home", icon: <Home strokeWidth={1.8} /> },
     {
-      to: "https://www.google.com/maps/dir/-1.1010048,37.011456/HEALTHFIELD+PHARMACY,+Jkuat,+Muramati+road,+Gate+C+Rd,+Juja/@-1.0998346,37.0091212,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x182f478f220d151b:0x2518c5efaf81c0!2m2!1d37.0110976!2d-1.0990329?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
+      to: "/offers",
+      label: "Offers",
+      icon: <ShoppingBag strokeWidth={1.8} />,
+      badge: "New",
+    },
+    {
+      to: "/prescription/upload",
+      label: "Prescription",
+      icon: <FileText strokeWidth={1.8} />,
+    },
+    {
+      to: "/cart",
+      label: "Checkout",
+      icon: <ShoppingCart strokeWidth={1.8} />,
+      onClick: () => {
+        toast.success("Opening your cart...", { duration: 1800 });
+        onCartToggle?.();
+
+        // ✅ Allow the toast to show, then navigate
+        setTimeout(() => navigate("/cart"), 500);
+      },
+    },
+    {
+      to: "https://www.google.com/maps/dir/-1.1010048,37.011456/HEALTHFIELD+PHARMACY,+Jkuat,+Muramati+road,+Gate+C+Rd,+Juja",
       label: "Stores",
-      icon: <MapPin />,
+      icon: <MapPin strokeWidth={1.8} />,
       external: true,
     },
   ];
 
   return (
-    <nav className={styles.bottomNav}>
-      {navItems.map(({ to, label, icon, badge, external }) =>
+    <motion.nav
+      className={styles.bottomNav}
+      role="navigation"
+      aria-label="Primary navigation"
+      initial={{ y: 60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 80, damping: 15 }}
+    >
+      {navItems.map(({ to, label, icon, badge, external, onClick }) =>
         external ? (
+          // 🌍 External Link (Google Maps)
           <a
             key={label}
             href={to}
@@ -35,33 +65,48 @@ const BottomNav: React.FC = () => {
             aria-label={`Open ${label} in Google Maps`}
             className={`${styles.navItem} ${styles.externalLink}`}
           >
-            <div className={styles.iconWrapper}>
-              <span className={`${styles.icon} ${styles.externalIcon}`}>
-                {icon}
-              </span>
+            <motion.div
+              className={styles.iconWrapper}
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+            >
+              <span className={styles.icon}>{icon}</span>
               {badge && <span className={styles.badge}>{badge}</span>}
-            </div>
+            </motion.div>
             <span className={styles.label}>{label}</span>
           </a>
         ) : (
+          // 🧭 Internal Links
           <NavLink
             key={label}
             to={to}
             className={({ isActive }) =>
               `${styles.navItem} ${isActive ? styles.active : ""}`
             }
+            onClick={(e) => {
+              if (onClick) {
+                e.preventDefault(); // prevent default navigation
+                onClick(); // call custom logic (toast + drawer + delayed nav)
+              }
+            }}
+            aria-label={label}
           >
-            <div className={styles.iconWrapper}>
+            <motion.div
+              className={styles.iconWrapper}
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+            >
               <span className={styles.icon}>{icon}</span>
               {badge && <span className={styles.badge}>{badge}</span>}
-            </div>
+            </motion.div>
             <span className={styles.label}>{label}</span>
           </NavLink>
         )
       )}
-    </nav>
+    </motion.nav>
   );
 };
 
 export default BottomNav;
-

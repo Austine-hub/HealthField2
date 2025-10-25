@@ -1,14 +1,17 @@
 /* ==========================================================
    BottomNav.module.css — Modern Mobile-Optimized (2025)
    - Fully responsive and touch-friendly
+   - Unified + cleaned up from multiple versions
    - Uses CSS variables for easy theming
    - Subtle motion and accessibility enhancements
    ========================================================== */
 
 /* ---------- Root Theme Variables ---------- */
 :root {
-  --accent-color: #ff7a00; /* Orange accent — customize globally */
-  --text-muted: #777;
+  --accent-color: #00a8e1; /* Pharmacy blue accent */
+  --alert-color: #ff5252; /* Alert red for badges */
+  --success-color: #28a745; /* Green for external links */
+  --text-muted: #666;
   --bg-light: #ffffff;
   --shadow-soft: 0 -2px 8px rgba(0, 0, 0, 0.05);
   --border-light: 1px solid #e5e5e5;
@@ -23,11 +26,11 @@
   height: 64px;
   background-color: var(--bg-light);
   border-top: var(--border-light);
+  box-shadow: var(--shadow-soft);
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  box-shadow: var(--shadow-soft);
   padding: 0 0.4rem;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
@@ -39,13 +42,17 @@
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  font-size: 12px;
   text-decoration: none;
-  position: relative;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
   min-width: 56px;
   padding: 6px 0;
   transition: color 0.3s ease, transform 0.2s ease;
   touch-action: manipulation;
+}
+
+.navItem:focus,
+.navItem:hover {
+  color: var(--accent-color);
 }
 
 .navItem:active {
@@ -55,6 +62,10 @@
 /* ---------- Icons ---------- */
 .iconWrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
 }
 
 .icon {
@@ -64,9 +75,12 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.iconWrapper:active .icon {
+  transform: scale(0.9);
+}
+
 /* ---------- Labels ---------- */
 .label {
-  margin-top: 3px;
   font-size: 11px;
   line-height: 1;
 }
@@ -76,12 +90,12 @@
   position: absolute;
   top: -6px;
   right: -10px;
-  background-color: var(--accent-color);
+  background-color: var(--alert-color);
   color: #fff;
-  font-size: 9px;
+  font-size: 0.65rem;
   font-weight: 600;
   border-radius: 10px;
-  padding: 1px 4px;
+  padding: 0 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -96,6 +110,35 @@
   font-weight: 600;
 }
 
+/* ---------- External Link (e.g. Google Maps) ---------- */
+.externalLink {
+  color: var(--success-color);
+}
+
+.externalLink:hover {
+  color: #32cd5f;
+}
+
+.externalIcon {
+  animation: pulse 2.2s infinite ease-in-out;
+  color: var(--success-color);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* ---------- Responsiveness ---------- */
 
 /* Hide nav on larger screens */
@@ -105,7 +148,7 @@
   }
 }
 
-/* Medium devices — better spacing */
+/* Medium devices */
 @media (max-width: 768px) {
   .bottomNav {
     height: 60px;
@@ -118,7 +161,7 @@
   }
 }
 
-/* Small devices — improve touch area & readability */
+/* Small devices */
 @media (max-width: 480px) {
   .bottomNav {
     height: 58px;
@@ -141,71 +184,6 @@
     display: none;
   }
 
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-
-
-
-
-
-
-
-
-/* ============== BADGE ============== */
-.badge {
-  position: absolute;
-  top: -4px;
-  right: -10px;
-  background: #ff5252;
-  color: #fff;
-  font-size: 0.65rem;
-  border-radius: 10px;
-  padding: 0 4px;
-}
-
-.label {
-  margin-top: 4px;
-}
-
-/* ===============================
-   External Link (Google Maps)
-   =============================== */
-
-.externalLink {
-  color: #218838; /* Green accent */
-}
-
-.externalLink:hover {
-  color: #28a745;
-}
-
-/* Subtle pulse animation for attention */
-.externalIcon {
-  animation: pulse 2.2s infinite ease-in-out;
-  color: #28a745;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Responsive: slightly larger icons for touch devices */
-@media (max-width: 768px) {
   .icon {
     width: 24px;
     height: 24px;
