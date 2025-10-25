@@ -302,7 +302,7 @@ const Navbar: React.FC = () => {
 
             {/* static mobile links */}
             <Link to="/new-arrivals" onClick={closeMobileMenu} className={styles.mobileNavLink}>
-              <span className={styles.badge}>New</span>Arrivals
+              <span className={styles.badge}>New Arrivals</span>
             </Link>
 
             <Link to="/trending" onClick={closeMobileMenu} className={styles.mobileNavLink}>
