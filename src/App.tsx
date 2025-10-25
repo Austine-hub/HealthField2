@@ -48,6 +48,7 @@ import Wishlist from "./components/WishList";
 import NewArrivals from "./dropdowns/NewArrivals";
 import NewArrivals1 from "./dropdowns/NewArrivals2";
 import AboutUs from "./outer/AboutUs";
+import SkinCare from "./dropdowns/Skincare";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -134,6 +135,7 @@ const App: FC = () => (
             element={
               <>
                 <Hero />
+                <Shop/>
                 <Offers1/>
                 <ProductCarousel />
                 <Offers />               
@@ -158,6 +160,8 @@ const App: FC = () => (
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
           <Route path="/categories/medicine" element={<ProductsWrapper />} />
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
+          <Route path="/categories/skin-care" element={<SkinCare />} />
+        
 
           {/* === Condition Routes === */}
           <Route path="/condition/heart" element={<CVS />} />

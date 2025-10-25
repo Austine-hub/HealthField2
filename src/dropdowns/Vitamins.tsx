@@ -1,8 +1,9 @@
 // File: src/components/Products2.tsx
 import { useRef, useState, useEffect } from "react";
+import { ShoppingCart } from "lucide-react"; // 🛒 Modern icon
+import { useCart } from "../context/CartContext"; // ✅ Import your cart hook
 import styles from "./Vitamins.module.css";
 
-// === Import local images (replace with your actual vitamin/supplement images) ===
 import image1 from "../assets/vitamins/vitamin_d.png";
 import image2 from "../assets/vitamins/vitamin_c.png";
 import image3 from "../assets/vitamins/omega3.png";
@@ -27,8 +28,6 @@ interface Product {
   image: string;
 }
 
-const WHATSAPP_NUMBER = "254796787207"; // Replace with your real business number
-
 const productsSeed: Product[] = [
   { id: "1", name: "Vitamin D3 1000 IU Softgels", category: "Bone & Immunity Support", packSize: "100 Softgels", currentPrice: 950, originalPrice: 1150, discount: "17% Off", image: image1 },
   { id: "2", name: "Vitamin C 1000mg Tablets", category: "Antioxidant & Immune Health", packSize: "60 Tablets", currentPrice: 720, originalPrice: 880, discount: "18% Off", image: image2 },
@@ -49,6 +48,8 @@ export default function Vitamins() {
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
   const [products] = useState<Product[]>(productsSeed);
+  const { addToCart } = useCart(); // ✅ Get addToCart from context
+  const [addedProductId, setAddedProductId] = useState<string | null>(null); // for “Added!” feedback
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -91,17 +92,16 @@ export default function Vitamins() {
       .format(value)
       .replace("Ksh", "KSH");
 
-  const orderViaWhatsApp = (p: Product) => {
-    const text = encodeURIComponent(
-      `Hello, I'd like to order: ${p.name} (${p.packSize}) - ${formatPrice(
-        p.currentPrice
-      )}. Product ID: ${p.id}`
-    );
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+  const handleAddToCart = (p: Product) => {
+    addToCart({
+      id: p.id,
+      name: p.name,
+      price: p.currentPrice,
+      image: p.image,
+      quantity: 1,
+    });
+    setAddedProductId(p.id);
+    setTimeout(() => setAddedProductId(null), 1500);
   };
 
   return (
@@ -197,30 +197,19 @@ export default function Vitamins() {
               </div>
 
               <div className={styles.actions}>
+                {/* 🛒 Replaced WhatsApp Order with Add to Cart */}
                 <button
-                  className={styles.whatsappButton}
-                  onClick={() => orderViaWhatsApp(p)}
-                  aria-label={`Order ${p.name} via WhatsApp`}
+                  className={styles.cartButton}
+                  onClick={() => handleAddToCart(p)}
+                  aria-label={`Add ${p.name} to cart`}
                 >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    aria-hidden
-                    focusable="false"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M20.52 3.48A11.93 11.93 0 0012 .5C6.21.5 1.5 5.2 1.5 11c0 1.94.5 3.82 1.45 5.47L.5 23.5l7.2-1.88A11.5 11.5 0 0012 22.5c5.79 0 10.5-4.7 10.5-10.5 0-3-1.17-5.78-3.98-7.52z"
-                    />
-                    <path
-                      fill="#fff"
-                      d="M17.2 14.1c-.3-.1-1.8-.9-2-.9s-.4 0-.6.3c-.2.3-.7.9-.9 1-.2.1-.4.1-.7 0-1.2-.6-2.3-1.9-3.1-3.4-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.8.2-.3.2-.6.3-.9 0-.3-.2-.6-.4-.8-.3-.2-.7-.4-1.2-.3-.5.1-.9.3-1.4.8-.5.5-.6 1.1-.2 1.9.4.8 1.1 1.9 2.1 3.2 1 1.2 1.9 2 3.1 2.6 1.1.6 1.8.7 2.4.7.4 0 .9 0 1.1-.1s.9-.4 1.1-.8c.2-.4.2-.8.1-.9-.1-.1-.2-.2-.5-.3z"
-                    />
-                  </svg>
-                  <span className={styles.whatsappText}>Order</span>
+                  <ShoppingCart size={18} strokeWidth={1.5} />
+                  <span className={styles.cartText}>
+                    {addedProductId === p.id ? "Added!" : "Add to Cart"}
+                  </span>
                 </button>
 
+                {/* ℹ️ Info button unchanged */}
                 <button
                   className={styles.infoButton}
                   aria-label={`More info about ${p.name}`}

@@ -86,3 +86,30 @@
 
 /* Print */
 @media print{ .navigation{ display:none; } .productsContainer{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; overflow:visible; } }
+
+
+.cartButton {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.25s ease;
+}
+
+.cartButton:hover {
+  background-color: #1558b0;
+}
+
+.cartText {
+  font-weight: 500;
+}
+
+.cartButton svg {
+  flex-shrink: 0;
+}

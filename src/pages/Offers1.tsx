@@ -101,6 +101,9 @@ const Offers1: React.FC = () => {
     container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
+
+  
+
   // --- Add to Cart ---
   const handleAddToCart = (offer: Offer) => {
     addToCart({
