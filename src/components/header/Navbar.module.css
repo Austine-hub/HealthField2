@@ -402,3 +402,27 @@
     padding: 0.875rem;
   }
 }
+
+
+/* Mobile submenu collapse/expand */
+.mobileSubmenu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.28s ease;
+}
+.mobileSubmenu.open {
+  max-height: 600px; /* large enough for content */
+}
+
+/* Desktop dropdown fade/slide (example) */
+.dropdownMenu {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.dropdownMenu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}

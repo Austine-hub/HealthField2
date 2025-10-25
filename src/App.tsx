@@ -43,6 +43,9 @@ import Offers1 from "./pages/Offers1";
 import Offers2 from "./pages/Hygiene";
 import Cart from "./components/Cart";
 import Wishlist from "./components/WishList";
+import NewArrivals from "./dropdowns/NewArrivals";
+import NewArrivals1 from "./dropdowns/NewArrivals2";
+import AboutUs from "./outer/AboutUs";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -169,7 +172,7 @@ const App: FC = () => (
           <Route path="/about/story" element={<OurStory />} />
           <Route path="/about/team" element={<OurTeam />} />
           <Route path="/about/vision" element={<OurMissionVision />} />
-          <Route path="/about/careers" element={<Shop />} />
+          <Route path="/about-us" element={<AboutUs/>} />
 
           {/* === Contact Page === */}
           <Route path="/contact-us" element={<ContactUs />} />
@@ -180,6 +183,8 @@ const App: FC = () => (
           {/* === OFFERS  Page === */}
           <Route path="/offers" element={<OffersWrapper/>} />
           <Route path="/best-sellers" element={<BestSellers/>} />
+          <Route path="/new-arrivals" element={<NewArrivals/>} />  
+          <Route path="/trending" element={<NewArrivals1/>} />
 
           {/* === Cart Page === */}
           <Route path="/cart" element={<Cart/>} />  
