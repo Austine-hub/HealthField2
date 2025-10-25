@@ -146,3 +146,68 @@
     height: 24px;
   }
 }
+
+
+
+
+
+
+
+
+
+/* ============== BADGE ============== */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -10px;
+  background: #ff5252;
+  color: #fff;
+  font-size: 0.65rem;
+  border-radius: 10px;
+  padding: 0 4px;
+}
+
+.label {
+  margin-top: 4px;
+}
+
+/* ===============================
+   External Link (Google Maps)
+   =============================== */
+
+.externalLink {
+  color: #218838; /* Green accent */
+}
+
+.externalLink:hover {
+  color: #28a745;
+}
+
+/* Subtle pulse animation for attention */
+.externalIcon {
+  animation: pulse 2.2s infinite ease-in-out;
+  color: #28a745;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive: slightly larger icons for touch devices */
+@media (max-width: 768px) {
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
