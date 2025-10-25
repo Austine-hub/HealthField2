@@ -399,3 +399,44 @@
     }
   }
 }
+
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.addToCart,
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addToCart {
+  background: var(--color-primary, #0077b6);
+  color: #fff;
+}
+
+.addToCart:hover {
+  background: #0096c7;
+}
+
+.whatsappBtn {
+  background: #25d366;
+  color: #fff;
+}
+
+.whatsappBtn:hover {
+  background: #1ebe5d;
+}

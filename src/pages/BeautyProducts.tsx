@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+// BeautyProducts.tsx — Modernized, accessible, Cart-integrated
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Heart, Share2, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import toast, { Toaster } from "react-hot-toast";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import styles from "./BeautyProducts.module.css";
+import { useCart } from "../context/CartContext";
 
 interface Product {
   id: number;
@@ -18,10 +20,14 @@ interface Product {
 }
 
 const BeautyProducts: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [, setVisibleCards] = useState(4);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [visibleCards, setVisibleCards] = useState(4);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+
+  // Cart context
+  const { addToCart, updateQuantity, openCart, cartItems } = useCart();
 
   const products: Product[] = [
     {
@@ -79,6 +85,7 @@ const BeautyProducts: React.FC = () => {
     },
   ];
 
+  // Responsive visible card count (for future scaling)
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -92,119 +99,216 @@ const BeautyProducts: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleNext = () => {
-    if (currentIndex < products.length - visibleCards) setCurrentIndex((prev) => prev + 1);
-  };
+  const scrollBy = useCallback((offset: number) => {
+    const el = carouselRef.current;
+    if (!el) return;
+    el.scrollBy({ left: offset, behavior: "smooth" });
+  }, []);
 
-  const handlePrev = () => {
-    if (currentIndex > 0) setCurrentIndex((prev) => prev - 1);
-  };
+  const handlePrev = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const amount = el.clientWidth / 2;
+    scrollBy(-amount);
+  }, [scrollBy]);
 
-  const toggleFavorite = (id: number) => {
+  const handleNext = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const amount = el.clientWidth / 2;
+    scrollBy(amount);
+  }, [scrollBy]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [handleNext, handlePrev]);
+
+  const toggleFavorite = useCallback((id: number) => {
     setFavorites((prev) => {
-      const newFavorites = new Set(prev);
-      newFavorites.has(id)
-        ? (newFavorites.delete(id), toast.success("Removed from favorites"))
-        : (newFavorites.add(id), toast.success("Added to favorites"));
-      return newFavorites;
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+        toast.success("Removed from favorites");
+      } else {
+        next.add(id);
+        toast.success("Added to favorites");
+      }
+      return next;
     });
-  };
+  }, []);
 
-  const handleAddToCart = (product: Product) => toast.success(`${product.name} added to cart!`);
-  const handleShare = () => toast.success("Link copied to clipboard!");
+  const handleShare = useCallback(async (product: Product) => {
+    try {
+      const url = `${window.location.origin}/product/${product.id}`;
+      await navigator.clipboard.writeText(url);
+      toast.success("Product link copied to clipboard");
+    } catch {
+      toast("Unable to copy link");
+    }
+  }, []);
+
+  const handleAddToCart = useCallback(
+    (product: Product) => {
+      const stringId = product.id.toString();
+      const inCart = cartItems.find((ci) => ci.id === stringId);
+
+      if (inCart) {
+        updateQuantity(stringId, inCart.quantity + 1);
+      } else {
+        addToCart({
+          id: stringId,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1,
+          category: product.brand,
+          description: product.description,
+          inStock: true,
+        });
+      }
+
+      toast.success(`${product.name} added to cart`, { duration: 2000 });
+
+      try {
+        openCart();
+      } catch {
+        // ignore silently if unavailable
+      }
+    },
+    [addToCart, cartItems, updateQuantity, openCart]
+  );
+
+  const onCardFocus = (index: number) => setFocusedIndex(index);
+  const onCardBlur = () => setFocusedIndex(null);
 
   return (
-    <section className={styles.beautySection}>
+    <section className={styles.beautySection} aria-labelledby="beauty-title">
       <Toaster position="top-right" />
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>Beauty Products</h2>
-          <nav className={styles.navigation}>
+          <h2 id="beauty-title" className={styles.title}>
+            Beauty Products
+          </h2>
+
+          <nav className={styles.navigation} aria-label="Carousel navigation">
             <button
               className={styles.navButton}
               onClick={handlePrev}
-              disabled={currentIndex === 0}
               aria-label="Previous products"
+              title="Previous"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               className={styles.navButton}
               onClick={handleNext}
-              disabled={currentIndex >= products.length - visibleCards}
               aria-label="Next products"
+              title="Next"
             >
               <ChevronRight size={20} />
             </button>
           </nav>
         </header>
 
-        <div className={styles.productsWrapper} ref={carouselRef}>
-          {products.map((product) => (
-            <motion.article
-              key={product.id}
-              className={styles.productCard}
-              whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.12)" }}
-            >
-              {product.trending && (
-                <span className={styles.trendingBadge}>
-                  🔥 {product.trendingRank && `${product.trendingRank}.`} Trending
-                </span>
-              )}
+        <div
+          className={styles.productsWrapper}
+          ref={carouselRef}
+          role="list"
+          aria-live="polite"
+        >
+          {products.map((product, idx) => {
+            const isFavorited = favorites.has(product.id);
+            const isFocused = focusedIndex === idx;
 
-              <div className={styles.imageContainer}>
-                <LazyLoadImage
-                  src={product.image}
-                  alt={product.name}
-                  effect="blur"
-                  className={styles.productImage}
-                />
-                <button
-                  className={`${styles.iconButton} ${styles.favoriteButton}`}
-                  onClick={() => toggleFavorite(product.id)}
-                  aria-label="Add to favorites"
-                >
-                  <Heart
-                    size={16}
-                    fill={favorites.has(product.id) ? "#ff4757" : "none"}
-                    color={favorites.has(product.id) ? "#ff4757" : "#999"}
+            return (
+              <motion.article
+                key={product.id}
+                className={`${styles.productCard} ${isFocused ? styles.focusedCard : ""}`}
+                role="listitem"
+                tabIndex={0}
+                onFocus={() => onCardFocus(idx)}
+                onBlur={onCardBlur}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 200, damping: 16 }}
+                aria-label={`${product.name} — ${product.brand} — KES ${product.price}`}
+              >
+                {product.trending && (
+                  <span className={styles.trendingBadge}>
+                    🔥 {product.trendingRank ? `${product.trendingRank}. ` : ""}Trending
+                  </span>
+                )}
+
+                <div className={styles.imageContainer}>
+                  <LazyLoadImage
+                    src={product.image}
+                    alt={product.name}
+                    effect="blur"
+                    className={styles.productImage}
+                    width="100%"
+                    height="100%"
                   />
-                </button>
-                <button
-                  className={`${styles.iconButton} ${styles.shareButton}`}
-                  onClick={handleShare}
-                  aria-label="Share product"
-                >
-                  <Share2 size={16} color="#999" />
-                </button>
-              </div>
 
-              <div className={styles.productInfo}>
-                <h3 className={styles.productName}>{product.name}</h3>
-                <p className={styles.productDesc}>{product.description}</p>
-                <p className={styles.brandName}>{product.brand}</p>
-                <span className={styles.price}>Kes. {product.price.toFixed(2)}</span>
+                  <button
+                    className={`${styles.iconButton} ${styles.favoriteButton}`}
+                    onClick={() => toggleFavorite(product.id)}
+                    aria-pressed={isFavorited}
+                    aria-label={`${isFavorited ? "Remove from" : "Add to"} favorites`}
+                    title={isFavorited ? "Remove from favorites" : "Add to favorites"}
+                  >
+                    <Heart
+                      size={16}
+                      fill={isFavorited ? "#ff4757" : "none"}
+                      color={isFavorited ? "#ff4757" : "#666"}
+                      aria-hidden="true"
+                    />
+                  </button>
 
-                <div className={styles.actionButtons}>
-                  <motion.button
-                    className={styles.addButton}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => handleAddToCart(product)}
+                  <button
+                    className={`${styles.iconButton} ${styles.shareButton}`}
+                    onClick={() => handleShare(product)}
+                    aria-label="Share product"
+                    title="Share product link"
                   >
-                    <ShoppingCart size={16} /> Add
-                  </motion.button>
-                  <motion.button
-                    className={styles.detailsButton}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    View Details
-                  </motion.button>
+                    <Share2 size={16} color="#666" aria-hidden="true" />
+                  </button>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+
+                <div className={styles.productInfo}>
+                  <h3 className={styles.productName}>{product.name}</h3>
+                  <p className={styles.productDesc}>{product.description}</p>
+                  <p className={styles.brandName}>{product.brand}</p>
+                  <span className={styles.price}>KES {product.price.toFixed(2)}</span>
+
+                  <div className={styles.actionButtons}>
+                    <motion.button
+                      className={styles.addButton}
+                      onClick={() => handleAddToCart(product)}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      aria-label={`Add ${product.name} to cart`}
+                    >
+                      <ShoppingCart size={16} aria-hidden="true" /> Add
+                    </motion.button>
+
+                    <motion.a
+                      className={styles.detailsButton}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      href={`/product/${product.id}`}
+                      aria-label={`View details for ${product.name}`}
+                    >
+                      View details
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
         <div className={styles.viewAllContainer}>
@@ -212,6 +316,7 @@ const BeautyProducts: React.FC = () => {
             href="/beauty-products"
             className={styles.viewAllLink}
             whileHover={{ x: 4 }}
+            aria-label="View all beauty products"
           >
             View All Beauty Products <ChevronRight size={18} />
           </motion.a>
@@ -222,4 +327,3 @@ const BeautyProducts: React.FC = () => {
 };
 
 export default BeautyProducts;
-

@@ -1,7 +1,7 @@
 // ============================================================================
 // ✅ CartDrawer.tsx — Animated, Responsive, Context-Integrated (2025 Edition)
 // ============================================================================
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Trash2,
   ShoppingCart,
@@ -24,17 +24,19 @@ const CartDrawer: React.FC = () => {
     getCartTotal,
     getTotalItems,
     updateQuantity,
+    isCartOpen,
+    openCart,
+    closeCart,
   } = useCart();
 
-  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Auto-close drawer on route change
+  // 🧠 Close drawer with "Escape" key
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false);
+    const handleEsc = (e: KeyboardEvent) => e.key === "Escape" && closeCart();
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+  }, [closeCart]);
 
   const formatPrice = (price: number) =>
     `KES ${price.toLocaleString("en-KE", { minimumFractionDigits: 0 })}`;
@@ -51,10 +53,10 @@ const CartDrawer: React.FC = () => {
 
   return (
     <>
-      {/* 🛒 Cart Toggle Button (for Navbar or Anywhere) */}
+      {/* 🛒 Cart Toggle Button */}
       <button
         className={styles.cartToggleBtn}
-        onClick={() => setIsOpen(true)}
+        onClick={openCart}
         aria-label="Open cart drawer"
       >
         <ShoppingCart size={22} />
@@ -63,11 +65,11 @@ const CartDrawer: React.FC = () => {
 
       {/* 🌑 Overlay + Drawer */}
       <AnimatePresence>
-        {isOpen && (
+        {isCartOpen && (
           <>
             <motion.div
               className={styles.overlay}
-              onClick={() => setIsOpen(false)}
+              onClick={closeCart}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
@@ -86,7 +88,7 @@ const CartDrawer: React.FC = () => {
                 </h1>
                 <button
                   className={styles.closeBtn}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeCart}
                   aria-label="Close cart drawer"
                 >
                   <X size={20} />

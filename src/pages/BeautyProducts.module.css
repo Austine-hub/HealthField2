@@ -119,6 +119,13 @@
   transform: scale(1.08);
 }
 
+/* add near your .productCard styles */
+.focusedCard {
+  outline: 3px solid rgba(59,130,246,0.18);
+  transform: translateY(-4px);
+}
+
+
 /* ICON BUTTONS */
 .iconButton {
   position: absolute;

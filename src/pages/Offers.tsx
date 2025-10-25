@@ -1,6 +1,9 @@
 // src/components/offers/Offers.tsx
 import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCart, MessageCircle } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import toast from "react-hot-toast";
 import styles from "./Offers.module.css";
 
 // === Import images ===
@@ -38,6 +41,18 @@ const WHATSAPP_MESSAGE = encodeURIComponent("Hello, I’d like to order this pro
 
 const Offers: React.FC = memo(() => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (offer: Offer) => {
+    addToCart({
+      id: offer.id,
+      name: offer.name,
+      price: offer.price,
+      image: offer.image,
+      quantity: 1,
+    });
+    toast.success(`${offer.name} added to cart 🛒`, { duration: 2000 });
+  };
 
   const handleWhatsAppOrder = (productName: string) => {
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}%20${encodeURIComponent(
@@ -46,10 +61,7 @@ const Offers: React.FC = memo(() => {
     window.open(whatsappLink, "_blank");
   };
 
-  const handleImageClick = (image: string) => {
-    setSelectedImage(image);
-  };
-
+  const handleImageClick = (image: string) => setSelectedImage(image);
   const closeModal = () => setSelectedImage(null);
 
   return (
@@ -97,18 +109,22 @@ const Offers: React.FC = memo(() => {
             </div>
 
             <div className={styles.actions}>
+              {/* 🛒 Add to Cart (Primary) */}
               <button
                 className={styles.addToCart}
-                onClick={() => handleWhatsAppOrder(offer.name)}
+                onClick={() => handleAddToCart(offer)}
               >
-                Order via WhatsApp
+                <ShoppingCart size={18} strokeWidth={1.8} />
+                <span>Add to Cart</span>
               </button>
 
+              {/* 💬 WhatsApp Order (Secondary) */}
               <button
-                className={styles.viewProduct}
-                onClick={() => handleImageClick(offer.image)}
+                className={styles.whatsappBtn}
+                onClick={() => handleWhatsAppOrder(offer.name)}
               >
-                View Product
+                <MessageCircle size={18} strokeWidth={1.8} />
+                <span>Order via WhatsApp</span>
               </button>
             </div>
           </div>
@@ -118,8 +134,15 @@ const Offers: React.FC = memo(() => {
       {/* === Image Modal === */}
       {selectedImage && (
         <div className={styles.modalOverlay} onClick={closeModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <img src={selectedImage} alt="Product Preview" className={styles.modalImage} />
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage}
+              alt="Product Preview"
+              className={styles.modalImage}
+            />
             <button className={styles.closeBtn} onClick={closeModal}>
               ✕
             </button>
@@ -131,3 +154,4 @@ const Offers: React.FC = memo(() => {
 });
 
 export default Offers;
+
