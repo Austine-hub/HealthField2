@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
           ["Digestion and Eating", "/system/git"],
           ["Nervous", "/system/nervous"],
           ["Sexual and Reproductive", "/system/reproductive"],
-          ["Skin Treatment", "/system/skin-treatment"],
+          ["Skin Treatment", "//system/skin"],
           ["Kidneys and renal", "/system/renal"],
           ["Diabetes", "/system/diabetes"],
           ["Ear & Eye Care", "/system/ear-eye-care"],

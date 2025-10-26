@@ -55,6 +55,7 @@ import Renal from "./categories/Renal";
 import Sexual from "./categories/Sexual";
 import CNS from "./categories/Nervous";
 import MSK from "./categories/Musculosketal";
+import SkinCare1 from "./pages/Derma";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -166,7 +167,7 @@ const App: FC = () => (
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
           <Route path="/categories/medicine" element={<ProductsWrapper />} />
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
-          <Route path="/categories/skin-care" element={<SkinCare />} /> 
+          <Route path="/categories/skin-care" element={<SkinCare1 />} /> 
           <Route path="/categories/general-hygiene" element={<Offers2/>} /> 
           <Route path="/categories/home-healthcare" element={<ProductCarousel/>} /> 
 
