@@ -39,13 +39,30 @@ const Navbar: React.FC = () => {
           ["Beauty & Cosmetics", "/categories/beauty-care-cosmetics"],
           ["Vitamins & Supplements", "/categories/vitamins-supplements"],
           ["Medicine", "/categories/medicine"],
-          ["Body Building", "/categories/body-building"],
           ["Hygiene", "/categories/general-hygiene"],
           ["Home Healthcare", "/categories/home-healthcare"],
-          ["Bundle Offers", "/categories/bundle-offers"],
-          ["Veterinary Products", "/categories/veterinary-products"],
+
         ] as [string, string][],
       },
+
+
+            {
+        label: "Shop By Body-system",
+        key: "system",
+        links: [
+          ["Breathing", "/system/respiratory"],
+          ["Digestion and Eating", "/system/git"],
+          ["Nervous", "/system/nervous"],
+          ["Sexual and Reproductive", "/system/reproductive"],
+          ["Skin Treatment", "/system/skin-treatment"],
+          ["Kidneys and renal", "/system/renal"],
+          ["Diabetes", "/system/diabetes"],
+          ["Ear & Eye Care", "/system/ear-eye-care"],
+          ["Oral Hygiene", "/system/oral-hygiene"],
+          ["Muscles and Bones", "/system/msk"],
+        ] as [string, string][],
+      },
+
       {
         label: "Shop By Condition",
         key: "condition",
@@ -224,9 +241,9 @@ const Navbar: React.FC = () => {
           <Link to="/trending" className={styles.navLink}>
             Trending
           </Link>
-          <Link to="/offers" className={styles.navLink}>
+         {/*<Link to="/offers" className={styles.navLink}>
             <span className={styles.badge}>Offers</span>
-          </Link>
+          </Link>*/}
           <Link to="/best-sellers" className={styles.navLink}>
             Best Sellers
           </Link>
@@ -309,9 +326,6 @@ const Navbar: React.FC = () => {
               Trending
             </Link>
 
-            <Link to="/offers" onClick={closeMobileMenu} className={styles.mobileNavLink}>
-              <span className={styles.badge}>Offers</span>
-            </Link>
 
             <Link to="/best-sellers" onClick={closeMobileMenu} className={styles.mobileNavLink}>
               Best Sellers

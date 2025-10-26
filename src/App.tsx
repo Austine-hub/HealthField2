@@ -49,6 +49,12 @@ import NewArrivals from "./dropdowns/NewArrivals";
 import NewArrivals1 from "./dropdowns/NewArrivals2";
 import AboutUs from "./outer/AboutUs";
 import SkinCare from "./dropdowns/Skincare";
+import Resp from "./categories/Respiratory";
+import GIT from "./categories/Gastrointestinal";
+import Renal from "./categories/Renal";
+import Sexual from "./categories/Sexual";
+import CNS from "./categories/Nervous";
+import MSK from "./categories/Musculosketal";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -160,14 +166,29 @@ const App: FC = () => (
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
           <Route path="/categories/medicine" element={<ProductsWrapper />} />
           <Route path="/categories/vitamins-supplements" element={<Vitamins />} />
-          <Route path="/categories/skin-care" element={<SkinCare />} />
-        
+          <Route path="/categories/skin-care" element={<SkinCare />} /> 
+          <Route path="/categories/general-hygiene" element={<Offers2/>} /> 
+          <Route path="/categories/home-healthcare" element={<ProductCarousel/>} /> 
 
           {/* === Condition Routes === */}
           <Route path="/condition/heart" element={<CVS />} />
           <Route path="/condition/diabetes" element={<DM />} />
           <Route path="/condition/women" element={<WomenHealthShop />} />
           <Route path="/condition/men" element={<MensHealth />} />
+
+
+          {/* === System Routes === */}
+          <Route path="/system/respiratory" element={<Resp/>} />
+          <Route path="/system/git" element={<GIT/>} />
+          <Route path="/system/oral" element={<ProductsWrapper />} />
+          <Route path="/system/renal" element={<Renal/>} />
+          <Route path="/system/reproductive" element={<Sexual/>} /> 
+          <Route path="/system/nervous" element={<CNS/>} /> 
+          <Route path="/conditions/diabetes" element={<DM/>} /> 
+          <Route path="/system/ent" element={<ProductCarousel/>} /> 
+          <Route path="/system/skin" element={<SkinCare/>} /> 
+          <Route path="/system/msk" element={<MSK/>} /> 
+
 
           {/* === Prescription Workflow === */}
           <Route path="/prescription/upload" element={<PrescriptionUpload />} />
