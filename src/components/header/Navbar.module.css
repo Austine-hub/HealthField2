@@ -442,6 +442,6 @@
 @media (max-width: 768px) {
   .navbar {
     top: 0 !important;   /* stick directly below Topbar */
-    margin-top: 78px !important;
+    margin-top: 60px !important;
   }
 }
