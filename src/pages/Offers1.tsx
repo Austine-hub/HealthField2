@@ -4,6 +4,21 @@ import toast from "react-hot-toast";
 import { useCart } from "../context/CartContext";
 import styles from "./Offers1.module.css";
 
+
+// === Import images ===
+import pic1 from "../assets/products/Allergy.png";
+import pic2 from "../assets/products/Anthelios.png";
+import pic3 from "../assets/products/Contraception.png";
+import pic4 from "../assets/products/Cough.png";
+import pic5 from "../assets/products/Headache.png";
+import pic6 from "../assets/products/Eno.png";
+import pic7 from "../assets/products/Diclofenac.png";
+import pic8 from "../assets/products/UTI.png";
+import pic9 from "../assets/products/Eno.png";
+import pic10 from "../assets/products/Diclofenac.png";
+import pic11 from "../assets/products/UTI.png";
+import pic12 from "../assets/products/UTI.png";
+
 interface Offer {
   id: number;
   category: string;
@@ -21,51 +36,126 @@ const Offers1: React.FC = () => {
 
   const { cartItems, addToCart } = useCart();
 
+  // --- Updated Offers (Top 12 Beauty Essentials) ---
   const offers: Offer[] = [
+    // 💋 Lip Gloss & Lip Care
     {
       id: 1,
-      category: "Makeup",
-      title: "Anashe Make Up Setting Spray Hydrating",
-      image: "/api/placeholder/200/200",
-      originalPrice: 1795,
-      discountedPrice: 1346,
-      discount: 25,
+      category: "Lip Gloss",
+      title: "Fenty Beauty Gloss Bomb Universal Lip Luminizer",
+      image: pic1,
+      originalPrice: 3200,
+      discountedPrice: 2550,
+      discount: 20,
     },
     {
       id: 2,
-      category: "Makeup",
-      title: "Anashe Nail Polish D Purple 09 9ML",
-      image: "/api/placeholder/200/200",
-      originalPrice: 599,
-      discountedPrice: 449,
-      discount: 25,
+      category: "Lip Care",
+      title: "Laneige Lip Sleeping Mask Berry 20g",
+      image: pic2,
+      originalPrice: 3500,
+      discountedPrice: 2800,
+      discount: 20,
     },
+
+    // 💄 Foundation & Skin Tint
     {
       id: 3,
-      category: "Makeup",
-      title: "Anashe Perfect Lip 108",
-      image: "/api/placeholder/200/200",
-      originalPrice: 1395,
-      discountedPrice: 1046,
-      discount: 25,
+      category: "Foundation",
+      title: "Maybelline Fit Me Matte + Poreless Foundation",
+      image: pic3,
+      originalPrice: 1800,
+      discountedPrice: 1400,
+      discount: 22,
     },
     {
       id: 4,
-      category: "Makeup",
-      title: "Anashe Perfect Lip 110",
-      image: "/api/placeholder/200/200",
-      originalPrice: 1395,
-      discountedPrice: 1046,
+      category: "Skin Tint",
+      title: "Rare Beauty Tinted Moisturizer SPF 20",
+      image: pic4,
+      originalPrice: 4500,
+      discountedPrice: 3600,
+      discount: 20,
+    },
+
+    // ✨ Highlighter & Blush
+    {
+      id: 5,
+      category: "Blush",
+      title: "Rare Beauty Soft Pinch Liquid Blush",
+      image: pic5,
+      originalPrice: 4200,
+      discountedPrice: 3360,
+      discount: 20,
+    },
+    {
+      id: 6,
+      category: "Highlighter",
+      title: "Charlotte Tilbury Glowgasm Beauty Light Wand",
+      image: pic6,
+      originalPrice: 6200,
+      discountedPrice: 4950,
+      discount: 20,
+    },
+
+    // 💅 Nail Polish & Nail Care
+    {
+      id: 7,
+      category: "Nail Polish",
+      title: "OPI Nail Lacquer - Bubble Bath",
+      image: pic7,
+      originalPrice: 1800,
+      discountedPrice: 1350,
       discount: 25,
     },
     {
-      id: 5,
-      category: "Makeup",
-      title: "Anashe Perfect Lip 111",
+      id: 8,
+      category: "Nail Care",
+      title: "Olive & June Cuticle Serum with Probiotic Complex",
+      image: pic8,
+      originalPrice: 2600,
+      discountedPrice: 2080,
+      discount: 20,
+    },
+
+    // 👁️ Mascara & Eyeliner
+    {
+      id: 9,
+      category: "Mascara",
+      title: "L’Oréal Lash Paradise Volumizing Mascara",
       image: "/api/placeholder/200/200",
-      originalPrice: 1395,
-      discountedPrice: 1046,
-      discount: 25,
+      originalPrice: 2100,
+      discountedPrice: 1680,
+      discount: 20,
+    },
+    {
+      id: 10,
+      category: "Eyeliner",
+      title: "Stila Stay All Day Waterproof Liquid Eyeliner",
+      image: "/api/placeholder/200/200",
+      originalPrice: 3100,
+      discountedPrice: 2480,
+      discount: 20,
+    },
+
+    // 💆‍♀️ Skincare & Haircare
+    {
+      id: 11,
+      category: "Skincare",
+      title: "CeraVe Hydrating Cleanser 236ml",
+      image: "/api/placeholder/200/200",
+      originalPrice: 2200,
+      discountedPrice: 1760,
+      discount: 20,
+    },
+    {
+      id: 12,
+      category: "Hair Care",
+      title: "Mielle Rosemary Mint Scalp & Hair Strengthening Oil",
+      image: "/api/placeholder/200/200",
+      originalPrice: 3200,
+      discountedPrice: 2560,
+      discount: 20,
     },
   ];
 
@@ -101,9 +191,6 @@ const Offers1: React.FC = () => {
     container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
-
-  
-
   // --- Add to Cart ---
   const handleAddToCart = (offer: Offer) => {
     addToCart({
@@ -120,7 +207,7 @@ const Offers1: React.FC = () => {
   return (
     <section className={styles.offersSection}>
       <div className={styles.header}>
-        <h2 className={styles.title}>New Offers</h2>
+        <h2 className={styles.title}>New Beauty Arrivals</h2>
 
         {/* Cart summary */}
         <button
