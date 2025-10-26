@@ -234,3 +234,4 @@ const BeautyProducts: React.FC = () => {
 };
 
 export default BeautyProducts;
+
