@@ -27,12 +27,12 @@ const Topbar: React.FC = () => {
       <div className={styles.navbarContainer}>
         {/* === Logo Section === */}
         <div className={styles.logoContainer}>
-          <Link to="/" className={styles.logoLink} aria-label="Maplewood Pharmacy Home">
+          <Link to="/" className={styles.logoLink} aria-label="Healthfield Pharmacy Home">
             <div className={styles.logo}>
-              <div className={styles.logoIcon}>
-                <img src="/logo.png" alt="Maplewood Pharmacy logo" />
-              </div>
-              <div className={styles.logoText}>
+            <div className={styles.logoIcon}>
+              <img src="/logo.png" alt="Healthfield Pharmacy logo" className={styles.logoImage} />
+            </div>
+             <div className={styles.logoText}>
                 <span className={styles.maplewood}>HEALTHFIELD</span>
                 <span className={styles.pharmacy}>PHARMACY</span>
                 <span className={styles.tagline}>
