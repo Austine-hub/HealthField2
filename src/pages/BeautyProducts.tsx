@@ -1,5 +1,5 @@
-// BeautyProducts.tsx — Modernized, accessible, Cart-integrated
-import React, { useState, useRef, useEffect, useCallback } from "react";
+// BeautyProducts.tsx — Modern, Minimal, Responsive, Accessible
+import React, { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Heart, Share2, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -15,120 +15,146 @@ interface Product {
   price: number;
   image: string;
   brand: string;
-  trending?: boolean;
-  trendingRank?: number;
 }
 
 const BeautyProducts: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [, setVisibleCards] = useState(4);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
-  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
-
-  // Cart context
   const { addToCart, updateQuantity, openCart, cartItems } = useCart();
 
+  // ✅ Updated real global beauty products
   const products: Product[] = [
     {
       id: 1,
-      name: "Carmex Lip Balm Tube Classic 10g",
-      description: "A classic lip balm designed to moisturize and soothe dry lips.",
-      price: 430.0,
-      image: "https://images.unsplash.com/photo-1631214499319-6c1d5ce81eb9?w=400&h=400&fit=crop",
-      brand: "Carmex",
-      trending: true,
-      trendingRank: 1,
+      name: "Revitalizing Supreme+ Youth Power Crème",
+      description: "Prestige anti-aging cream that firms, smooths, and rejuvenates skin.",
+      price: 18900,
+      image: "https://images.unsplash.com/photo-1621440318363-8f7c0b31b9f7?w=400&h=400&fit=crop",
+      brand: "Estée Lauder",
     },
     {
       id: 2,
-      name: "Studex Earrings Pr-R508w-Stxf For Piercing",
-      description: "Premium crystal earrings suitable for everyday wear.",
-      price: 650.0,
-      image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop",
-      brand: "Studex",
-      trending: true,
+      name: "True Match Super-Blendable Foundation",
+      description: "Lightweight, seamless foundation for natural, flawless coverage.",
+      price: 2400,
+      image: "https://images.unsplash.com/photo-1588081689948-1e8e1d1fae7f?w=400&h=400&fit=crop",
+      brand: "L’Oréal Paris",
     },
     {
       id: 3,
-      name: "Vaseline Lip Therapy Aloe 20g",
-      description: "Moisturizing lip balm infused with soothing aloe extract.",
-      price: 525.0,
-      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop",
-      brand: "Vaseline",
+      name: "Rouge Volupté Shine Lipstick",
+      description: "Luxurious lipstick delivering intense color and moisture.",
+      price: 5200,
+      image: "https://images.unsplash.com/photo-1620331311528-8b8e5b26b2c4?w=400&h=400&fit=crop",
+      brand: "Yves Saint Laurent (YSL)",
     },
     {
       id: 4,
-      name: "Carmex Strawberry 10g Tube",
-      description: "Nourishing strawberry lip balm for everyday hydration.",
-      price: 740.0,
-      image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
-      brand: "Carmex",
-      trending: true,
-      trendingRank: 2,
+      name: "Better Than Sex Mascara",
+      description: "Iconic volumizing mascara for dramatic, curled lashes.",
+      price: 4200,
+      image: "https://images.unsplash.com/photo-1617042375876-d22b709e60b7?w=400&h=400&fit=crop",
+      brand: "Too Faced",
     },
     {
       id: 5,
-      name: "Vaseline Lip Therapy Cocoa Butter 20g",
-      description: "Deep moisturizing formula with rich cocoa butter.",
-      price: 525.0,
-      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop",
-      brand: "Vaseline",
+      name: "Born This Way Foundation",
+      description: "Medium-to-full coverage foundation with natural finish.",
+      price: 5600,
+      image: "https://images.unsplash.com/photo-1612815154858-60aa4c0deefa?w=400&h=400&fit=crop",
+      brand: "Too Faced",
     },
     {
       id: 6,
-      name: "Studex Earrings Daisy 4mm Set",
-      description: "Elegant daisy-shaped stud earrings with hypoallergenic design.",
-      price: 700.0,
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop",
-      brand: "Studex",
+      name: "Soft Matte Complete Lipstick",
+      description: "Velvety matte finish lipstick with long-lasting comfort.",
+      price: 4100,
+      image: "https://images.unsplash.com/photo-1600423115367-3e78e0d8dcad?w=400&h=400&fit=crop",
+      brand: "NARS",
+    },
+    {
+      id: 7,
+      name: "Soft Radiance Pressed Powder",
+      description: "Finishing powder for luminous, flawless skin.",
+      price: 5300,
+      image: "https://images.unsplash.com/photo-1585238341988-5d81a9b0eae2?w=400&h=400&fit=crop",
+      brand: "Laura Mercier",
+    },
+    {
+      id: 8,
+      name: "Airbrush Flawless Foundation",
+      description: "Full-coverage foundation with a natural matte finish.",
+      price: 5900,
+      image: "https://images.unsplash.com/photo-1600181952422-bc7de8b3a404?w=400&h=400&fit=crop",
+      brand: "Charlotte Tilbury",
+    },
+    {
+      id: 9,
+      name: "Hydra Beauty Micro Crème",
+      description: "Luxurious moisturizer for deep hydration and radiance.",
+      price: 12500,
+      image: "https://images.unsplash.com/photo-1605792657660-c372a10f7294?w=400&h=400&fit=crop",
+      brand: "Chanel",
+    },
+    {
+      id: 10,
+      name: "Infallible Pro-Glow Foundation",
+      description: "24-hour glowing foundation for a radiant complexion.",
+      price: 2500,
+      image: "https://images.unsplash.com/photo-1598206063564-b2e8c7ccdc52?w=400&h=400&fit=crop",
+      brand: "L’Oréal Paris",
+    },
+    {
+      id: 11,
+      name: "Rénergie Lift Multi-Action Cream",
+      description: "Firming and lifting neck and face cream for mature skin.",
+      price: 13800,
+      image: "https://images.unsplash.com/photo-1598511726563-d48f91e3ad87?w=400&h=400&fit=crop",
+      brand: "Lancôme",
+    },
+    {
+      id: 12,
+      name: "Anthelios Hydrating Mineral Sunscreen Fluid SPF 50",
+      description: "Dermatologist-recommended daily sunscreen with high protection.",
+      price: 3700,
+      image: "https://images.unsplash.com/photo-1618510969123-c0f5b2f2f8e9?w=400&h=400&fit=crop",
+      brand: "La Roche-Posay",
+    },
+    {
+      id: 13,
+      name: "Poreless Putty Primer",
+      description: "Smooths skin and minimizes pores for a perfect makeup base.",
+      price: 1900,
+      image: "https://images.unsplash.com/photo-1589983846997-2dfc8c3d68e9?w=400&h=400&fit=crop",
+      brand: "e.l.f. Cosmetics",
+    },
+    {
+      id: 14,
+      name: "Pro Filt’r Soft Matte Foundation",
+      description: "Inclusive foundation line with over 50 shades.",
+      price: 5800,
+      image: "https://images.unsplash.com/photo-1598908319483-9c0a94400b65?w=400&h=400&fit=crop",
+      brand: "Fenty Beauty",
+    },
+    {
+      id: 15,
+      name: "Soft Pinch Liquid Blush",
+      description: "Lightweight, pigmented liquid blush for a radiant glow.",
+      price: 4200,
+      image: "https://images.unsplash.com/photo-1612810806266-9b49e8cc6b4a?w=400&h=400&fit=crop",
+      brand: "Rare Beauty",
     },
   ];
 
-  // Responsive visible card count (for future scaling)
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) setVisibleCards(1);
-      else if (width < 1024) setVisibleCards(2);
-      else if (width < 1280) setVisibleCards(3);
-      else setVisibleCards(4);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const scrollBy = useCallback((offset: number) => {
-    const el = carouselRef.current;
-    if (!el) return;
-    el.scrollBy({ left: offset, behavior: "smooth" });
-  }, []);
-
   const handlePrev = useCallback(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const amount = el.clientWidth / 2;
-    scrollBy(-amount);
-  }, [scrollBy]);
+    carouselRef.current?.scrollBy({ left: -carouselRef.current.clientWidth / 2, behavior: "smooth" });
+  }, []);
 
   const handleNext = useCallback(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const amount = el.clientWidth / 2;
-    scrollBy(amount);
-  }, [scrollBy]);
+    carouselRef.current?.scrollBy({ left: carouselRef.current.clientWidth / 2, behavior: "smooth" });
+  }, []);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") handlePrev();
-      if (e.key === "ArrowRight") handleNext();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [handleNext, handlePrev]);
-
-  const toggleFavorite = useCallback((id: number) => {
+  const toggleFavorite = (id: number) => {
     setFavorites((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -140,51 +166,36 @@ const BeautyProducts: React.FC = () => {
       }
       return next;
     });
-  }, []);
+  };
 
-  const handleShare = useCallback(async (product: Product) => {
+  const handleShare = async (product: Product) => {
     try {
       const url = `${window.location.origin}/product/${product.id}`;
       await navigator.clipboard.writeText(url);
-      toast.success("Product link copied to clipboard");
+      toast.success("Link copied to clipboard");
     } catch {
-      toast("Unable to copy link");
+      toast.error("Unable to copy link");
     }
-  }, []);
+  };
 
-  const handleAddToCart = useCallback(
-    (product: Product) => {
-      const stringId = product.id.toString();
-      const inCart = cartItems.find((ci) => ci.id === stringId);
-
-      if (inCart) {
-        updateQuantity(stringId, inCart.quantity + 1);
-      } else {
-        addToCart({
-          id: stringId,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          quantity: 1,
-          category: product.brand,
-          description: product.description,
-          inStock: true,
-        });
-      }
-
-      toast.success(`${product.name} added to cart`, { duration: 2000 });
-
-      try {
-        openCart();
-      } catch {
-        // ignore silently if unavailable
-      }
-    },
-    [addToCart, cartItems, updateQuantity, openCart]
-  );
-
-  const onCardFocus = (index: number) => setFocusedIndex(index);
-  const onCardBlur = () => setFocusedIndex(null);
+  const handleAddToCart = (product: Product) => {
+    const stringId = product.id.toString();
+    const inCart = cartItems.find((ci) => ci.id === stringId);
+    if (inCart) updateQuantity(stringId, inCart.quantity + 1);
+    else
+      addToCart({
+        id: stringId,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1,
+        category: product.brand,
+        description: product.description,
+        inStock: true,
+      });
+    toast.success(`${product.name} added to cart`);
+    openCart?.();
+  };
 
   return (
     <section className={styles.beautySection} aria-labelledby="beauty-title">
@@ -194,117 +205,64 @@ const BeautyProducts: React.FC = () => {
           <h2 id="beauty-title" className={styles.title}>
             Beauty Products
           </h2>
-
-          <nav className={styles.navigation} aria-label="Carousel navigation">
-            <button
-              className={styles.navButton}
-              onClick={handlePrev}
-              aria-label="Previous products"
-              title="Previous"
-            >
-              <ChevronLeft size={20} />
+          <div className={styles.navigation}>
+            <button onClick={handlePrev} aria-label="Previous products">
+              <ChevronLeft size={22} />
             </button>
-            <button
-              className={styles.navButton}
-              onClick={handleNext}
-              aria-label="Next products"
-              title="Next"
-            >
-              <ChevronRight size={20} />
+            <button onClick={handleNext} aria-label="Next products">
+              <ChevronRight size={22} />
             </button>
-          </nav>
+          </div>
         </header>
 
-        <div
-          className={styles.productsWrapper}
-          ref={carouselRef}
-          role="list"
-          aria-live="polite"
-        >
-          {products.map((product, idx) => {
+        <div className={styles.productsWrapper} ref={carouselRef}>
+          {products.map((product) => {
             const isFavorited = favorites.has(product.id);
-            const isFocused = focusedIndex === idx;
-
             return (
               <motion.article
                 key={product.id}
-                className={`${styles.productCard} ${isFocused ? styles.focusedCard : ""}`}
-                role="listitem"
-                tabIndex={0}
-                onFocus={() => onCardFocus(idx)}
-                onBlur={onCardBlur}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 200, damping: 16 }}
-                aria-label={`${product.name} — ${product.brand} — KES ${product.price}`}
+                className={styles.productCard}
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
               >
-                {product.trending && (
-                  <span className={styles.trendingBadge}>
-                    🔥 {product.trendingRank ? `${product.trendingRank}. ` : ""}Trending
-                  </span>
-                )}
-
                 <div className={styles.imageContainer}>
                   <LazyLoadImage
                     src={product.image}
                     alt={product.name}
                     effect="blur"
                     className={styles.productImage}
-                    width="100%"
-                    height="100%"
                   />
-
-                  <button
-                    className={`${styles.iconButton} ${styles.favoriteButton}`}
-                    onClick={() => toggleFavorite(product.id)}
-                    aria-pressed={isFavorited}
-                    aria-label={`${isFavorited ? "Remove from" : "Add to"} favorites`}
-                    title={isFavorited ? "Remove from favorites" : "Add to favorites"}
-                  >
-                    <Heart
-                      size={16}
-                      fill={isFavorited ? "#ff4757" : "none"}
-                      color={isFavorited ? "#ff4757" : "#666"}
-                      aria-hidden="true"
-                    />
-                  </button>
-
-                  <button
-                    className={`${styles.iconButton} ${styles.shareButton}`}
-                    onClick={() => handleShare(product)}
-                    aria-label="Share product"
-                    title="Share product link"
-                  >
-                    <Share2 size={16} color="#666" aria-hidden="true" />
-                  </button>
+                  <div className={styles.cardActions}>
+                    <button
+                      onClick={() => toggleFavorite(product.id)}
+                      aria-label={`${isFavorited ? "Remove from" : "Add to"} favorites`}
+                    >
+                      <Heart
+                        size={18}
+                        fill={isFavorited ? "#ff4757" : "none"}
+                        color={isFavorited ? "#ff4757" : "#666"}
+                      />
+                    </button>
+                    <button onClick={() => handleShare(product)} aria-label="Share product">
+                      <Share2 size={18} />
+                    </button>
+                  </div>
                 </div>
 
                 <div className={styles.productInfo}>
                   <h3 className={styles.productName}>{product.name}</h3>
                   <p className={styles.productDesc}>{product.description}</p>
-                  <p className={styles.brandName}>{product.brand}</p>
-                  <span className={styles.price}>KES {product.price.toFixed(2)}</span>
+                  <span className={styles.brandName}>{product.brand}</span>
+                  <p className={styles.price}>KES {product.price.toFixed(2)}</p>
 
-                  <div className={styles.actionButtons}>
-                    <motion.button
-                      className={styles.addButton}
-                      onClick={() => handleAddToCart(product)}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      aria-label={`Add ${product.name} to cart`}
-                    >
-                      <ShoppingCart size={16} aria-hidden="true" /> Add
-                    </motion.button>
-
-                    <motion.a
-                      className={styles.detailsButton}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      href={`/product/${product.id}`}
-                      aria-label={`View details for ${product.name}`}
-                    >
-                      View details
-                    </motion.a>
-                  </div>
+                  <motion.button
+                    className={styles.addButton}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    <ShoppingCart size={16} /> Add to Cart
+                  </motion.button>
                 </div>
               </motion.article>
             );
@@ -312,13 +270,8 @@ const BeautyProducts: React.FC = () => {
         </div>
 
         <div className={styles.viewAllContainer}>
-          <motion.a
-            href="/beauty-products"
-            className={styles.viewAllLink}
-            whileHover={{ x: 4 }}
-            aria-label="View all beauty products"
-          >
-            View All Beauty Products <ChevronRight size={18} />
+          <motion.a href="/beauty-products" whileHover={{ x: 5 }} className={styles.viewAllLink}>
+            View All Products <ChevronRight size={18} />
           </motion.a>
         </div>
       </div>

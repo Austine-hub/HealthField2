@@ -5,16 +5,18 @@
 
 /* Navbar directly below Topbar */
 .navbar {
-  position:fixed;
-  top: 12px; /* sits directly below Topbar */
-  z-index: 1000; /* below Topbar (z-index 1300+) but above content */
+  position: fixed;
+  top: 12px;
+  z-index: 1000;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  margin-top: 88px; /* no gap between topbar and navbar */
+  margin-top: 88px; /* space below topbar */
+  margin-bottom: 32px; /* 👈 add this for gap between navbar & hero */
   height: fit-content;
-  width:100%;
+  width: 100%;
 }
+
 
 /* When page scrolls past threshold */
 .navbar.scrolled {
@@ -435,6 +437,8 @@
   position: fixed;
   top: 0px; /* height of Topbar on desktop */
   margin-top: 100px;
+  bottom: 200px;
+  margin-bottom: 32px;
   
 }
 

@@ -1,4 +1,7 @@
-// src/components/offers/Offers2.tsx
+// ===============================================================
+// ✅ Offers2.tsx — Campus Popular Pharmacy & Hygiene Products (2025)
+// ===============================================================
+
 import React, { useRef, useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import toast from "react-hot-toast";
@@ -21,64 +24,150 @@ const Offers2: React.FC = () => {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const { addToCart } = useCart();
 
+  // ===============================================================
+  // 🧴 Popular Campus Pharmacy Products
+  // ===============================================================
   const products: Product[] = [
     {
       id: "1",
-      name: "Durex Fetherlite 3s",
-      description: "It Is A Barrier Method Of Contraception Designed To...",
-      price: 650.0,
-      image: "/api/placeholder/200/200",
+      name: "Durex Fetherlite Condoms 3s",
+      description: "Ultra-thin condoms designed for comfort and protection.",
+      price: 650,
+      image: "/images/durex-fetherlite.jpg",
       brand: "Durex",
       isTrending: true,
     },
     {
       id: "2",
-      name: "Durex Feel Condoms 3'S",
-      description: "It Is A Barrier Method Of Contraception Designed To...",
-      price: 550.0,
-      image: "/api/placeholder/200/200",
-      brand: "Durex",
+      name: "Always Ultra Thin Pads 8s",
+      description: "Super absorbent sanitary pads with odor-neutralizing tech.",
+      price: 380,
+      image: "/images/always-ultra.jpg",
+      brand: "Always",
       isTrending: true,
     },
     {
       id: "3",
-      name: "Durex Extra Safe 3'S",
-      description: "It Is A Barrier Method Of Contraception Designed To...",
-      price: 578.0,
-      image: "/api/placeholder/200/200",
-      brand: "Durex",
+      name: "Swift Pregnancy Test Kit",
+      description: "Quick and accurate pregnancy test for early detection.",
+      price: 300,
+      image: "/images/pregnancy-test.jpg",
+      brand: "Swift",
       isTrending: true,
     },
     {
       id: "4",
-      name: "Durex Thin Feel 3'S",
-      description: "It Is A Barrier Method Of Contraception Designed To...",
-      price: 400.0,
-      image: "/api/placeholder/200/200",
-      brand: "Durex",
+      name: "Panadol Extra 10s",
+      description: "Fast headache and pain relief with caffeine boost.",
+      price: 150,
+      image: "/images/panadol-extra.jpg",
+      brand: "Panadol",
       isTrending: true,
     },
     {
       id: "5",
-      name: "Durex Pleasuremax 3'S",
-      description: "It Is A Barrier Method Of Contraception Designed To...",
-      price: 500.0,
-      image: "/api/placeholder/200/200",
-      brand: "Durex",
-      isTrending: true,
+      name: "Strepsils Lozenges 24s",
+      description: "Soothing relief for sore throats and mouth irritation.",
+      price: 420,
+      image: "/images/strepsils.jpg",
+      brand: "Strepsils",
+      isTrending: false,
     },
     {
       id: "6",
-      name: "Oral-B Unwaxed Dental Floss",
-      description: "It Is A Thin, Flexible Piece Of String Used To Remove Food...",
-      price: 578.0,
-      image: "/api/placeholder/200/200",
-      brand: "Oral B",
+      name: "E45 Moisturizing Cream 100g",
+      description: "Dermatologically tested cream for dry, sensitive skin.",
+      price: 950,
+      image: "/images/e45.jpg",
+      brand: "E45",
+      isTrending: true,
+    },
+    {
+      id: "7",
+      name: "Dettol Hand Sanitizer 50ml",
+      description: "Kills 99.9% of germs, perfect for on-the-go hygiene.",
+      price: 250,
+      image: "/images/dettol-sanitizer.jpg",
+      brand: "Dettol",
       isTrending: false,
+    },
+    {
+      id: "8",
+      name: "Gaviscon Peppermint Liquid 200ml",
+      description: "Fast-acting relief for acid reflux and heartburn.",
+      price: 720,
+      image: "/images/gaviscon.jpg",
+      brand: "Gaviscon",
+      isTrending: false,
+    },
+    {
+      id: "9",
+      name: "Deep Heat Rub 35g",
+      description: "Muscle and joint pain relief cream for active individuals.",
+      price: 550,
+      image: "/images/deep-heat.jpg",
+      brand: "Deep Heat",
+      isTrending: false,
+    },
+    {
+      id: "10",
+      name: "Nivea Lip Balm Original 4.8g",
+      description: "Moisturizing lip balm for smooth and hydrated lips.",
+      price: 280,
+      image: "/images/nivea-lip-balm.jpg",
+      brand: "Nivea",
+      isTrending: true,
+    },
+    {
+      id: "11",
+      name: "Vaseline Petroleum Jelly 100ml",
+      description: "Multipurpose protectant for dry skin and minor cuts.",
+      price: 300,
+      image: "/images/vaseline.jpg",
+      brand: "Vaseline",
+      isTrending: false,
+    },
+    {
+      id: "12",
+      name: "Savlon Antiseptic Liquid 200ml",
+      description: "Trusted antiseptic for cuts, grazes, and hygiene.",
+      price: 400,
+      image: "/images/savlon.jpg",
+      brand: "Savlon",
+      isTrending: false,
+    },
+    {
+      id: "13",
+      name: "Centrum Energy Multivitamins 30s",
+      description: "Daily multivitamin for energy and immune support.",
+      price: 1200,
+      image: "/images/centrum-energy.jpg",
+      brand: "Centrum",
+      isTrending: true,
+    },
+    {
+      id: "14",
+      name: "ORS Rehydration Salts 10s",
+      description: "Essential salts to restore hydration and electrolytes.",
+      price: 180,
+      image: "/images/ors.jpg",
+      brand: "ORS",
+      isTrending: false,
+    },
+    {
+      id: "15",
+      name: "Clearasil Daily Face Wash 150ml",
+      description: "Gentle cleanser to prevent acne and refresh skin.",
+      price: 850,
+      image: "/images/clearasil.jpg",
+      brand: "Clearasil",
+      isTrending: true,
     },
   ];
 
-  // ===== Scroll Logic =====
+  // ===============================================================
+  // 🔁 Scroll Logic
+  // ===============================================================
   const checkScroll = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -103,7 +192,9 @@ const Offers2: React.FC = () => {
     }
   };
 
-  // ===== Add to Cart Integration =====
+  // ===============================================================
+  // 🛒 Add to Cart Integration
+  // ===============================================================
   const handleAddToCart = (product: Product) => {
     addToCart({
       id: product.id,
@@ -115,12 +206,15 @@ const Offers2: React.FC = () => {
     toast.success(`${product.name} added to cart 🛒`, { duration: 1800 });
   };
 
+  // ===============================================================
+  // 🧩 JSX Layout
+  // ===============================================================
   return (
     <section className={styles.offersSection}>
       <div className={styles.container}>
         {/* ===== Section Header ===== */}
         <div className={styles.header}>
-          <h2 className={styles.title}>General Hygiene</h2>
+          <h2 className={styles.title}>Campus Essentials</h2>
           <div className={styles.navButtons}>
             <button
               className={`${styles.navBtn} ${!canScrollLeft ? styles.disabled : ""}`}
@@ -157,7 +251,7 @@ const Offers2: React.FC = () => {
           </div>
         </div>
 
-        {/* ===== Products Scroll Section ===== */}
+        {/* ===== Product Cards ===== */}
         <div className={styles.productsWrapper} ref={scrollRef} onScroll={checkScroll}>
           <div className={styles.productsGrid}>
             {products.map((product) => (
@@ -209,8 +303,9 @@ const Offers2: React.FC = () => {
           </div>
         </div>
 
+        {/* View All Link */}
         <a href="#" className={styles.viewAll}>
-          View All Hygiene Products
+          View All Campus Essentials
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path
               d="M5 12h14M12 5l7 7-7 7"
