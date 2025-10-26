@@ -1,11 +1,17 @@
-// ===============================================================
+/// ===============================================================
 // ✅ BestSellers.tsx — Modern, Responsive, Type-Safe (2025 Optimized)
 // ===============================================================
 
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Heart, ShoppingCart, ChevronLeft, ChevronRight, Share2 } from "lucide-react";
+import {
+  Heart,
+  ShoppingCart,
+  ChevronLeft,
+  ChevronRight,
+  Share2,
+} from "lucide-react";
 import toast from "react-hot-toast";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -33,162 +39,25 @@ const BestSellers: React.FC = () => {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const products: Product[] = [
-  {
-    id: "1",
-    name: "Durex Fetherlite Condoms 3s",
-    category: "Non-Pharma",
-    description: "Ultra-thin condoms designed for comfort and protection.",
-    price: 650,
-    image: "/images/durex-fetherlite.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "2",
-    name: "Always Ultra Thin Pads 8s",
-    category: "Non-Pharma",
-    description: "Super absorbent sanitary pads with odor-neutralizing technology.",
-    price: 380,
-    image: "/images/always-ultra.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "3",
-    name: "Swift Pregnancy Test Kit",
-    category: "Non-Pharma",
-    description: "Quick and accurate pregnancy test for early detection.",
-    price: 300,
-    image: "/images/pregnancy-test.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "4",
-    name: "Panadol Extra 10s",
-    category: "Pharma",
-    description: "Effective pain and headache relief with caffeine boost.",
-    price: 150,
-    image: "/images/panadol-extra.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "5",
-    name: "Strepsils Lozenges 24s",
-    category: "Pharma",
-    description: "Soothing relief for sore throats and mouth irritation.",
-    price: 420,
-    image: "/images/strepsils.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "6",
-    name: "E45 Moisturizing Cream 100g",
-    category: "Non-Pharma",
-    description: "Dermatologically tested cream for dry and sensitive skin.",
-    price: 950,
-    image: "/images/e45.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "7",
-    name: "Dettol Hand Sanitizer 50ml",
-    category: "Non-Pharma",
-    description: "Kills 99.9% of germs, perfect for on-the-go hygiene.",
-    price: 250,
-    image: "/images/dettol-sanitizer.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "8",
-    name: "Gaviscon Peppermint Liquid 200ml",
-    category: "Pharma",
-    description: "Fast-acting relief for acid reflux and heartburn.",
-    price: 720,
-    image: "/images/gaviscon.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "9",
-    name: "Deep Heat Rub 35g",
-    category: "Pharma",
-    description: "Muscle pain relief cream for active individuals and athletes.",
-    price: 550,
-    image: "/images/deep-heat.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "10",
-    name: "Nivea Lip Balm Original 4.8g",
-    category: "Non-Pharma",
-    description: "Moisturizing lip balm for smooth and hydrated lips.",
-    price: 280,
-    image: "/images/nivea-lip-balm.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "11",
-    name: "Vaseline Petroleum Jelly 100ml",
-    category: "Non-Pharma",
-    description: "Multipurpose skin protectant for dry skin and minor cuts.",
-    price: 300,
-    image: "/images/vaseline.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-  {
-    id: "12",
-    name: "Savlon Antiseptic Liquid 200ml",
-    category: "Pharma",
-    description: "Trusted antiseptic for cuts, grazes, and personal hygiene.",
-    price: 400,
-    image: "/images/savlon.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "13",
-    name: "Centrum Energy Multivitamins 30s",
-    category: "Pharma",
-    description: "Daily multivitamin for immune support and energy metabolism.",
-    price: 1200,
-    image: "/images/centrum-energy.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "14",
-    name: "ORS Rehydration Salts 10s",
-    category: "Pharma",
-    description: "Essential salts to restore hydration and electrolytes.",
-    price: 180,
-    image: "/images/ors.jpg",
-    isTopSeller: true,
-    isPharma: true,
-  },
-  {
-    id: "15",
-    name: "Clearasil Daily Face Wash 150ml",
-    category: "Non-Pharma",
-    description: "Gentle cleanser to prevent acne and keep skin fresh.",
-    price: 850,
-    image: "/images/clearasil.jpg",
-    isTopSeller: true,
-    isNonPharma: true,
-  },
-];
-
+  // ===============================================================
+  // ❤️ Toggle Favorites
+  // ===============================================================
+  const toggleFavorite = (productId: string) => {
+    setFavorites((prev) => {
+      const updated = new Set(prev);
+      if (updated.has(productId)) {
+        updated.delete(productId);
+        toast("Removed from favorites ❤️‍🔥", { icon: "💔" });
+      } else {
+        updated.add(productId);
+        toast.success("Added to favorites ❤️");
+      }
+      return updated;
+    });
+  };
 
   // ===============================================================
-  // 🛒 Add to Cart
+  // 🧺 Add to Cart
   // ===============================================================
   const addToCart = (productName: string) => {
     toast.success(`${productName} added to cart!`);
@@ -249,10 +118,175 @@ const BestSellers: React.FC = () => {
   };
 
   // ===============================================================
+  // 🧴 Product Data
+  // ===============================================================
+  const products: Product[] = [
+    {
+      id: "1",
+      name: "Durex Fetherlite Condoms 3s",
+      category: "Non-Pharma",
+      description: "Ultra-thin condoms designed for comfort and protection.",
+      price: 650,
+      image: "/images/durex-fetherlite.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "2",
+      name: "Always Ultra Thin Pads 8s",
+      category: "Non-Pharma",
+      description:
+        "Super absorbent sanitary pads with odor-neutralizing technology.",
+      price: 380,
+      image: "/images/always-ultra.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "3",
+      name: "Swift Pregnancy Test Kit",
+      category: "Non-Pharma",
+      description: "Quick and accurate pregnancy test for early detection.",
+      price: 300,
+      image: "/images/pregnancy-test.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "4",
+      name: "Panadol Extra 10s",
+      category: "Pharma",
+      description:
+        "Effective pain and headache relief with caffeine boost.",
+      price: 150,
+      image: "/images/panadol-extra.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "5",
+      name: "Strepsils Lozenges 24s",
+      category: "Pharma",
+      description:
+        "Soothing relief for sore throats and mouth irritation.",
+      price: 420,
+      image: "/images/strepsils.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "6",
+      name: "E45 Moisturizing Cream 100g",
+      category: "Non-Pharma",
+      description:
+        "Dermatologically tested cream for dry and sensitive skin.",
+      price: 950,
+      image: "/images/e45.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "7",
+      name: "Dettol Hand Sanitizer 50ml",
+      category: "Non-Pharma",
+      description: "Kills 99.9% of germs, perfect for on-the-go hygiene.",
+      price: 250,
+      image: "/images/dettol-sanitizer.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "8",
+      name: "Gaviscon Peppermint Liquid 200ml",
+      category: "Pharma",
+      description: "Fast-acting relief for acid reflux and heartburn.",
+      price: 720,
+      image: "/images/gaviscon.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "9",
+      name: "Deep Heat Rub 35g",
+      category: "Pharma",
+      description:
+        "Muscle pain relief cream for active individuals and athletes.",
+      price: 550,
+      image: "/images/deep-heat.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "10",
+      name: "Nivea Lip Balm Original 4.8g",
+      category: "Non-Pharma",
+      description: "Moisturizing lip balm for smooth and hydrated lips.",
+      price: 280,
+      image: "/images/nivea-lip-balm.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "11",
+      name: "Vaseline Petroleum Jelly 100ml",
+      category: "Non-Pharma",
+      description: "Multipurpose skin protectant for dry skin and minor cuts.",
+      price: 300,
+      image: "/images/vaseline.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+    {
+      id: "12",
+      name: "Savlon Antiseptic Liquid 200ml",
+      category: "Pharma",
+      description: "Trusted antiseptic for cuts, grazes, and personal hygiene.",
+      price: 400,
+      image: "/images/savlon.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "13",
+      name: "Centrum Energy Multivitamins 30s",
+      category: "Pharma",
+      description:
+        "Daily multivitamin for immune support and energy metabolism.",
+      price: 1200,
+      image: "/images/centrum-energy.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "14",
+      name: "ORS Rehydration Salts 10s",
+      category: "Pharma",
+      description: "Essential salts to restore hydration and electrolytes.",
+      price: 180,
+      image: "/images/ors.jpg",
+      isTopSeller: true,
+      isPharma: true,
+    },
+    {
+      id: "15",
+      name: "Clearasil Daily Face Wash 150ml",
+      category: "Non-Pharma",
+      description: "Gentle cleanser to prevent acne and keep skin fresh.",
+      price: 850,
+      image: "/images/clearasil.jpg",
+      isTopSeller: true,
+      isNonPharma: true,
+    },
+  ];
+
+  // ===============================================================
   // 🧩 JSX Layout
   // ===============================================================
   return (
-    <section className={styles.bestSellers} aria-labelledby="bestsellers-heading">
+    <section
+      className={styles.bestSellers}
+      aria-labelledby="bestsellers-heading"
+    >
       <div className={styles.container}>
         {/* ===== Header ===== */}
         <div className={styles.header}>
@@ -354,7 +388,9 @@ const BestSellers: React.FC = () => {
                     </span>
                   )}
                   {product.isNonPharma && (
-                    <span className={`${styles.badge} ${styles.nonPharmaBadge}`}>
+                    <span
+                      className={`${styles.badge} ${styles.nonPharmaBadge}`}
+                    >
                       Non-Pharma
                     </span>
                   )}

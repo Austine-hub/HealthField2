@@ -21,7 +21,6 @@ import pic12 from "../assets/products/Cough.png";
 import pic13 from "../assets/products/Headache.png";
 import pic14 from "../assets/products/Eno.png";
 import pic15 from "../assets/products/Diclofenac.png";
-import pic16 from "../assets/products/UTI.png";
 
 interface Product {
   id: number;

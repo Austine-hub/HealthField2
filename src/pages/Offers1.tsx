@@ -14,11 +14,6 @@ import pic5 from "../assets/products/Headache.png";
 import pic6 from "../assets/products/Eno.png";
 import pic7 from "../assets/products/Diclofenac.png";
 import pic8 from "../assets/products/UTI.png";
-import pic9 from "../assets/products/Eno.png";
-import pic10 from "../assets/products/Diclofenac.png";
-import pic11 from "../assets/products/UTI.png";
-import pic12 from "../assets/products/UTI.png";
-
 interface Offer {
   id: number;
   category: string;

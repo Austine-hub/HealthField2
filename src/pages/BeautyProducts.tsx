@@ -1,4 +1,6 @@
-// BeautyProducts.tsx — Modern, Minimal, Responsive, Accessible
+// src/pages/BeautyProducts.tsx
+// ✅ Modern, Minimal, Responsive, Accessible (2025 Optimized Version)
+
 import React, { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Heart, Share2, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
@@ -19,10 +21,26 @@ interface Product {
 
 const BeautyProducts: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
-  const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const { addToCart, updateQuantity, openCart, cartItems } = useCart();
 
-  // ✅ Updated real global beauty products
+  // ❤️ Favorites feature
+  const [favorites, setFavorites] = useState<Set<number>>(new Set());
+
+  const toggleFavorite = useCallback((id: number) => {
+    setFavorites((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+        toast.error("Removed from favorites");
+      } else {
+        newSet.add(id);
+        toast.success("Added to favorites");
+      }
+      return newSet;
+    });
+  }, []);
+
+  // 🛍️ Realistic beauty products list
   const products: Product[] = [
     {
       id: 1,
@@ -88,85 +106,21 @@ const BeautyProducts: React.FC = () => {
       image: "https://images.unsplash.com/photo-1600181952422-bc7de8b3a404?w=400&h=400&fit=crop",
       brand: "Charlotte Tilbury",
     },
-    {
-      id: 9,
-      name: "Hydra Beauty Micro Crème",
-      description: "Luxurious moisturizer for deep hydration and radiance.",
-      price: 12500,
-      image: "https://images.unsplash.com/photo-1605792657660-c372a10f7294?w=400&h=400&fit=crop",
-      brand: "Chanel",
-    },
-    {
-      id: 10,
-      name: "Infallible Pro-Glow Foundation",
-      description: "24-hour glowing foundation for a radiant complexion.",
-      price: 2500,
-      image: "https://images.unsplash.com/photo-1598206063564-b2e8c7ccdc52?w=400&h=400&fit=crop",
-      brand: "L’Oréal Paris",
-    },
-    {
-      id: 11,
-      name: "Rénergie Lift Multi-Action Cream",
-      description: "Firming and lifting neck and face cream for mature skin.",
-      price: 13800,
-      image: "https://images.unsplash.com/photo-1598511726563-d48f91e3ad87?w=400&h=400&fit=crop",
-      brand: "Lancôme",
-    },
-    {
-      id: 12,
-      name: "Anthelios Hydrating Mineral Sunscreen Fluid SPF 50",
-      description: "Dermatologist-recommended daily sunscreen with high protection.",
-      price: 3700,
-      image: "https://images.unsplash.com/photo-1618510969123-c0f5b2f2f8e9?w=400&h=400&fit=crop",
-      brand: "La Roche-Posay",
-    },
-    {
-      id: 13,
-      name: "Poreless Putty Primer",
-      description: "Smooths skin and minimizes pores for a perfect makeup base.",
-      price: 1900,
-      image: "https://images.unsplash.com/photo-1589983846997-2dfc8c3d68e9?w=400&h=400&fit=crop",
-      brand: "e.l.f. Cosmetics",
-    },
-    {
-      id: 14,
-      name: "Pro Filt’r Soft Matte Foundation",
-      description: "Inclusive foundation line with over 50 shades.",
-      price: 5800,
-      image: "https://images.unsplash.com/photo-1598908319483-9c0a94400b65?w=400&h=400&fit=crop",
-      brand: "Fenty Beauty",
-    },
-    {
-      id: 15,
-      name: "Soft Pinch Liquid Blush",
-      description: "Lightweight, pigmented liquid blush for a radiant glow.",
-      price: 4200,
-      image: "https://images.unsplash.com/photo-1612810806266-9b49e8cc6b4a?w=400&h=400&fit=crop",
-      brand: "Rare Beauty",
-    },
   ];
 
   const handlePrev = useCallback(() => {
-    carouselRef.current?.scrollBy({ left: -carouselRef.current.clientWidth / 2, behavior: "smooth" });
+    carouselRef.current?.scrollBy({
+      left: -carouselRef.current.clientWidth / 2,
+      behavior: "smooth",
+    });
   }, []);
 
   const handleNext = useCallback(() => {
-    carouselRef.current?.scrollBy({ left: carouselRef.current.clientWidth / 2, behavior: "smooth" });
-  }, []);
-
-  const toggleFavorite = (id: number) => {
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-        toast.success("Removed from favorites");
-      } else {
-        next.add(id);
-        toast.success("Added to favorites");
-      }
-      return next;
+    carouselRef.current?.scrollBy({
+      left: carouselRef.current.clientWidth / 2,
+      behavior: "smooth",
     });
-  };
+  }, []);
 
   const handleShare = async (product: Product) => {
     try {
