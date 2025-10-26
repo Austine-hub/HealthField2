@@ -187,7 +187,7 @@ const App: FC = () => (
           <Route path="/system/nervous" element={<CNS/>} /> 
           <Route path="/conditions/diabetes" element={<DM/>} /> 
           <Route path="/system/ent" element={<ProductCarousel/>} /> 
-          <Route path="/system/skin" element={<SkinCare/>} /> 
+          <Route path="/system/skin-treatment" element={<SkinCare/>} /> 
           <Route path="/system/msk" element={<MSK/>} /> 
 
 

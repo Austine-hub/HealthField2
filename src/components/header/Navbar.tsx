@@ -47,14 +47,14 @@ const Navbar: React.FC = () => {
 
 
             {
-        label: "Shop By Body-system",
+        label: "Shop By Body System",
         key: "system",
         links: [
           ["Breathing", "/system/respiratory"],
           ["Digestion and Eating", "/system/git"],
           ["Nervous", "/system/nervous"],
           ["Sexual and Reproductive", "/system/reproductive"],
-          ["Skin Treatment", "//system/skin"],
+          ["Skin Treatment", "/system/skin-treatment"],
           ["Kidneys and renal", "/system/renal"],
           ["Diabetes", "/system/diabetes"],
           ["Ear & Eye Care", "/system/ear-eye-care"],

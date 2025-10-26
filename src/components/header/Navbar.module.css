@@ -5,13 +5,13 @@
 
 /* Navbar directly below Topbar */
 .navbar {
-  position: sticky;
-  top: 5px; /* sits directly below Topbar */
+  position:fixed;
+  top: 12px; /* sits directly below Topbar */
   z-index: 1000; /* below Topbar (z-index 1300+) but above content */
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  margin-top: 5px; /* no gap between topbar and navbar */
+  margin-top: 88px; /* no gap between topbar and navbar */
   height: fit-content;
   width:100%;
 }
@@ -425,4 +425,23 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+
+
+
+/* Ensure Navbar sits directly below Topbar on all devices */
+.navbar {
+  position: fixed;
+  top: 0px; /* height of Topbar on desktop */
+  margin-top: 100px;
+  
+}
+
+/* On mobile screens, remove all gaps */
+@media (max-width: 768px) {
+  .navbar {
+    top: 0 !important;   /* stick directly below Topbar */
+    margin-top: 78px !important;
+  }
 }
