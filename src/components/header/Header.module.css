@@ -219,8 +219,8 @@
   color: #ffffff;
   text-decoration: none;
   border-radius: 50px;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.575rem;
+  font-weight: 400;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(0, 120, 215, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
