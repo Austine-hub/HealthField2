@@ -17,6 +17,23 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import styles from "./BestSellers.module.css";
 
+// === Import images ===
+import pic1 from "../assets/products/Durex-Fetherlite-Condoms.png";
+import pic2 from "../assets/products/Always-Ultra-Thin-Pads-8s.png";
+import pic3 from "../assets/products/Swift-Pregnancy-Test-Kit.png";
+import pic4 from "../assets/products/Panadol-Extra-10s.png";
+import pic5 from "../assets/products/Strepsils-Lozenges-24s.png";
+import pic6 from "../assets/products/E45 Moisturizing-Cream-100g.png";
+import pic7 from "../assets/products/Dettol-hand-sanitizer-50ml.png";
+import pic8 from "../assets/products/Gaviscon-peppermint-liquid-200ml.png";
+import pic9 from "../assets/products/Deep-Heat-Rub-35g.png";
+import pic10 from "../assets/products/Nivea-Lip-Balm-Original-4.8g.png";
+import pic11 from "../assets/products/Vaseline-Petroleum-Jelly-100.png";
+import pic12 from "../assets/products/savlon.png";
+import pic13 from "../assets/products/centrum-energy.png";
+import pic14 from "../assets/products/ors.png";
+import pic15 from "../assets/products/clearasil.png";
+
 // ===============================================================
 // 🧩 Interfaces
 // ===============================================================
@@ -127,7 +144,7 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Ultra-thin condoms designed for comfort and protection.",
       price: 650,
-      image: "/images/durex-fetherlite.jpg",
+      image: pic1,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -138,7 +155,7 @@ const BestSellers: React.FC = () => {
       description:
         "Super absorbent sanitary pads with odor-neutralizing technology.",
       price: 380,
-      image: "/images/always-ultra.jpg",
+      image: pic2,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -148,7 +165,7 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Quick and accurate pregnancy test for early detection.",
       price: 300,
-      image: "/images/pregnancy-test.jpg",
+      image: pic3,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -159,7 +176,7 @@ const BestSellers: React.FC = () => {
       description:
         "Effective pain and headache relief with caffeine boost.",
       price: 150,
-      image: "/images/panadol-extra.jpg",
+      image: pic4,
       isTopSeller: true,
       isPharma: true,
     },
@@ -170,7 +187,7 @@ const BestSellers: React.FC = () => {
       description:
         "Soothing relief for sore throats and mouth irritation.",
       price: 420,
-      image: "/images/strepsils.jpg",
+      image: pic5,
       isTopSeller: true,
       isPharma: true,
     },
@@ -181,7 +198,7 @@ const BestSellers: React.FC = () => {
       description:
         "Dermatologically tested cream for dry and sensitive skin.",
       price: 950,
-      image: "/images/e45.jpg",
+      image: pic6,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -191,13 +208,13 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Kills 99.9% of germs, perfect for on-the-go hygiene.",
       price: 250,
-      image: "/images/dettol-sanitizer.jpg",
+      image: pic7,
       isTopSeller: true,
       isNonPharma: true,
     },
     {
       id: "8",
-      name: "Gaviscon Peppermint Liquid 200ml",
+      name: pic8,
       category: "Pharma",
       description: "Fast-acting relief for acid reflux and heartburn.",
       price: 720,
@@ -212,7 +229,7 @@ const BestSellers: React.FC = () => {
       description:
         "Muscle pain relief cream for active individuals and athletes.",
       price: 550,
-      image: "/images/deep-heat.jpg",
+      image: pic9,
       isTopSeller: true,
       isPharma: true,
     },
@@ -222,7 +239,7 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Moisturizing lip balm for smooth and hydrated lips.",
       price: 280,
-      image: "/images/nivea-lip-balm.jpg",
+      image: pic10,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -232,7 +249,7 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Multipurpose skin protectant for dry skin and minor cuts.",
       price: 300,
-      image: "/images/vaseline.jpg",
+      image: pic11,
       isTopSeller: true,
       isNonPharma: true,
     },
@@ -242,7 +259,7 @@ const BestSellers: React.FC = () => {
       category: "Pharma",
       description: "Trusted antiseptic for cuts, grazes, and personal hygiene.",
       price: 400,
-      image: "/images/savlon.jpg",
+      image: pic12,
       isTopSeller: true,
       isPharma: true,
     },
@@ -253,7 +270,7 @@ const BestSellers: React.FC = () => {
       description:
         "Daily multivitamin for immune support and energy metabolism.",
       price: 1200,
-      image: "/images/centrum-energy.jpg",
+      image: pic13,
       isTopSeller: true,
       isPharma: true,
     },
@@ -263,7 +280,7 @@ const BestSellers: React.FC = () => {
       category: "Pharma",
       description: "Essential salts to restore hydration and electrolytes.",
       price: 180,
-      image: "/images/ors.jpg",
+      image: pic14,
       isTopSeller: true,
       isPharma: true,
     },
@@ -273,7 +290,7 @@ const BestSellers: React.FC = () => {
       category: "Non-Pharma",
       description: "Gentle cleanser to prevent acne and keep skin fresh.",
       price: 850,
-      image: "/images/clearasil.jpg",
+      image: pic15,
       isTopSeller: true,
       isNonPharma: true,
     },

@@ -8,6 +8,25 @@ import toast from "react-hot-toast";
 import { ShoppingCart } from "lucide-react";
 import styles from "./Hygiene.module.css";
 
+
+
+// === Import images ===
+import pic1 from "../assets/products/Durex-Fetherlite-Condoms.png";
+import pic2 from "../assets/products/Always-Ultra-Thin-Pads-8s.png";
+import pic3 from "../assets/products/Swift-Pregnancy-Test-Kit.png";
+import pic4 from "../assets/products/Panadol-Extra-10s.png";
+import pic5 from "../assets/products/Strepsils-Lozenges-24s.png";
+import pic6 from "../assets/products/E45 Moisturizing-Cream-100g.png";
+import pic7 from "../assets/products/Dettol-hand-sanitizer-50ml.png";
+import pic8 from "../assets/products/Gaviscon-peppermint-liquid-200ml.png";
+import pic9 from "../assets/products/Deep-Heat-Rub-35g.png";
+import pic10 from "../assets/products/Nivea-Lip-Balm-Original-4.8g.png";
+import pic11 from "../assets/products/Vaseline-Petroleum-Jelly-100.png";
+import pic12 from "../assets/products/savlon.png";
+import pic13 from "../assets/products/centrum-energy.png";
+import pic14 from "../assets/products/ors.png";
+import pic15 from "../assets/products/clearasil.png";
+
 interface Product {
   id: string;
   name: string;
@@ -33,7 +52,7 @@ const Offers2: React.FC = () => {
       name: "Durex Fetherlite Condoms 3s",
       description: "Ultra-thin condoms designed for comfort and protection.",
       price: 650,
-      image: "/images/durex-fetherlite.jpg",
+      image: pic1,
       brand: "Durex",
       isTrending: true,
     },
@@ -42,7 +61,7 @@ const Offers2: React.FC = () => {
       name: "Always Ultra Thin Pads 8s",
       description: "Super absorbent sanitary pads with odor-neutralizing tech.",
       price: 380,
-      image: "/images/always-ultra.jpg",
+      image: pic2,
       brand: "Always",
       isTrending: true,
     },
@@ -51,7 +70,7 @@ const Offers2: React.FC = () => {
       name: "Swift Pregnancy Test Kit",
       description: "Quick and accurate pregnancy test for early detection.",
       price: 300,
-      image: "/images/pregnancy-test.jpg",
+      image: pic3,
       brand: "Swift",
       isTrending: true,
     },
@@ -60,7 +79,7 @@ const Offers2: React.FC = () => {
       name: "Panadol Extra 10s",
       description: "Fast headache and pain relief with caffeine boost.",
       price: 150,
-      image: "/images/panadol-extra.jpg",
+      image: pic4,
       brand: "Panadol",
       isTrending: true,
     },
@@ -69,7 +88,7 @@ const Offers2: React.FC = () => {
       name: "Strepsils Lozenges 24s",
       description: "Soothing relief for sore throats and mouth irritation.",
       price: 420,
-      image: "/images/strepsils.jpg",
+      image: pic5,
       brand: "Strepsils",
       isTrending: false,
     },
@@ -78,7 +97,7 @@ const Offers2: React.FC = () => {
       name: "E45 Moisturizing Cream 100g",
       description: "Dermatologically tested cream for dry, sensitive skin.",
       price: 950,
-      image: "/images/e45.jpg",
+      image: pic6,
       brand: "E45",
       isTrending: true,
     },
@@ -87,7 +106,7 @@ const Offers2: React.FC = () => {
       name: "Dettol Hand Sanitizer 50ml",
       description: "Kills 99.9% of germs, perfect for on-the-go hygiene.",
       price: 250,
-      image: "/images/dettol-sanitizer.jpg",
+      image: pic7,
       brand: "Dettol",
       isTrending: false,
     },
@@ -96,7 +115,7 @@ const Offers2: React.FC = () => {
       name: "Gaviscon Peppermint Liquid 200ml",
       description: "Fast-acting relief for acid reflux and heartburn.",
       price: 720,
-      image: "/images/gaviscon.jpg",
+      image: pic8,
       brand: "Gaviscon",
       isTrending: false,
     },
@@ -105,7 +124,7 @@ const Offers2: React.FC = () => {
       name: "Deep Heat Rub 35g",
       description: "Muscle and joint pain relief cream for active individuals.",
       price: 550,
-      image: "/images/deep-heat.jpg",
+      image: pic9,
       brand: "Deep Heat",
       isTrending: false,
     },
@@ -114,7 +133,7 @@ const Offers2: React.FC = () => {
       name: "Nivea Lip Balm Original 4.8g",
       description: "Moisturizing lip balm for smooth and hydrated lips.",
       price: 280,
-      image: "/images/nivea-lip-balm.jpg",
+      image: pic10,
       brand: "Nivea",
       isTrending: true,
     },
@@ -123,7 +142,7 @@ const Offers2: React.FC = () => {
       name: "Vaseline Petroleum Jelly 100ml",
       description: "Multipurpose protectant for dry skin and minor cuts.",
       price: 300,
-      image: "/images/vaseline.jpg",
+      image: pic11,
       brand: "Vaseline",
       isTrending: false,
     },
@@ -132,7 +151,7 @@ const Offers2: React.FC = () => {
       name: "Savlon Antiseptic Liquid 200ml",
       description: "Trusted antiseptic for cuts, grazes, and hygiene.",
       price: 400,
-      image: "/images/savlon.jpg",
+      image: pic12,
       brand: "Savlon",
       isTrending: false,
     },
@@ -141,7 +160,7 @@ const Offers2: React.FC = () => {
       name: "Centrum Energy Multivitamins 30s",
       description: "Daily multivitamin for energy and immune support.",
       price: 1200,
-      image: "/images/centrum-energy.jpg",
+      image: pic13,
       brand: "Centrum",
       isTrending: true,
     },
@@ -150,7 +169,7 @@ const Offers2: React.FC = () => {
       name: "ORS Rehydration Salts 10s",
       description: "Essential salts to restore hydration and electrolytes.",
       price: 180,
-      image: "/images/ors.jpg",
+      image: pic14,
       brand: "ORS",
       isTrending: false,
     },
@@ -159,7 +178,7 @@ const Offers2: React.FC = () => {
       name: "Clearasil Daily Face Wash 150ml",
       description: "Gentle cleanser to prevent acne and refresh skin.",
       price: 850,
-      image: "/images/clearasil.jpg",
+      image: pic15,
       brand: "Clearasil",
       isTrending: true,
     },

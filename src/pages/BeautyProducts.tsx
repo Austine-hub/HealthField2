@@ -10,6 +10,17 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import styles from "./BeautyProducts.module.css";
 import { useCart } from "../context/CartContext";
 
+// === Import images ===
+import pic1 from "../assets/products/revitalizing-supreme.png";
+import pic2 from "../assets/products/super-blendable.png";
+import pic3 from "../assets/products/rouge-volupté-shine-lipstick.png";
+import pic4 from "../assets/products/better-than-sex-mascara.png";
+import pic5 from "../assets/products/born-this-way-foundation.png";
+import pic6 from "../assets/products/Soft-Matte-Complete-Lipstick.png";
+import pic7 from "../assets/products/Soft-Radiance-Pressed-Powder.png";
+import pic8 from "../assets/products/airbrush-flawless-foundation.png";
+
+
 interface Product {
   id: number;
   name: string;
@@ -47,7 +58,7 @@ const BeautyProducts: React.FC = () => {
       name: "Revitalizing Supreme+ Youth Power Crème",
       description: "Prestige anti-aging cream that firms, smooths, and rejuvenates skin.",
       price: 18900,
-      image: "https://images.unsplash.com/photo-1621440318363-8f7c0b31b9f7?w=400&h=400&fit=crop",
+      image: pic1,
       brand: "Estée Lauder",
     },
     {
@@ -55,7 +66,7 @@ const BeautyProducts: React.FC = () => {
       name: "True Match Super-Blendable Foundation",
       description: "Lightweight, seamless foundation for natural, flawless coverage.",
       price: 2400,
-      image: "https://images.unsplash.com/photo-1588081689948-1e8e1d1fae7f?w=400&h=400&fit=crop",
+      image: pic2,
       brand: "L’Oréal Paris",
     },
     {
@@ -63,7 +74,7 @@ const BeautyProducts: React.FC = () => {
       name: "Rouge Volupté Shine Lipstick",
       description: "Luxurious lipstick delivering intense color and moisture.",
       price: 5200,
-      image: "https://images.unsplash.com/photo-1620331311528-8b8e5b26b2c4?w=400&h=400&fit=crop",
+      image: pic3,
       brand: "Yves Saint Laurent (YSL)",
     },
     {
@@ -71,7 +82,7 @@ const BeautyProducts: React.FC = () => {
       name: "Better Than Sex Mascara",
       description: "Iconic volumizing mascara for dramatic, curled lashes.",
       price: 4200,
-      image: "https://images.unsplash.com/photo-1617042375876-d22b709e60b7?w=400&h=400&fit=crop",
+      image: pic4,
       brand: "Too Faced",
     },
     {
@@ -79,7 +90,7 @@ const BeautyProducts: React.FC = () => {
       name: "Born This Way Foundation",
       description: "Medium-to-full coverage foundation with natural finish.",
       price: 5600,
-      image: "https://images.unsplash.com/photo-1612815154858-60aa4c0deefa?w=400&h=400&fit=crop",
+      image: pic5,
       brand: "Too Faced",
     },
     {
@@ -87,7 +98,7 @@ const BeautyProducts: React.FC = () => {
       name: "Soft Matte Complete Lipstick",
       description: "Velvety matte finish lipstick with long-lasting comfort.",
       price: 4100,
-      image: "https://images.unsplash.com/photo-1600423115367-3e78e0d8dcad?w=400&h=400&fit=crop",
+      image: pic6,
       brand: "NARS",
     },
     {
@@ -95,7 +106,7 @@ const BeautyProducts: React.FC = () => {
       name: "Soft Radiance Pressed Powder",
       description: "Finishing powder for luminous, flawless skin.",
       price: 5300,
-      image: "https://images.unsplash.com/photo-1585238341988-5d81a9b0eae2?w=400&h=400&fit=crop",
+      image: pic7,
       brand: "Laura Mercier",
     },
     {
@@ -103,7 +114,7 @@ const BeautyProducts: React.FC = () => {
       name: "Airbrush Flawless Foundation",
       description: "Full-coverage foundation with a natural matte finish.",
       price: 5900,
-      image: "https://images.unsplash.com/photo-1600181952422-bc7de8b3a404?w=400&h=400&fit=crop",
+      image: pic8,
       brand: "Charlotte Tilbury",
     },
   ];

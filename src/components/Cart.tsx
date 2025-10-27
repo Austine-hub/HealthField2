@@ -1,56 +1,44 @@
-// ===============================================================
-// ✅ Cart.tsx — Optimized, Modernized, Context-Integrated (2025 Edition)
-// ===============================================================
-
-    // src/components/Cart.tsx
-// ===============================================================
-// ✅ Cart.tsx — Optimized, Modernized, Context-Integrated (2025 Edition)
-// ===============================================================
+// src/components/Cart.tsx
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  Trash2,
-  ShoppingCart,
-  AlertCircle,
-  Minus,
-  Plus,
-} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Trash2, ShoppingCart, AlertCircle, Minus, Plus } from "lucide-react";
+import { toast } from "sonner";
+import clsx from "clsx";
+
 import { useCart } from "../context/CartContext";
 import styles from "./Cart.module.css";
-import { toast } from "sonner"; // optional — remove if you don't use sonner
 
-// Helper: format price consistently
+// --- Helpers -------------------------------------------------
 const currencyFormatter = new Intl.NumberFormat("en-KE", {
   style: "currency",
   currency: "KES",
   minimumFractionDigits: 0,
 });
+const formatPrice = (v: number) => currencyFormatter.format(v);
 
-const formatPrice = (value: number) => currencyFormatter.format(value);
-
-// Small component to manage quantity input UX (local state + commit on blur or Enter)
-const QuantityInput: React.FC<{
+// --- QuantityInput: local-friendly + accessible ----------------
+type QuantityInputProps = {
   id: string;
   value: number;
-  onChange?: (newQty: number) => void;
+  onChange?: (n: number) => void;
   disabled?: boolean;
-}> = ({ id, value, onChange, disabled }) => {
-  const [local, setLocal] = useState<string>(String(value));
+};
 
-  // if parent value changes (e.g., from other UI), sync local input
-  useEffect(() => {
-    setLocal(String(value));
-  }, [value]);
+const QuantityInput: React.FC<QuantityInputProps> = ({ id, value, onChange, disabled }) => {
+  const [local, setLocal] = useState(String(value));
+
+  useEffect(() => setLocal(String(value)), [value]);
 
   const commit = useCallback(
-    (valStr?: string) => {
-      const v = valStr ?? local;
-      const n = Number.parseInt(String(v), 10);
+    (val?: string) => {
+      const raw = val ?? local;
+      const n = Number.parseInt(String(raw || "0"), 10);
       if (Number.isNaN(n) || n < 1) {
-        // reset to prior value
         setLocal(String(value));
         return;
       }
-      onChange?.(n);
+      onChange?.(Math.max(1, Math.trunc(n)));
     },
     [local, onChange, value]
   );
@@ -76,31 +64,36 @@ const QuantityInput: React.FC<{
   );
 };
 
+// --- Motion variants -----------------------------------------
+const itemVariants = {
+  hidden: { opacity: 0, y: -8 },
+  enter: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 8, transition: { duration: 0.18 } },
+};
+
+// --- Component -----------------------------------------------
 const Cart: React.FC = () => {
+  const navigate = useNavigate();
   const {
-    cartItems,
+    cartItems = [],
     removeFromCart,
     clearCart,
-    getCartTotal,
-    getTotalItems,
-    updateQuantity, // optional — component will degrade gracefully if absent
+    getCartTotal = () => 0,
+    getTotalItems = () => 0,
+    updateQuantity,
   } = useCart();
 
-  // Memoized totals to avoid recalculation on every render
+  // memoized values
   const subtotal = useMemo(() => getCartTotal(), [getCartTotal]);
   const totalItems = useMemo(() => getTotalItems(), [getTotalItems]);
-
-  // Safety: if updateQuantity isn't provided, we disable the inline numerical edit
   const quantityControlsEnabled = Boolean(updateQuantity);
 
-  // Decrease / Increase handlers use updateQuantity if available
   const handleAdjustQty = useCallback(
     (id: string, qty: number) => {
       if (!quantityControlsEnabled) {
-        toast?.info?.("Quantity editing not available.");
+        toast.info("Quantity editing not available");
         return;
       }
-      // protect against invalid quantities
       const safeQty = Math.max(1, Math.trunc(qty));
       updateQuantity && updateQuantity(id, safeQty);
     },
@@ -110,47 +103,54 @@ const Cart: React.FC = () => {
   const handleRemove = useCallback(
     (id: string, name?: string) => {
       removeFromCart(id);
-      toast?.info?.(`Removed ${name ?? "item"} from cart`);
+      toast.success(`${name ?? "Item"} removed`);
     },
     [removeFromCart]
   );
 
   const handleClear = useCallback(() => {
-    // confirm destructive action for better UX
-    if (cartItems.length === 0) return;
-    const ok = window.confirm("Clear your cart? This action cannot be undone.");
-    if (ok) {
-      clearCart();
-      toast?.success?.("Cart cleared");
-    }
+    if (!cartItems.length) return;
+    const ok = window.confirm("Clear your cart? This cannot be undone.");
+    if (!ok) return;
+    clearCart();
+    toast.success("Cart cleared");
   }, [clearCart, cartItems.length]);
 
   const handleCheckout = useCallback(() => {
-    if (cartItems.length === 0) {
-      toast?.info?.("Your cart is empty.");
+    if (!cartItems.length) {
+      toast.info("Your cart is empty");
       return;
     }
-    // Hook here to route to checkout or open modal
-    // e.g., navigate('/checkout') from react-router (not included here)
-    toast?.success?.("Proceeding to checkout...");
-    // TODO: call navigation logic in your app
-  }, [cartItems.length]);
+    navigate("/checkout");
+  }, [cartItems.length, navigate]);
+
+  // keyboard shortcut: press "c" to clear (only when focused inside cart)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === "c" && document.activeElement?.closest(`.${styles.cartContainer}`)) {
+        e.preventDefault();
+        handleClear();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [handleClear]);
 
   // Empty state
-  if (cartItems.length === 0) {
+  if (!cartItems || cartItems.length === 0) {
     return (
       <div className={styles.emptyCart} role="status" aria-live="polite">
         <ShoppingCart className={styles.emptyIcon} aria-hidden="true" />
         <h2 className={styles.emptyTitle}>Your cart is empty</h2>
-        <p className={styles.emptyMsg}>Add items to get started.</p>
+        <p className={styles.emptyMsg}>Browse products and add them to your cart.</p>
       </div>
     );
   }
 
   return (
-    <main className={styles.cartContainer}>
+    <main className={styles.cartContainer} aria-labelledby="cart-heading">
       <header className={styles.cartHeader}>
-        <h1 className={styles.cartTitle}>
+        <h1 id="cart-heading" className={styles.cartTitle}>
           <ShoppingCart size={20} aria-hidden="true" /> Cart ({totalItems})
         </h1>
       </header>
@@ -158,101 +158,99 @@ const Cart: React.FC = () => {
       <div className={styles.cartContent}>
         {/* Items column */}
         <section className={styles.cartItems} aria-label="Cart items">
-          {cartItems.map((item) => (
-            <article key={item.id} className={styles.cartItem}>
-              <div className={styles.itemImage}>
-                {/* consider using next/image or <picture> for responsive images later */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  loading="lazy"
-                  className={styles.productImage}
-                />
-              </div>
+          <AnimatePresence initial={false} mode="popLayout">
+            {cartItems.map((item) => (
+              <motion.article
+                key={item.id}
+                layout
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                variants={itemVariants}
+                className={styles.cartItem}
+                role="group"
+                aria-labelledby={`item-${item.id}-name`}
+              >
+                <div className={styles.itemImage}>
+                  <img src={item.image} alt={item.name} loading="lazy" className={styles.productImage} />
+                </div>
 
-              <div className={styles.itemDetails}>
-                <h2 className={styles.itemName}>{item.name}</h2>
+                <div className={styles.itemDetails}>
+                  <h2 id={`item-${item.id}-name`} className={styles.itemName} title={item.name}>
+                    {item.name}
+                  </h2>
 
-                {item.category && (
-                  <p className={styles.itemCategory}>{item.category}</p>
-                )}
-
-                {item.description && (
-                  <p className={styles.itemDescription}>{item.description}</p>
-                )}
-
-                {item.variation && (
-                  <p className={styles.itemVariation}>
-                    <strong>Variant:</strong> {item.variation}
-                  </p>
-                )}
-
-                {!item.inStock ? (
-                  <div className={styles.stockWarning} aria-live="polite">
-                    <AlertCircle size={14} aria-hidden="true" />
-                    <span>Out of stock</span>
-                  </div>
-                ) : (
-                  <p className={styles.stockStatus}>In stock</p>
-                )}
-              </div>
-
-              <div className={styles.itemPricing}>
-                <div className={styles.priceSection}>
-                  <p className={styles.currentPrice}>{formatPrice(item.price)}</p>
-                  {item.originalPrice && (
-                    <p className={styles.originalPrice}>
-                      {formatPrice(item.originalPrice)}
+                  {item.category && <p className={styles.itemCategory}>{item.category}</p>}
+                  {item.description && <p className={styles.itemDescription}>{item.description}</p>}
+                  {item.variation && (
+                    <p className={styles.itemVariation}>
+                      <strong>Variant:</strong> {item.variation}
                     </p>
                   )}
-                  {item.discount && (
-                    <span className={styles.discountBadge}>-{item.discount}%</span>
+
+                  {!item.inStock ? (
+                    <div className={styles.stockWarning} aria-live="polite">
+                      <AlertCircle size={14} aria-hidden="true" />
+                      <span>Out of stock</span>
+                    </div>
+                  ) : (
+                    <p className={styles.stockStatus}>In stock</p>
                   )}
                 </div>
 
-                <div className={styles.controlsRow}>
-                  <div className={styles.quantityControl}>
-                    <button
-                      type="button"
-                      className={styles.quantityBtn}
-                      onClick={() => handleAdjustQty(item.id, Math.max(1, item.quantity - 1))}
-                      disabled={!quantityControlsEnabled || item.quantity <= 1}
-                      aria-label={`Decrease quantity of ${item.name}`}
-                    >
-                      <Minus size={14} />
-                    </button>
-
-                    <QuantityInput
-                      id={item.id}
-                      value={item.quantity}
-                      onChange={(n) => handleAdjustQty(item.id, n)}
-                      disabled={!quantityControlsEnabled}
-                    />
-
-                    <button
-                      type="button"
-                      className={styles.quantityBtn}
-                      onClick={() => handleAdjustQty(item.id, item.quantity + 1)}
-                      disabled={!quantityControlsEnabled}
-                      aria-label={`Increase quantity of ${item.name}`}
-                    >
-                      <Plus size={14} />
-                    </button>
+                <div className={styles.itemPricing}>
+                  <div className={styles.priceSection}>
+                    <p className={styles.currentPrice}>{formatPrice(item.price)}</p>
+                    {item.originalPrice && (
+                      <p className={styles.originalPrice}>{formatPrice(item.originalPrice)}</p>
+                    )}
+                    {item.discount && <span className={styles.discountBadge}>-{item.discount}%</span>}
                   </div>
 
-                  <button
-                    type="button"
-                    className={styles.removeBtn}
-                    onClick={() => handleRemove(item.id, item.name)}
-                    aria-label={`Remove ${item.name} from cart`}
-                  >
-                    <Trash2 size={16} aria-hidden="true" />
-                    <span className={styles.removeText}>Remove</span>
-                  </button>
+                  <div className={styles.controlsRow}>
+                    <div className={styles.quantityControl}>
+                      <button
+                        type="button"
+                        className={styles.quantityBtn}
+                        onClick={() => handleAdjustQty(item.id, Math.max(1, item.quantity - 1))}
+                        disabled={!quantityControlsEnabled || item.quantity <= 1}
+                        aria-label={`Decrease quantity of ${item.name}`}
+                      >
+                        <Minus size={14} />
+                      </button>
+
+                      <QuantityInput
+                        id={item.id}
+                        value={item.quantity}
+                        onChange={(n) => handleAdjustQty(item.id, n)}
+                        disabled={!quantityControlsEnabled}
+                      />
+
+                      <button
+                        type="button"
+                        className={styles.quantityBtn}
+                        onClick={() => handleAdjustQty(item.id, item.quantity + 1)}
+                        disabled={!quantityControlsEnabled}
+                        aria-label={`Increase quantity of ${item.name}`}
+                      >
+                        <Plus size={14} />
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      className={styles.removeBtn}
+                      onClick={() => handleRemove(item.id, item.name)}
+                      aria-label={`Remove ${item.name} from cart`}
+                    >
+                      <Trash2 size={16} aria-hidden="true" />
+                      <span className={styles.removeText}>Remove</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </motion.article>
+            ))}
+          </AnimatePresence>
         </section>
 
         {/* Summary column */}
@@ -268,7 +266,7 @@ const Cart: React.FC = () => {
             <div className={styles.summaryActions}>
               <button
                 type="button"
-                className={styles.checkoutBtn}
+                className={clsx(styles.checkoutBtn)}
                 onClick={handleCheckout}
                 aria-label={`Checkout ${formatPrice(subtotal)}`}
               >
@@ -277,23 +275,35 @@ const Cart: React.FC = () => {
 
               <button
                 type="button"
-                className={styles.clearBtn}
+                className={clsx(styles.clearBtn)}
                 onClick={handleClear}
                 aria-label="Clear cart"
               >
                 Clear cart
               </button>
+
+              <button
+                type="button"
+                className={styles.secondaryBtn}
+                onClick={() => navigate("/")}
+                aria-label="Continue shopping"
+              >
+                Continue shopping
+              </button>
+            </div>
+
+            <div className={styles.tinyNote} aria-hidden>
+              <small>Secure checkout · Local currency: KES</small>
             </div>
           </div>
         </aside>
       </div>
 
       <footer className={styles.cartFooter} aria-hidden={false}>
-        <small>Secure checkout · Local currency: KES</small>
+        <small>Prices include local taxes when applicable.</small>
       </footer>
     </main>
   );
 };
 
 export default Cart;
-

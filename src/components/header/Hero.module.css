@@ -12,8 +12,9 @@
   align-items: stretch;
   padding: 12px;
   box-sizing: border-box;
-  top: 30px;
-  padding-top: 200px; /* 👈 creates breathing room below navbar */
+  top: 70px;
+  padding-top: 150px; /* 👈 creates breathing room below navbar */
+  border-top: 70px;
 }
 
 

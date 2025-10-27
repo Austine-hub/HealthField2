@@ -7,6 +7,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { CartProvider } from "./context/CartContext";
+import appStyles from "./App.module.css";
+
 
 
 // ===============================================================
@@ -17,7 +19,6 @@ import { ThemeProvider } from "./theme/ThemeProvider";
 // ===============================================================
 // 🧩 Global Layout Components
 // ===============================================================
-import Navbar from "./components/header/Navbar";
 import Hero from "./components/header/Hero";
 import Footer from "./components/footer/Footer";
 
@@ -39,7 +40,6 @@ import BestSellers from "./pages/BestSellers";
 import BeautyProducts from "./pages/BeautyProducts";
 import ProductCarousel from "./pages/ProductCarousel";
 import OffersWrapper from "./pages/OffersWrapper";
-import Topbar from "./components/header/Topbar";
 import BottomNav from "./components/footer/BottomNav";
 import Offers1 from "./pages/Offers1";
 import Offers2 from "./pages/Hygiene";
@@ -56,6 +56,7 @@ import Sexual from "./categories/Sexual";
 import CNS from "./categories/Nervous";
 import MSK from "./categories/Musculosketal";
 import SkinCare1 from "./pages/Derma";
+import Header from "./components/header/Header";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -108,8 +109,8 @@ const App: FC = () => (
       }}
     >
       {/* Optional Topbar (can be re-enabled as needed) */}
-      <Topbar />
-      <Navbar />
+    <Header/>
+   <div className={appStyles.headerSpacer}></div>
     </header>
 
     {/* === Main Content Area === */}
@@ -146,8 +147,7 @@ const App: FC = () => (
                 <Offers1/>
                 <ProductCarousel />
                 <Offers />               
-                <BestSellers />
-                <Offers2 />               
+                <BestSellers />            
                 <ShopByCategory />
                 <BeautyProducts />
 
