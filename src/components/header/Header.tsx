@@ -121,7 +121,7 @@ const Header: React.FC = () => {
       {
         label: "Contact Us",
         key: "contact",
-        path: "/contact",
+        path: "/contact-us",
       },
     ],
     []
@@ -213,12 +213,12 @@ const Header: React.FC = () => {
             {/* Shop Now Button */}
             <div className={styles.topActions}>
               <Link
-                to="/shop"
+                to="/contact-us"
                 className={styles.shopButton}
-                aria-label="Shop Now at Healthfield Pharmacy"
+                aria-label="Contact Us Now at Healthfield Pharmacy"
               >
                 <span className={styles.shopIcon} aria-hidden="true">▶</span>
-                <span>Shop Now</span>
+                <span>Contact Us</span>
               </Link>
             </div>
           </div>
