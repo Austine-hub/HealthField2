@@ -1,4 +1,18 @@
-/* App.css or index.css */
-.headerSpacer {
-  height: 18px;
+   /* App.module.css */
+:root {
+  --header-height:80px;
+}
+
+   
+   
+   .headerSpacer {
+  height: var(--header-height, 90px);
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .headerSpacer {
+    height: 90px; /* smaller header on mobile */
+  }
 }

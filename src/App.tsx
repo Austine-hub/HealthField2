@@ -98,27 +98,32 @@ const App: FC = () => (
       }}
     />
 
-    {/* === Persistent Header === */}
-    <header
-      role="banner"
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        backgroundColor: "var(--header-bg, #fff)",
-      }}
-    >
-      {/* Optional Topbar (can be re-enabled as needed) */}
-    <Header/>
-   <div className={appStyles.headerSpacer}></div>
-    </header>
+{/* === Persistent Header === */}
+<header
+  role="banner"
+  style={{
+    position: "fixed",
+    top: 0,
+    zIndex: 1000,
+    backgroundColor: "var(--header-bg, #fff)",
+    width: "100%",
+  }}
+>
+  <Header />
+</header>
+
+{/* === Spacer BELOW the fixed header === */}
+<div className={appStyles.headerSpacer}></div>
+
 
     {/* === Main Content Area === */}
 <main
   style={{
     display: "block",
+    paddingTop: "var(--header-height, 120px)",
   }}
 >
+
 
       <Suspense
         fallback={

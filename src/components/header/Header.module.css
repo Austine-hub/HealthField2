@@ -15,12 +15,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
-/* Creates visual and spatial gap below the header */
-.headerSpacer {
-  height: var(--header-height, 120px); /* adjust height to match your header */
-  width: 100%;
-}
-
 /* ===== TOP BAR ===== */
 .topBar {
   background-color: #ffffff;

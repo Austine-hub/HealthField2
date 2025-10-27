@@ -13,7 +13,7 @@
   padding: 12px;
   box-sizing: border-box;
   top: 70px;
-  padding-top: 150px; /* 👈 creates breathing room below navbar */
+  padding-top: 10px; /* 👈 creates breathing room below navbar */
   border-top: 70px;
 }
 
