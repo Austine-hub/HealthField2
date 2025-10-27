@@ -2,6 +2,20 @@ import { useState, useRef, useCallback, useMemo } from "react";
 import { useClickAway } from "react-use";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaWhatsapp,
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedinIn,
+  FaSearch,
+  FaBars,
+  FaChevronDown,
+  FaTimes,
+} from "react-icons/fa";
 
 interface NavLink {
   label: string;
@@ -153,28 +167,55 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Top Navigation Links */}
-            <nav className={styles.topNav} aria-label="Secondary Navigation">
-              <Link to="/new-arrivals" className={styles.topNavLink}>
-                <span className={styles.badge}>New Arrivals</span>
-              </Link>
-              <Link to="/trending" className={styles.topNavLink}>
-                Trending
-              </Link>
-              <Link to="/best-sellers" className={styles.topNavLink}>
-                Best Sellers
-              </Link>
-              <div className={styles.dropdown}>
-                <button className={styles.dropdownButton}>Other Services</button>
-                <div className={styles.dropdownMenu}>
-                  <Link to="/services/radiology">Radiology Services</Link>
-                  <Link to="/services/lab">Laboratory Services</Link>
-                  <Link to="/services/vct">VCT Services</Link>
-                  <Link to="/services/mch">MCH Clinic</Link>
-                </div>
-              </div>
-            </nav>
+{/* === Top Section === */}
+<div className={styles.topSection}>
+  {/* Top Navigation Links */}
+  <nav className={styles.topNav} aria-label="Secondary Navigation">
+    <Link to="/new-arrivals" className={styles.topNavLink}>
+      <span className={styles.badge}>New Arrivals</span>
+    </Link>
+    <Link to="/trending" className={styles.topNavLink}>
+      Trending
+    </Link>
+    <Link to="/best-sellers" className={styles.topNavLink}>
+      Best Sellers
+    </Link>
+    <div className={styles.dropdown}>
+      <button className={styles.dropdownButton}>Other Services</button>
+      <div className={styles.dropdownMenu}>
+        <Link to="/services/radiology">Radiology Services</Link>
+        <Link to="/services/lab">Laboratory Services</Link>
+        <Link to="/services/vct">VCT Services</Link>
+        <Link to="/services/mch">MCH Clinic</Link>
+      </div>
+    </div>
+  </nav>
 
+  {/* Social Media Icons BELOW nav */}
+  <div className={styles.socialIcons}>
+              <a href="https://wa.me/254703082000" aria-label="WhatsApp" className={styles.socialIcon}>
+                <FaWhatsapp />
+              </a>
+              <a href="https://facebook.com" aria-label="Facebook" className={styles.socialIcon}>
+                <FaFacebookF />
+              </a>
+              <a href="https://twitter.com" aria-label="Twitter" className={styles.socialIcon}>
+                <FaTwitter />
+              </a>
+              <a href="https://youtube.com" aria-label="YouTube" className={styles.socialIcon}>
+                <FaYoutube />
+              </a>
+              <a href="https://instagram.com" aria-label="Instagram" className={styles.socialIcon}>
+                <FaInstagram />
+              </a>
+              <a href="https://linkedin.com" aria-label="LinkedIn" className={styles.socialIcon}>
+                <FaLinkedinIn />
+              </a>
+  </div>
+</div>
+
+            
+            
             {/* Shop Now Button */}
             <div className={styles.topActions}>
               <Link

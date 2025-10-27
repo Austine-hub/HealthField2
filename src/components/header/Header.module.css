@@ -202,82 +202,6 @@
   }
 }
 
-/* ===== TOP NAV DROPDOWN ===== */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdownButton {
-  background: none;
-  border: none;
-  color: #1f2937;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  padding: 0.25rem 0;
-  cursor: pointer;
-  font-family: inherit;
-  transition: color 0.25s ease;
-}
-
-.dropdownButton:hover,
-.dropdownButton:focus-visible {
-  color: #0078d7;
-}
-
-.dropdownButton:focus-visible {
-  outline: 2px solid #0078d7;
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-
-.dropdownMenu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  min-width: 220px;
-  overflow: hidden;
-  z-index: 1300;
-}
-
-.dropdown:hover .dropdownMenu,
-.dropdown:focus-within .dropdownMenu {
-  display: block;
-  animation: fadeInDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dropdownMenu a {
-  display: block;
-  padding: 0.875rem 1.25rem;
-  color: #1f2937;
-  text-decoration: none;
-  font-size: 0.9375rem;
-  transition: all 0.2s ease;
-  border-left: 3px solid transparent;
-}
-
-.dropdownMenu a:hover,
-.dropdownMenu a:focus {
-  background: #f9fafb;
-  color: #0078d7;
-  border-left-color: #0078d7;
-  padding-left: 1.5rem;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* ===== SHOP NOW BUTTON ===== */
 .topActions {
@@ -918,4 +842,180 @@
 ::-moz-selection {
   background: rgba(0, 120, 215, 0.2);
   color: inherit;
+}
+
+
+
+/* === Top Section (container for nav + icons) === */
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+}
+
+/* === Navigation Bar === */
+.topNav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.topNavLink {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.topNavLink:hover {
+  color: #007bff;
+}
+
+
+
+/* === Dropdown (optional tweak) === */
+.dropdown {
+  position: relative;
+}
+
+.dropdownButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .dropdownMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Social Icons === */
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.socialIcon {
+  color: #555;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.socialIcon:hover {
+  color: #007bff;
+  transform: scale(1.15);
+}
+
+
+/* ===== TOP NAV DROPDOWN ===== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownButton {
+  background: none;
+  border: none;
+  color: #1f2937;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.25s ease;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus-visible {
+  color: #0078d7;
+}
+
+.dropdownButton:focus-visible {
+  outline: 2px solid #0078d7;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 1300;
+}
+
+.dropdown:hover .dropdownMenu,
+.dropdown:focus-within .dropdownMenu {
+  display: block;
+  animation: fadeInDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 0.875rem 1.25rem;
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdownMenu a:hover,
+.dropdownMenu a:focus {
+  background: #f9fafb;
+  color: #0078d7;
+  border-left-color: #0078d7;
+  padding-left: 1.5rem;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Default (Desktop visible) === */
+.topNav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* === Hide on smaller devices === */
+@media (max-width: 1024px) {
+  .topNav {
+    display: none;
+  }
 }
