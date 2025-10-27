@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, Package, CreditCard } from "lucide-react";
+import { CheckCircle, Package, CreditCard, MessageCircle, ArrowRight } from "lucide-react";
 import styles from "./Order.module.css";
 
 interface ShipmentInfo {
@@ -16,6 +16,7 @@ interface OrderProps {
   shipments?: ShipmentInfo[];
   hasGlobalItems?: boolean;
   onSeeDetails?: () => void;
+  whatsappNumber?: string;
 }
 
 const Order: React.FC<OrderProps> = ({
@@ -23,7 +24,16 @@ const Order: React.FC<OrderProps> = ({
   shipments = [],
   hasGlobalItems = false,
   onSeeDetails,
+  whatsappNumber = "1234567890",
 }) => {
+  const handleWhatsAppOrder = () => {
+    const message = encodeURIComponent(
+      `Hi! I'd like to place an order. Order reference: ${orderNumber}`
+    );
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <motion.div
       className={styles.orderContainer}
@@ -62,7 +72,7 @@ const Order: React.FC<OrderProps> = ({
           </div>
 
           <p className={styles.notificationText}>
-            You’ll receive an SMS, email, and push notification when your package is ready for pickup.
+            You'll receive an SMS, email, and push notification when your package is ready for pickup.
           </p>
 
           <div className={styles.shipmentsContainer}>
@@ -124,6 +134,48 @@ const Order: React.FC<OrderProps> = ({
             Enjoy fast and secure payments — available for M-Pesa, Airtel Money, and major bank cards.
           </p>
         </section>
+
+        {/* === WhatsApp Order Section === */}
+        <motion.section 
+          className={styles.whatsappSection}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+        >
+          <div className={styles.whatsappContent}>
+            <div className={styles.whatsappHeader}>
+              <div className={styles.whatsappIconWrapper}>
+                <MessageCircle 
+                  className={styles.whatsappIcon} 
+                  aria-hidden="true"
+                />
+              </div>
+              <div className={styles.whatsappTextContent}>
+                <h2 className={styles.whatsappTitle}>Need Help or Want to Order?</h2>
+                <p className={styles.whatsappDescription}>
+                  Chat with us directly on WhatsApp for instant support, order tracking, or to place a new order.
+                </p>
+              </div>
+            </div>
+
+            <motion.button
+              onClick={handleWhatsAppOrder}
+              className={styles.whatsappButton}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              aria-label="Order via WhatsApp"
+            >
+              <span className={styles.whatsappButtonText}>
+                Continue on WhatsApp
+              </span>
+              <ArrowRight 
+                className={styles.whatsappButtonIcon} 
+                aria-hidden="true"
+              />
+            </motion.button>
+          </div>
+        </motion.section>
       </div>
     </motion.div>
   );

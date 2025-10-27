@@ -193,6 +193,44 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+
+
+/* ---------- Cart Icon with Item Count ---------- */
+.iconWithBadge {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: var(--cart-color);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 2px 5px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 1;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.25s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -260,6 +298,8 @@
   align-items: center;
   position: relative;
 }
+
+
 
 /* ===== MOBILE TOGGLE ===== */
 .mobileToggle {
@@ -926,6 +966,77 @@
 }
 
 
+/* ---------- Container ---------- */
+.bottomNav {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  padding: 0.5rem 0.4rem;
+  gap: 20px;
+}
+
+
+/* ---------- Icons ---------- */
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* 🟢 Map Icon — Always Green */
+.mapIcon {
+  color: var(--success-color) !important;
+}
+
+/* 🟠 Cart Icon — Always Orange */
+.cartIcon {
+  color: var(--cart-color) !important;
+}
+
+
+/* ---------- Active ---------- */
+.active .icon {
+  color: var(--accent-color);
+  transform: scale(1.15);
+}
+
+.active .label {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+
+
+/* ---------- Labels ---------- */
+.label {
+  font-size: 11px;
+  line-height: 1;
+  display: block !important; /* Always show label */
+}
+
+
+/* ---------- Labels ---------- */
+.label {
+  font-size: 11px;
+  line-height: 1;
+  display: block !important; /* Always show label */
+}
+
 /* ===== TOP NAV DROPDOWN ===== */
 .dropdown {
   position: relative;
@@ -1017,5 +1128,17 @@
 @media (max-width: 1024px) {
   .topNav {
     display: none;
+  }
+}
+
+
+/* === Hide on mobile/tablet, show on desktop === */
+.desktopOnly {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopOnly {
+    display: block;
   }
 }

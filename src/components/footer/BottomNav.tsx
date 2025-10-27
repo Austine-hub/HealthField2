@@ -30,7 +30,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
     },
     {
       to: "/cart",
-      label: "Checkout",
+      label: "Cart",
       icon: (
         <div className={styles.iconWithBadge}>
           <ShoppingCart strokeWidth={1.8} className={styles.cartIcon} />

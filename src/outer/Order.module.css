@@ -1,435 +1,454 @@
+/* ========================================
+   ROOT VARIABLES
+   ======================================== */
+:root {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  --color-background: #ffffff;
+  --color-background-secondary: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-hover: rgba(0, 0, 0, 0.15);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --spacing-unit: 0.25rem;
+  --transition-base: 0.2s ease;
+  --transition-spring: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ========================================
+   CONTAINER & LAYOUT
+   ======================================== */
 .orderContainer {
-  max-width: 900px;
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 1.5rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-/* Confirmation Header */
-.confirmationSection {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.confirmationContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.checkmarkIcon {
-  color: #10b981;
-  width: 3rem;
-  height: 3rem;
-}
-
-.thankYouText {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.orderNumber {
-  font-size: 0.95rem;
-  color: #6b7280;
-}
-
-.detailsButton {
-  margin-top: 1rem;
-  background-color: #2563eb;
-  color: #fff;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.detailsButton:hover {
-  background-color: #1d4ed8;
-  transform: translateY(-1px);
-}
-
-/* Layout Grid */
-.contentGrid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-@media (min-width: 768px) {
-  .contentGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* Section */
-.sectionHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.sectionIcon {
-  color: #2563eb;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.sectionTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-/* Text and Notes */
-.notificationText,
-.paymentDescription {
-  color: #4b5563;
-  font-size: 0.95rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-text-primary);
   line-height: 1.6;
 }
 
-.globalItemsNote {
-  background-color: #fef3c7;
-  color: #92400e;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
-/* Shipment Card */
-.shipmentsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.shipmentItem {
-  border: 1px solid #e5e7eb;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  transition: box-shadow 0.3s ease;
-  background-color: #fafafa;
-}
-.shipmentItem:hover {
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-}
-
-.shipmentTitle {
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 0.25rem;
-}
-
-.shipmentDetail,
-.deliverySchedule {
-  color: #4b5563;
-  font-size: 0.9rem;
-}
-
-.deliveryDate {
-  color: #2563eb;
-  font-weight: 500;
-}
-
-
-/* Container */
-.orderContainer {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Confirmation Section */
-.confirmationSection {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.confirmationContent {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  flex: 1;
-}
-
-.checkmarkIcon {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.checkmarkSvg {
-  width: 36px;
-  height: 36px;
-  color: #4caf50;
-}
-
-.confirmationText {
-  flex: 1;
-}
-
-.thankYouText {
-  margin: 0 0 0.25rem 0;
-  font-size: 1rem;
-  color: #333333;
-  line-height: 1.5;
-}
-
-.orderNumber {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000000;
-}
-
-.detailsButton {
-  padding: 0.75rem 1.5rem;
-  background-color: #ff9800;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.detailsButton:hover {
-  background-color: #f57c00;
-}
-
-.detailsButton:active {
-  transform: scale(0.98);
-}
-
-.detailsButton:focus-visible {
-  outline: 2px solid #ff9800;
-  outline-offset: 2px;
-}
-
-/* Content Grid */
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: clamp(1.25rem, 3vw, 1.5rem);
+  margin-top: clamp(1.5rem, 4vw, 2rem);
 }
 
 @media (min-width: 768px) {
   .contentGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Section Styles */
-.pickupSection,
-.paymentSection {
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .whatsappSection {
+    grid-column: 1 / -1;
+  }
 }
 
-.sectionHeader {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.iconWrapper {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-}
-
-.sectionIcon {
-  width: 24px;
-  height: 24px;
-  color: #333333;
-}
-
-.sectionTitle {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000000;
-  line-height: 1.4;
-  flex: 1;
-}
-
-.notificationText,
-.paymentDescription {
-  margin: 0 0 1.25rem 0;
-  font-size: 0.875rem;
-  color: #666666;
-  line-height: 1.6;
-}
-
-/* Shipments */
-.shipmentsContainer {
+/* ========================================
+   CONFIRMATION SECTION
+   ======================================== */
+.confirmationSection {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: 0 4px 6px -1px var(--color-shadow), 0 2px 4px -1px var(--color-shadow);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.shipmentItem {
+@media (min-width: 640px) {
+  .confirmationSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.confirmationContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.checkmarkIcon {
+  width: clamp(2.5rem, 6vw, 3rem);
+  height: clamp(2.5rem, 6vw, 3rem);
+  color: #ffffff;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.confirmationText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.thankYouText {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: #ffffff;
   margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.orderNumber {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 500;
+}
+
+.detailsButton {
+  background: #ffffff;
+  color: var(--color-primary-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.detailsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: #fafafa;
+}
+
+.detailsButton:active {
+  transform: translateY(0);
+}
+
+.detailsButton:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   SECTION BASE STYLES
+   ======================================== */
+.pickupSection,
+.paymentSection,
+.whatsappSection {
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: 0 1px 3px var(--color-shadow);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.pickupSection:hover,
+.paymentSection:hover,
+.whatsappSection:hover {
+  box-shadow: 0 4px 6px -1px var(--color-shadow), 0 2px 4px -1px var(--color-shadow);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.sectionIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   PICKUP SECTION
+   ======================================== */
+.notificationText {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  color: var(--color-text-secondary);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.shipmentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shipmentItem {
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.shipmentItem:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
 }
 
 .shipmentTitle {
-  margin: 0 0 0.375rem 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #000000;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
 }
 
 .shipmentDetail {
-  margin: 0 0 0.25rem 0;
   font-size: 0.875rem;
-  color: #666666;
-  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.5rem 0;
 }
 
 .deliverySchedule {
-  margin: 0;
   font-size: 0.875rem;
-  color: #666666;
-  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .deliveryDate {
   font-weight: 600;
-  color: #000000;
+  color: var(--color-primary-dark);
+}
+
+.emptyStateText {
+  font-size: 0.9375rem;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+  font-style: italic;
 }
 
 .globalItemsNote {
   margin: 1.25rem 0 0 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: var(--radius-md);
   font-size: 0.875rem;
-  color: #666666;
+  color: #78350f;
+  border: 1px solid #fbbf24;
+  font-weight: 500;
+}
+
+/* ========================================
+   PAYMENT SECTION
+   ======================================== */
+.paymentDescription {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  color: var(--color-text-secondary);
+  margin: 0;
   line-height: 1.6;
 }
 
-/* Responsive Design */
-@media (max-width: 767px) {
-  .orderContainer {
-    padding: 0.75rem;
-  }
+/* ========================================
+   WHATSAPP SECTION
+   ======================================== */
+.whatsappSection {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #86efac;
+  position: relative;
+  overflow: hidden;
+}
 
-  .confirmationSection {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.25rem;
-  }
+.whatsappSection::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
 
-  .confirmationContent {
-    width: 100%;
-  }
+.whatsappContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-  .detailsButton {
-    width: 100%;
-  }
+.whatsappHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
 
-  .pickupSection,
-  .paymentSection {
-    padding: 1.25rem;
-  }
+.whatsappIconWrapper {
+  background: var(--color-whatsapp);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
 
-  .checkmarkIcon {
-    width: 56px;
-    height: 56px;
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
   }
-
-  .checkmarkSvg {
-    width: 32px;
-    height: 32px;
+  50% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
   }
 }
 
-@media (max-width: 480px) {
-  .confirmationSection {
-    padding: 1rem;
-  }
+.whatsappIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #ffffff;
+}
 
-  .confirmationContent {
-    gap: 1rem;
-  }
+.whatsappTextContent {
+  flex: 1;
+}
 
-  .checkmarkIcon {
-    width: 48px;
-    height: 48px;
-  }
+.whatsappTitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
 
-  .checkmarkSvg {
-    width: 28px;
-    height: 28px;
-  }
+.whatsappDescription {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
 
-  .thankYouText {
-    font-size: 0.9375rem;
-  }
+.whatsappButton {
+  background: var(--color-whatsapp);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all var(--transition-base);
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+}
 
-  .orderNumber {
-    font-size: 0.9375rem;
-  }
-
-  .pickupSection,
-  .paymentSection {
-    padding: 1rem;
+@media (min-width: 640px) {
+  .whatsappButton {
+    width: auto;
+    margin: 0;
   }
 }
 
-/* Focus Styles for Accessibility */
-.pickupSection:focus-visible,
-.paymentSection:focus-visible {
-  outline: 2px solid #4285f4;
+.whatsappButton:hover {
+  background: var(--color-whatsapp-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.whatsappButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.whatsappButton:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.5);
   outline-offset: 2px;
 }
 
-/* Print Styles */
-@media print {
-  .detailsButton {
-    display: none;
-  }
+.whatsappButtonText {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
 
+.whatsappButtonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--transition-spring);
+}
+
+.whatsappButton:hover .whatsappButtonIcon {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   ACCESSIBILITY & FOCUS STYLES
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
   .orderContainer {
-    max-width: 100%;
+    border: 2px solid currentColor;
   }
+  
+  .whatsappButton,
+  .detailsButton {
+    border: 2px solid currentColor;
+  }
+}
 
-  .contentGrid {
-    grid-template-columns: 1fr;
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #d1d5db;
+    --color-text-tertiary: #9ca3af;
+    --color-background: #1f2937;
+    --color-background-secondary: #111827;
+    --color-border: #374151;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-shadow-hover: rgba(0, 0, 0, 0.4);
+  }
+  
+  .whatsappSection {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    border-color: #10b981;
   }
 }
