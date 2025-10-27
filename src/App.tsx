@@ -173,7 +173,7 @@ const App: FC = () => (
 
           {/* === Condition Routes === */}
           <Route path="/condition/heart" element={<CVS />} />
-          <Route path="/condition/diabetes" element={<DM />} />
+          <Route path="/condition/diabetes" element={<DM/>} />
           <Route path="/condition/women" element={<WomenHealthShop />} />
           <Route path="/condition/men" element={<MensHealth />} />
 

@@ -6,6 +6,7 @@ import type { Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 import styles from "./Hero.module.css";
 
 /* -------------------------
@@ -173,9 +174,13 @@ const Hero: React.FC = () => {
             <div className={styles.mainContent}>
               <h2 className={styles.mainTitle}>{mainSlides[mainIndex].title}</h2>
               <p className={styles.mainSubtitle}>{mainSlides[mainIndex].subtitle}</p>
-              <button className={styles.cta}>
-                Shop Now <ChevronRight size={16} />
-              </button>
+
+              
+              <div>
+                      <Link to="/shop" className={styles.cta}>
+                           Shop Now <ChevronRight size={16} />
+                      </Link>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
