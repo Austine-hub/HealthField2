@@ -10,6 +10,18 @@ interface Product {
   isFavorite: boolean;
 }
 
+
+
+// === Import images ===
+import pic1 from "../assets/products/2025-1Sunshine-Nutrition-Melatonin-5mg.png";
+import pic2 from "../assets/products/Folic-Acid-5mg.png";
+import pic3 from "../assets/products/Mason-Natural-Magnesium-Oxide-500mg-100'S.png";
+import pic4 from "../assets/products/Sunshine-Nutrition-Vitamin-C.png";
+import pic5 from "../assets/products/Sunshine-Nutrition-Skin-Radiance-EFF-Pineapple.png";
+import pic6 from "../assets/products/Sunshine-Nutrition-Zinc-Gluconate-50mg.png";
+import pic7 from "../assets/products/2Sunshine-Nutrition-Good-Morning-Multivitamin + 9 60'S.png";
+import pic8 from "../assets/products/Piriteze-Allergy-Tablets-10'S.png";
+
 const NewArrivals: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([
     {
@@ -17,15 +29,17 @@ const NewArrivals: React.FC = () => {
       name: 'Sunshine Nutrition Melatonin 5mg Tablets 100\'S',
       brand: 'Sunshine Nutrition',
       price: 3200.00,
-      image: '/api/placeholder/120/120',
+      image: pic1,
       isFavorite: false
     },
+
+  
     {
       id: 2,
       name: 'Folic Acid 5mg',
       brand: 'Lab Brand',
       price: 344.00,
-      image: '/api/placeholder/120/120',
+      image: pic2,
       isFavorite: false
     },
     {
@@ -33,7 +47,7 @@ const NewArrivals: React.FC = () => {
       name: 'Mason Natural Magnesium Oxide 500mg 100\'S',
       brand: 'Mason Natural',
       price: 3096.00,
-      image: '/api/placeholder/120/120',
+      image: pic3,
       isFavorite: false
     },
     {
@@ -41,7 +55,7 @@ const NewArrivals: React.FC = () => {
       name: 'Sunshine Nutrition Vitamin C 1000mg HT Tabs 100\'S',
       brand: 'Sunshine Nutrition',
       price: 3200.00,
-      image: '/api/placeholder/120/120',
+      image: pic4,
       isFavorite: false
     },
     {
@@ -49,7 +63,7 @@ const NewArrivals: React.FC = () => {
       name: 'Sunshine Nutrition Skin Radiance EFF Pineapple 20\'S',
       brand: 'Sunshine Nutrition',
       price: 1800.00,
-      image: '/api/placeholder/120/120',
+      image: pic5,
       isFavorite: false
     },
     {
@@ -57,7 +71,7 @@ const NewArrivals: React.FC = () => {
       name: 'Sunshine Nutrition Zinc Gluconate 50mg Gss 100\'S',
       brand: 'Sunshine Nutrition',
       price: 2700.00,
-      image: '/api/placeholder/120/120',
+      image: pic6,
       isFavorite: false
     },
     {
@@ -65,7 +79,7 @@ const NewArrivals: React.FC = () => {
       name: 'Sunshine Nutrition Good Morning Multivitamin + 9 60\'S',
       brand: 'Sunshine Nutrition',
       price: 3800.00,
-      image: '/api/placeholder/120/120',
+      image: pic7,
       isFavorite: false
     },
     {
@@ -73,7 +87,7 @@ const NewArrivals: React.FC = () => {
       name: 'Piritaze Allergy Tablets 10\'S',
       brand: 'Niiux',
       price: 1040.00,
-      image: '/api/placeholder/120/120',
+      image: pic8,
       isFavorite: false
     }
   ]);

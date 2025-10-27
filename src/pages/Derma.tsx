@@ -84,7 +84,7 @@ const SkinCare1: React.FC = memo(() => {
   return (
     <section className={styles.offersSection}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Top Skincare Offers (USA)</h2>
+        <h2 className={styles.title}>Top Skincare Offers </h2>
         <Link to="/buy-skincare" className={styles.viewAll}>
           View all offers →
         </Link>
@@ -114,8 +114,8 @@ const SkinCare1: React.FC = memo(() => {
             <div className={styles.info}>
               <p className={styles.name}>{offer.name}</p>
               <div className={styles.prices}>
-                <span className={styles.newPrice}>${(offer.price / 100).toFixed(2)}</span>
-                <span className={styles.oldPrice}>${(offer.oldPrice / 100).toFixed(2)}</span>
+                <span className={styles.newPrice}>KSh {offer.price.toLocaleString()}</span>
+                <span className={styles.oldPrice}>KSh {offer.oldPrice.toLocaleString()}</span>
               </div>
             </div>
 

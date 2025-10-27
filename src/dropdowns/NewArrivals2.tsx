@@ -1,6 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './NewArrivals2.module.css';
 
+
+
+// === Import images ===
+import pic1 from "../assets/products/Anua-Azelaic-Acid+Hyaluron-Redness-Soothing-Serum.png";
+import pic2 from "../assets/products/anua-heartleaf-pore-control-cleansing-OIL.png";
+import pic3 from "../assets/products/Ariul-Hydro-Sleeping-Mask-80g.png";
+import pic4 from "../assets/products/Axis-Y-Dark-Spot-Correcting-Glow-Serum-50g.png";
+import pic5 from "../assets/products/Beauty-of-joseon-ginseng-cleansing-oil-210ml.png";
+
 interface Product {
   id: number;
   image: string;
@@ -19,7 +28,7 @@ const NewArrivals1: React.FC = () => {
   const products: Product[] = [
     {
       id: 1,
-      image: '/images/azaleic-acid-serum.jpg',
+      image: pic1,
       category: 'Beauty and Skin Care',
       name: 'Anua Azaleic Acid+Hyaluron Redness Soothing Serum',
       price: 3200,
@@ -27,7 +36,7 @@ const NewArrivals1: React.FC = () => {
     },
     {
       id: 2,
-      image: '/images/heartleaf-cleansing-oil.jpg',
+      image: pic2,
       category: 'Beauty and Skin Care',
       name: 'Anua Heartleaf Pore Control Cleansing Oil 200ml',
       price: 2700,
@@ -35,7 +44,7 @@ const NewArrivals1: React.FC = () => {
     },
     {
       id: 3,
-      image: '/images/ariul-sleeping-mask.jpg',
+      image: pic3,
       category: 'Beauty and Skin Care',
       name: 'Ariul Hydro Sleeping Mask 80g',
       price: 0,
@@ -44,7 +53,7 @@ const NewArrivals1: React.FC = () => {
     },
     {
       id: 4,
-      image: '/images/axis-y-serum.jpg',
+      image: pic4,
       category: 'New on MYDAWA',
       name: 'Axis-Y Dark Spot Correcting Glow Serum 50g',
       price: 2800,
@@ -52,7 +61,7 @@ const NewArrivals1: React.FC = () => {
     },
     {
       id: 5,
-      image: '/images/beauty-of-joseon-oil.jpg',
+      image: pic5,
       category: 'Beauty and Skin Care',
       name: 'Beauty of Joseon Ginseng Cleansing Oil 210ml',
       price: 3000,
@@ -96,7 +105,7 @@ const NewArrivals1: React.FC = () => {
     <section className={styles.newArrivals} aria-labelledby="new-arrivals-heading">
       <div className={styles.container}>
         <h2 id="new-arrivals-heading" className={styles.heading}>
-          New on MYDAWA
+          New At Healthfield 
         </h2>
 
         <div className={styles.carouselWrapper}>
