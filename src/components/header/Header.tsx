@@ -3,18 +3,12 @@ import { useClickAway } from "react-use";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import {
-  FaEnvelope,
-  FaPhone,
   FaWhatsapp,
   FaFacebookF,
   FaTwitter,
   FaYoutube,
   FaInstagram,
   FaLinkedinIn,
-  FaSearch,
-  FaBars,
-  FaChevronDown,
-  FaTimes,
 } from "react-icons/fa";
 
 interface NavLink {
