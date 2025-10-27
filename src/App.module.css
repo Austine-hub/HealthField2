@@ -13,6 +13,22 @@
 
 @media (max-width: 768px) {
   .headerSpacer {
-    height: 90px; /* smaller header on mobile */
+    height: 65px !important ; /* smaller header on mobile */
+  }
+}
+
+
+
+
+/* ===== Responsive Visibility Control ===== */
+@media (min-width: 1025px) {
+  .bottomNav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bottomNav {
+    display: flex !important;
   }
 }

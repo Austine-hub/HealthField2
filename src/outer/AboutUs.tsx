@@ -50,7 +50,7 @@ const AboutUs: React.FC = () => {
           About Our Comprehensive Care Clinic
         </h2>
         <p className={styles.subtitle}>
-          At MapleWood Comprehensive Healthcare Centre, we are dedicated to providing
+          At Healthfield  Comprehensive Healthcare Centre, we are dedicated to providing
           patient-centered, affordable, and high-quality healthcare under one roof.
           Our multidisciplinary team ensures that every patient receives the care
           they deserve with compassion and professionalism.

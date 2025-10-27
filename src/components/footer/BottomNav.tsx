@@ -3,14 +3,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, ShoppingBag, ShoppingCart, FileText, MapPin } from "lucide-react";
 import toast from "react-hot-toast";
+import { useCart } from   "../../context/CartContext" ; // ✅ Import your cart context
 import styles from "./BottomNav.module.css";
 
 interface BottomNavProps {
-  onCartToggle?: () => void; // 👈 optional cart drawer toggle
+  onCartToggle?: () => void;
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
   const navigate = useNavigate();
+  const { getTotalItems } = useCart(); // ✅ access cart count
+  const totalItems = getTotalItems?.() ?? 0;
 
   const navItems = [
     { to: "/", label: "Home", icon: <Home strokeWidth={1.8} /> },
@@ -28,19 +31,24 @@ const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
     {
       to: "/cart",
       label: "Checkout",
-      icon: <ShoppingCart strokeWidth={1.8} />,
+      icon: (
+        <div className={styles.iconWithBadge}>
+          <ShoppingCart strokeWidth={1.8} className={styles.cartIcon} />
+          {totalItems > 0 && (
+            <span className={styles.cartCount}>{totalItems}</span>
+          )}
+        </div>
+      ),
       onClick: () => {
         toast.success("Opening your cart...", { duration: 1800 });
         onCartToggle?.();
-
-        // ✅ Allow the toast to show, then navigate
         setTimeout(() => navigate("/cart"), 500);
       },
     },
     {
       to: "https://www.google.com/maps/dir/-1.1010048,37.011456/HEALTHFIELD+PHARMACY,+Jkuat,+Muramati+road,+Gate+C+Rd,+Juja",
       label: "Stores",
-      icon: <MapPin strokeWidth={1.8} />,
+      icon: <MapPin strokeWidth={1.8} className={styles.mapIcon} />,
       external: true,
     },
   ];
@@ -56,7 +64,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
     >
       {navItems.map(({ to, label, icon, badge, external, onClick }) =>
         external ? (
-          // 🌍 External Link (Google Maps)
           <a
             key={label}
             href={to}
@@ -77,7 +84,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
             <span className={styles.label}>{label}</span>
           </a>
         ) : (
-          // 🧭 Internal Links
           <NavLink
             key={label}
             to={to}
@@ -86,8 +92,8 @@ const BottomNav: React.FC<BottomNavProps> = ({ onCartToggle }) => {
             }
             onClick={(e) => {
               if (onClick) {
-                e.preventDefault(); // prevent default navigation
-                onClick(); // call custom logic (toast + drawer + delayed nav)
+                e.preventDefault();
+                onClick();
               }
             }}
             aria-label={label}

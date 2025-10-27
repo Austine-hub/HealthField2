@@ -3,10 +3,15 @@ import { useClickAway } from "react-use";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
+interface NavLink {
+  label: string;
+  path: string;
+}
+
 interface NavSection {
   label: string;
   key: string;
-  links?: [string, string][];
+  links?: NavLink[];
   path?: string;
 }
 
@@ -30,14 +35,18 @@ const Header: React.FC = () => {
   }, []);
 
   const handleMouseEnter = useCallback((key: string) => {
-    if (window.innerWidth >= 769) setActiveDropdown(key);
+    if (window.innerWidth >= 769) {
+      setActiveDropdown(key);
+    }
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    if (window.innerWidth >= 769) setActiveDropdown(null);
+    if (window.innerWidth >= 769) {
+      setActiveDropdown(null);
+    }
   }, []);
 
-  const menus: NavSection[] = useMemo(
+  const navigationSections: NavSection[] = useMemo(
     () => [
       {
         label: "Home",
@@ -45,56 +54,66 @@ const Header: React.FC = () => {
         path: "/",
       },
       {
+        label: "Our Services",
+        key: "services",
+        path: "/about-us/",
+      },
+      {
         label: "Shop By Category",
         key: "category",
         links: [
-          ["Skin Care", "/categories/skin-care"],
-          ["Beauty & Cosmetics", "/categories/beauty-care-cosmetics"],
-          ["Vitamins & Supplements", "/categories/vitamins-supplements"],
-          ["Medicine", "/categories/medicine"],
-          ["Hygiene", "/categories/general-hygiene"],
-          ["Home Healthcare", "/categories/home-healthcare"],
+          { label: "Skin Care", path: "/categories/skin-care" },
+          { label: "Beauty & Cosmetics", path: "/categories/beauty-care-cosmetics" },
+          { label: "Vitamins & Supplements", path: "/categories/vitamins-supplements" },
+          { label: "Medicine", path: "/categories/medicine" },
+          { label: "Hygiene", path: "/categories/general-hygiene" },
+          { label: "Home Healthcare", path: "/categories/home-healthcare" },
         ],
       },
       {
         label: "Shop By Body System",
         key: "system",
         links: [
-          ["Breathing", "/system/respiratory"],
-          ["Digestion and Eating", "/system/git"],
-          ["Nervous", "/system/nervous"],
-          ["Sexual and Reproductive", "/system/reproductive"],
-          ["Skin Treatment", "/system/skin-treatment"],
-          ["Kidneys and Renal", "/system/renal"],
-          ["Diabetes", "/system/diabetes"],
-          ["Ear & Eye Care", "/system/ear-eye-care"],
-          ["Oral Hygiene", "/system/oral-hygiene"],
-          ["Muscles and Bones", "/system/msk"],
+          { label: "Breathing", path: "/system/respiratory" },
+          { label: "Digestion and Eating", path: "/system/git" },
+          { label: "Nervous", path: "/system/nervous" },
+          { label: "Sexual and Reproductive", path: "/system/reproductive" },
+          { label: "Skin Treatment", path: "/system/skin-treatment" },
+          { label: "Kidneys and Renal", path: "/system/renal" },
+          { label: "Diabetes", path: "/system/diabetes" },
+          { label: "Ear & Eye Care", path: "/system/ear-eye-care" },
+          { label: "Oral Hygiene", path: "/system/oral-hygiene" },
+          { label: "Muscles and Bones", path: "/system/msk" },
         ],
       },
       {
         label: "Shop By Condition",
         key: "condition",
         links: [
-          ["Hypertension", "/conditions/hypertension"],
-          ["Diabetes", "/conditions/diabetes"],
-          ["Malaria", "/conditions/malaria"],
-          ["Fungal Infection", "/conditions/fungal-infection"],
-          ["Skin Treatment", "/conditions/skin-treatment"],
-          ["UTI Infections", "/conditions/uti-infections"],
-          ["Cough, Cold & Flu", "/conditions/cough-cold-flu"],
-          ["Ear & Eye Care", "/conditions/ear-eye-care"],
-          ["Oral Hygiene", "/conditions/oral-hygiene"],
+          { label: "Hypertension", path: "/conditions/hypertension" },
+          { label: "Diabetes", path: "/conditions/diabetes" },
+          { label: "Malaria", path: "/conditions/malaria" },
+          { label: "Fungal Infection", path: "/conditions/fungal-infection" },
+          { label: "Skin Treatment", path: "/conditions/skin-treatment" },
+          { label: "UTI Infections", path: "/conditions/uti-infections" },
+          { label: "Cough, Cold & Flu", path: "/conditions/cough-cold-flu" },
+          { label: "Ear & Eye Care", path: "/conditions/ear-eye-care" },
+          { label: "Oral Hygiene", path: "/conditions/oral-hygiene" },
         ],
       },
       {
         label: "Prescription Assistance",
         key: "prescription",
         links: [
-          ["Upload Prescription", "/prescription/upload"],
-          ["Request Prescription", "/prescription/refill"],
-          ["Talk to a Pharmacist", "/prescription/support"],
+          { label: "Upload Prescription", path: "/prescription/upload" },
+          { label: "Request Prescription", path: "/prescription/refill" },
+          { label: "Talk to a Pharmacist", path: "/prescription/support" },
         ],
+      },
+      {
+        label: "Contact Us",
+        key: "contact",
+        path: "/contact",
       },
     ],
     []
@@ -102,26 +121,30 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header} ref={headerRef}>
-      {/* === Top Bar === */}
+      {/* Top Bar */}
       <div className={styles.topBar}>
         <div className={styles.container}>
           <div className={styles.topBarContent}>
-            {/* === Logo Section === */}
+            {/* Logo Section */}
             <div className={styles.logoContainer}>
-              <Link to="/" className={styles.logoLink} aria-label="Healthfield Pharmacy — Home">
+              <Link
+                to="/"
+                className={styles.logoLink}
+                aria-label="Healthfield Pharmacy - Home"
+              >
                 <div className={styles.logo}>
                   <div className={styles.logoIcon}>
                     <img
                       src="/logo.png"
-                      alt="Healthfield Pharmacy circular logo"
+                      alt="Healthfield Pharmacy"
                       className={styles.logoImage}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                     />
                   </div>
                   <div className={styles.logoText}>
-                    <span className={styles.maplewood}>HEALTHFIELD</span>
-                    <span className={styles.pharmacy}>PHARMACY</span>
+                    <span className={styles.brandName}>HEALTHFIELD</span>
+                    <span className={styles.brandType}>PHARMACY</span>
                     <span className={styles.tagline}>
                       Your Health, Our Mission — Reliable Care. Anytime.
                     </span>
@@ -130,83 +153,100 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* === Top Nav Links === */}
-            <nav className={styles.topNav} aria-label="Top Navigation">
-              <Link to="/about-us">About Us</Link>
-              <Link to="/newsroom">Newsroom</Link>
-              <Link to="/investor-relations">Investor Relations</Link>
-              <Link to="/careers">Careers</Link>
+            {/* Top Navigation Links */}
+            <nav className={styles.topNav} aria-label="Secondary Navigation">
+              <Link to="/new-arrivals" className={styles.topNavLink}>
+                <span className={styles.badge}>New Arrivals</span>
+              </Link>
+              <Link to="/trending" className={styles.topNavLink}>
+                Trending
+              </Link>
+              <Link to="/best-sellers" className={styles.topNavLink}>
+                Best Sellers
+              </Link>
+              <div className={styles.dropdown}>
+                <button className={styles.dropdownButton}>Other Services</button>
+                <div className={styles.dropdownMenu}>
+                  <Link to="/services/radiology">Radiology Services</Link>
+                  <Link to="/services/lab">Laboratory Services</Link>
+                  <Link to="/services/vct">VCT Services</Link>
+                  <Link to="/services/mch">MCH Clinic</Link>
+                </div>
+              </div>
             </nav>
 
-            {/* === Shop Now Button === */}
+            {/* Shop Now Button */}
             <div className={styles.topActions}>
-              <div id="navbar-menu" className={styles.navMenu} role="menu">
-                <Link
-                  to="/shop"
-                  className={styles.enrollButton}
-                  role="menuitem"
-                  aria-label="Shop Now at Healthfield Pharmacy"
-                >
-                  <span className={styles.enrollIcon} aria-hidden="true">▶</span>
-                  <span>Shop Now</span>
-                </Link>
-              </div>
+              <Link
+                to="/shop"
+                className={styles.shopButton}
+                aria-label="Shop Now at Healthfield Pharmacy"
+              >
+                <span className={styles.shopIcon} aria-hidden="true">▶</span>
+                <span>Shop Now</span>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* === Bottom Navigation Bar === */}
+      {/* Bottom Navigation Bar */}
       <div className={styles.bottomBar}>
         <div className={styles.container}>
           {/* Mobile Menu Toggle */}
           <button
-            className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.open : ""}`}
+            className={`${styles.mobileToggle} ${
+              mobileMenuOpen ? styles.mobileToggleOpen : ""
+            }`}
             onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
             type="button"
           >
-            <span className={styles.hamburger}></span>
-            <span className={styles.hamburger}></span>
-            <span className={styles.hamburger}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
           </button>
 
-          {/* === Main Navigation === */}
+          {/* Main Navigation */}
           <nav
-            className={`${styles.mainNav} ${mobileMenuOpen ? styles.mobileOpen : ""}`}
-            aria-label="Main Navigation"
+            className={`${styles.mainNav} ${
+              mobileMenuOpen ? styles.mainNavOpen : ""
+            }`}
+            aria-label="Primary Navigation"
           >
             <ul className={styles.navList}>
-              {menus.map((menu) => (
+              {navigationSections.map((section) => (
                 <li
-                  key={menu.key}
+                  key={section.key}
                   className={styles.navItem}
-                  onMouseEnter={() => handleMouseEnter(menu.key)}
+                  onMouseEnter={() => handleMouseEnter(section.key)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  {menu.path ? (
-                    <Link to={menu.path} className={styles.navButton}>
-                      {menu.label}
+                  {section.path ? (
+                    <Link to={section.path} className={styles.navButton}>
+                      {section.label}
                     </Link>
                   ) : (
                     <>
                       <button
-                        onClick={() => toggleDropdown(menu.key)}
+                        onClick={() => toggleDropdown(section.key)}
                         className={`${styles.navButton} ${
-                          activeDropdown === menu.key ? styles.active : ""
+                          activeDropdown === section.key ? styles.navButtonActive : ""
                         }`}
-                        aria-expanded={activeDropdown === menu.key}
+                        aria-expanded={activeDropdown === section.key}
+                        aria-haspopup="true"
                         type="button"
                       >
-                        {menu.label}
+                        {section.label}
                         <svg
+                          className={styles.chevron}
                           width="12"
                           height="12"
                           viewBox="0 0 12 12"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className={styles.chevron}
+                          aria-hidden="true"
                         >
                           <path
                             d="M3 4.5L6 7.5L9 4.5"
@@ -218,12 +258,14 @@ const Header: React.FC = () => {
                         </svg>
                       </button>
 
-                      {activeDropdown === menu.key && menu.links && (
-                        <div className={styles.dropdown}>
-                          <ul>
-                            {menu.links.map(([label, href]) => (
-                              <li key={href}>
-                                <Link to={href}>{label}</Link>
+                      {activeDropdown === section.key && section.links && (
+                        <div className={styles.navDropdown}>
+                          <ul className={styles.navDropdownList}>
+                            {section.links.map((link) => (
+                              <li key={link.path} className={styles.navDropdownItem}>
+                                <Link to={link.path} className={styles.navDropdownLink}>
+                                  {link.label}
+                                </Link>
                               </li>
                             ))}
                           </ul>

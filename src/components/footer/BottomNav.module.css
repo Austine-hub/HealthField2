@@ -1,23 +1,19 @@
 /* ==========================================================
-   BottomNav.module.css — Modern Mobile-Optimized (2025)
-   - Fully responsive and touch-friendly
-   - Unified + cleaned up from multiple versions
-   - Uses CSS variables for easy theming
-   - Subtle motion and accessibility enhancements
+   BottomNav.module.css — Updated (Always Show Labels + Custom Colors)
    ========================================================== */
 
-/* ---------- Root Theme Variables ---------- */
 :root {
-  --accent-color: #00a8e1; /* Pharmacy blue accent */
-  --alert-color: #ff5252; /* Alert red for badges */
-  --success-color: #28a745; /* Green for external links */
+  --accent-color: #00a8e1;
+  --alert-color: #ff5252;
+  --success-color: #28a745; /* Green for MapPin */
+  --cart-color: #ff8c00; /* Orange for Cart */
   --text-muted: #666;
   --bg-light: #ffffff;
   --shadow-soft: 0 -2px 8px rgba(0, 0, 0, 0.05);
   --border-light: 1px solid #e5e5e5;
 }
 
-/* ---------- Navigation Container ---------- */
+/* ---------- Container ---------- */
 .bottomNav {
   position: fixed;
   bottom: 0;
@@ -32,7 +28,6 @@
   align-items: center;
   z-index: 1000;
   padding: 0 0.4rem;
-  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 /* ---------- Nav Item ---------- */
@@ -47,16 +42,10 @@
   min-width: 56px;
   padding: 6px 0;
   transition: color 0.3s ease, transform 0.2s ease;
-  touch-action: manipulation;
 }
 
-.navItem:focus,
 .navItem:hover {
   color: var(--accent-color);
-}
-
-.navItem:active {
-  transform: scale(0.96);
 }
 
 /* ---------- Icons ---------- */
@@ -75,14 +64,21 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.iconWrapper:active .icon {
-  transform: scale(0.9);
+/* 🟢 Map Icon — Always Green */
+.mapIcon {
+  color: var(--success-color) !important;
+}
+
+/* 🟠 Cart Icon — Always Orange */
+.cartIcon {
+  color: var(--cart-color) !important;
 }
 
 /* ---------- Labels ---------- */
 .label {
   font-size: 11px;
   line-height: 1;
+  display: block !important; /* Always show label */
 }
 
 /* ---------- Badges ---------- */
@@ -99,7 +95,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------- Active / Highlighted ---------- */
+/* ---------- Active ---------- */
 .active .icon {
   color: var(--accent-color);
   transform: scale(1.15);
@@ -110,45 +106,12 @@
   font-weight: 600;
 }
 
-/* ---------- External Link (e.g. Google Maps) ---------- */
+/* ---------- External Link ---------- */
 .externalLink {
   color: var(--success-color);
 }
 
-.externalLink:hover {
-  color: #32cd5f;
-}
-
-.externalIcon {
-  animation: pulse 2.2s infinite ease-in-out;
-  color: var(--success-color);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 /* ---------- Responsiveness ---------- */
-
-/* Hide nav on larger screens */
-@media (min-width: 768px) {
-  .bottomNav {
-    display: none;
-  }
-}
-
-/* Medium devices */
 @media (max-width: 768px) {
   .bottomNav {
     height: 60px;
@@ -161,11 +124,9 @@
   }
 }
 
-/* Small devices */
 @media (max-width: 480px) {
   .bottomNav {
     height: 58px;
-    padding: 0 0.2rem;
   }
 
   .icon {
@@ -175,17 +136,59 @@
 
   .label {
     font-size: 10px;
+    display: block !important; /* Force show even on smallest screens */
   }
 }
 
-/* Extra small — ultra compact view */
-@media (max-width: 360px) {
-  .label {
-    display: none;
-  }
 
-  .icon {
-    width: 24px;
-    height: 24px;
+/* ---------- Cart Icon with Item Count ---------- */
+.iconWithBadge {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: var(--cart-color);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 2px 5px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 1;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.25s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
+
+
+/* ===== Responsive Visibility Control ===== */
+@media (min-width: 1025px) {
+  .bottomNav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bottomNav {
+    display: flex !important;
+  }
+}
+

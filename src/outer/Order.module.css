@@ -1,0 +1,435 @@
+.orderContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Confirmation Header */
+.confirmationSection {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.confirmationContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkmarkIcon {
+  color: #10b981;
+  width: 3rem;
+  height: 3rem;
+}
+
+.thankYouText {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.orderNumber {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.detailsButton {
+  margin-top: 1rem;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.detailsButton:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Layout Grid */
+.contentGrid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Section */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.sectionIcon {
+  color: #2563eb;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Text and Notes */
+.notificationText,
+.paymentDescription {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.globalItemsNote {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Shipment Card */
+.shipmentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.shipmentItem {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: box-shadow 0.3s ease;
+  background-color: #fafafa;
+}
+.shipmentItem:hover {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.shipmentTitle {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.shipmentDetail,
+.deliverySchedule {
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.deliveryDate {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+
+/* Container */
+.orderContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Confirmation Section */
+.confirmationSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.confirmationContent {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.checkmarkIcon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmarkSvg {
+  width: 36px;
+  height: 36px;
+  color: #4caf50;
+}
+
+.confirmationText {
+  flex: 1;
+}
+
+.thankYouText {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.orderNumber {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.detailsButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #ff9800;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.detailsButton:hover {
+  background-color: #f57c00;
+}
+
+.detailsButton:active {
+  transform: scale(0.98);
+}
+
+.detailsButton:focus-visible {
+  outline: 2px solid #ff9800;
+  outline-offset: 2px;
+}
+
+/* Content Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Section Styles */
+.pickupSection,
+.paymentSection {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.sectionIcon {
+  width: 24px;
+  height: 24px;
+  color: #333333;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.notificationText,
+.paymentDescription {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.875rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Shipments */
+.shipmentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.shipmentItem {
+  margin: 0;
+}
+
+.shipmentTitle {
+  margin: 0 0 0.375rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.shipmentDetail {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.deliverySchedule {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.deliveryDate {
+  font-weight: 600;
+  color: #000000;
+}
+
+.globalItemsNote {
+  margin: 1.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .orderContainer {
+    padding: 0.75rem;
+  }
+
+  .confirmationSection {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  .confirmationContent {
+    width: 100%;
+  }
+
+  .detailsButton {
+    width: 100%;
+  }
+
+  .pickupSection,
+  .paymentSection {
+    padding: 1.25rem;
+  }
+
+  .checkmarkIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .checkmarkSvg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmationSection {
+    padding: 1rem;
+  }
+
+  .confirmationContent {
+    gap: 1rem;
+  }
+
+  .checkmarkIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .checkmarkSvg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .thankYouText {
+    font-size: 0.9375rem;
+  }
+
+  .orderNumber {
+    font-size: 0.9375rem;
+  }
+
+  .pickupSection,
+  .paymentSection {
+    padding: 1rem;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.pickupSection:focus-visible,
+.paymentSection:focus-visible {
+  outline: 2px solid #4285f4;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .detailsButton {
+    display: none;
+  }
+
+  .orderContainer {
+    max-width: 100%;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}

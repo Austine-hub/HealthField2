@@ -57,6 +57,7 @@ import CNS from "./categories/Nervous";
 import MSK from "./categories/Musculosketal";
 import SkinCare1 from "./pages/Derma";
 import Header from "./components/header/Header";
+import Order from "./outer/Order";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -222,6 +223,10 @@ const App: FC = () => (
           {/* === Cart Page === */}
           <Route path="/cart" element={<Cart/>} />  
           <Route path="/wishlist" element={<Wishlist/>} />
+          
+          {/* === Checkout= */}
+          <Route path="/checkout" element={<Order/>} />  
+          
 
 
           {/* === 404 — Not Found === */}
