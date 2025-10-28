@@ -22,11 +22,8 @@ import pic12 from "../assets/products/aveeno-daily.png";
 import pic13 from "../assets/products/glow-recipe.png";
 import pic14 from "../assets/products/cosrx-snail.png";
 import pic15 from "../assets/products/first-aid-beauty.png";
-import pic16 from "../assets/products/kiehl's-cream.png";
-import pic17 from "../assets/products/clinique-gel.png";
-import pic18 from "../assets/products/laneige-sleeping mask.png";
-import pic19 from "../assets/products/skinfix-barrier.png";
-import pic20 from "../assets/products/summer-fridays.png";
+
+
 
 type Offer = {
   id: string;
@@ -38,29 +35,24 @@ type Offer = {
 };
 
 const offersData: Offer[] = [
-  { id: "1", name: "CeraVe Hydrating Facial Cleanser", image: pic1, discount: 10, price: 1599, oldPrice: 1799 },
-  { id: "2", name: "The Ordinary Niacinamide 10% + Zinc 1%", image: pic2, discount: 12, price: 999, oldPrice: 1149 },
-  { id: "3", name: "La Roche-Posay Toleriane Double Repair Moisturizer", image: pic3, discount: 15, price: 2099, oldPrice: 2499 },
-  { id: "4", name: "Neutrogena Hydro Boost Water Gel", image: pic4, discount: 10, price: 1799, oldPrice: 1999 },
-  { id: "5", name: "Tatcha The Dewy Skin Cream", image: pic5, discount: 8, price: 6499, oldPrice: 7099 },
-  { id: "6", name: "Olay Regenerist Retinol 24 Night Moisturizer", image: pic6, discount: 10, price: 2899, oldPrice: 3199 },
-  { id: "7", name: "Paula’s Choice Skin Perfecting 2% BHA Liquid Exfoliant", image: pic7, discount: 15, price: 3199, oldPrice: 3749 },
-  { id: "8", name: "e.l.f. Holy Hydration! Face Cream", image: pic8, discount: 10, price: 899, oldPrice: 999 },
-  { id: "9", name: "Innisfree Green Tea Seed Serum", image: pic9, discount: 12, price: 2299, oldPrice: 2599 },
-  { id: "10", name: "Drunk Elephant Protini Polypeptide Cream", image: pic10, discount: 10, price: 5699, oldPrice: 6299 },
-  { id: "11", name: "Fenty Skin Total Cleans’r Remove-It-All Cleanser", image: pic11, discount: 10, price: 2899, oldPrice: 3199 },
-  { id: "12", name: "Aveeno Daily Moisturizing Lotion", image: pic12, discount: 10, price: 1399, oldPrice: 1599 },
-  { id: "13", name: "Glow Recipe Watermelon Glow Niacinamide Dew Drops", image: pic13, discount: 8, price: 3699, oldPrice: 3999 },
-  { id: "14", name: "COSRX Advanced Snail 96 Mucin Power Essence", image: pic14, discount: 12, price: 2199, oldPrice: 2499 },
-  { id: "15", name: "First Aid Beauty Ultra Repair Cream", image: pic15, discount: 10, price: 2999, oldPrice: 3299 },
-  { id: "16", name: "Kiehl’s Ultra Facial Cream", image: pic16, discount: 10, price: 3599, oldPrice: 3999 },
-  { id: "17", name: "Clinique Dramatically Different Moisturizing Gel", image: pic17, discount: 10, price: 2899, oldPrice: 3199 },
-  { id: "18", name: "Laneige Lip Sleeping Mask (Berry)", image: pic18, discount: 15, price: 1999, oldPrice: 2299 },
-  { id: "19", name: "Skinfix Barrier+ Triple Lipid-Peptide Cream", image: pic19, discount: 12, price: 4299, oldPrice: 4799 },
-  { id: "20", name: "Summer Fridays Jet Lag Mask", image: pic20, discount: 10, price: 4299, oldPrice: 4799 },
+  { id: "1", name: "Colgate Total Whitening Toothpaste 120g", image: pic1, discount: 10, price: 650, oldPrice: 720 },
+  { id: "2", name: "Sensodyne Repair & Protect Toothpaste 100g", image: pic2, discount: 12, price: 950, oldPrice: 1080 },
+  { id: "3", name: "Oral-B Pro-Health Toothbrush (Medium Bristles)", image: pic3, discount: 10, price: 500, oldPrice: 560 },
+  { id: "4", name: "Listerine Cool Mint Mouthwash 500ml", image: pic4, discount: 15, price: 1100, oldPrice: 1290 },
+  { id: "5", name: "Colgate Plax Fresh Tea Mouthwash 500ml", image: pic5, discount: 10, price: 950, oldPrice: 1050 },
+  { id: "6", name: "Crest 3D White Brilliance Toothpaste 116g", image: pic6, discount: 10, price: 1200, oldPrice: 1340 },
+  { id: "7", name: "Oral-B Glide Pro-Health Dental Floss 40m", image: pic7, discount: 12, price: 650, oldPrice: 740 },
+  { id: "8", name: "Sensodyne Fresh Mint Toothpaste 100g", image: pic8, discount: 10, price: 900, oldPrice: 1000 },
+  { id: "9", name: "TheraBreath Fresh Breath Oral Rinse 473ml", image: pic9, discount: 8, price: 1650, oldPrice: 1790 },
+  { id: "10", name: "Colgate 360° Total Advanced Toothbrush", image: pic10, discount: 10, price: 700, oldPrice: 780 },
+  { id: "11", name: "Oral-B Electric Toothbrush Vitality CrossAction", image: pic11, discount: 12, price: 3800, oldPrice: 4300 },
+  { id: "12", name: "Crest Pro-Health Advanced Mouthwash 1L", image: pic12, discount: 10, price: 1450, oldPrice: 1600 },
+  { id: "13", name: "Colgate Optic White Renewal Toothpaste 85g", image: pic13, discount: 10, price: 1150, oldPrice: 1280 },
+  { id: "14", name: "Tom’s of Maine Fluoride-Free Toothpaste 100g", image: pic14, discount: 12, price: 1050, oldPrice: 1190 },
+  { id: "15", name: "GUM Soft-Picks Advanced Dental Picks (60 pack)", image: pic15, discount: 10, price: 850, oldPrice: 940 },
 ];
 
-const SkinCare1: React.FC = memo(() => {
+const OralCare: React.FC = memo(() => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { addToCart } = useCart();
 
@@ -146,4 +138,4 @@ const SkinCare1: React.FC = memo(() => {
   );
 });
 
-export default SkinCare1;
+export default OralCare;

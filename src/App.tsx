@@ -60,6 +60,10 @@ import Header from "./components/header/Header";
 import Order from "./outer/Order";
 import HTN from "./conditions/Hypertension";
 import CoughFluCold from "./conditions/CoughFluCold";
+import UTI from "./conditions/Uti";
+import EyeEar from "./conditions/EyeEar";
+import OralCare from "./conditions/Oral";
+import SkinDrugs from "./conditions/SkinInfection";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -153,6 +157,7 @@ const App: FC = () => (
                 <Hero />
                 <Shop/>
                 <Offers1/>
+                <SkinDrugs/>
                 <ProductCarousel />
                 <Offers />               
                 <BestSellers />            
@@ -183,7 +188,12 @@ const App: FC = () => (
           <Route path="/condition/heart" element={<CVS />} />
           <Route path="/condition/diabetes" element={<DM/>} />
           <Route path="/conditions/htn" element={<HTN/>} />
-          <Route path="/conditions/flu" element={<CoughFluCold/>} />
+          <Route path="/conditions/flu" element={<CoughFluCold/>} />  
+          <Route path="/conditions/uti-infections" element={<UTI/>} /> 
+          <Route path="/conditions/ear-eye-care" element={<EyeEar/>} /> 
+          <Route path="/conditions/oral-hygiene" element={<OralCare/>} />
+          <Route path="/conditions/skin-treatment" element={<SkinDrugs/>} />  
+
 
           <Route path="/condition/women" element={<WomenHealthShop />} />
           <Route path="/condition/men" element={<MensHealth />} />
