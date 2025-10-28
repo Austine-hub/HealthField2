@@ -202,12 +202,12 @@ const App: FC = () => (
           {/* === System Routes === */}
           <Route path="/system/respiratory" element={<Resp/>} />
           <Route path="/system/git" element={<GIT/>} />
-          <Route path="/system/oral" element={<ProductsWrapper />} />
+          <Route path="/system/oral-hygiene" element={<OralCare/>} />
           <Route path="/system/renal" element={<Renal/>} />
           <Route path="/system/reproductive" element={<Sexual/>} /> 
           <Route path="/system/nervous" element={<CNS/>} /> 
-          <Route path="/conditions/diabetes" element={<DM/>} /> 
-          <Route path="/system/ent" element={<ProductCarousel/>} /> 
+          <Route path="/system/diabetes" element={<DM/>} /> 
+          <Route path="/system/ent" element={<EyeEar/>} /> 
           <Route path="/system/skin-treatment" element={<SkinCare/>} /> 
           <Route path="/system/msk" element={<MSK/>} /> 
 

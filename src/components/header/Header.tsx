@@ -90,15 +90,16 @@ const Header: React.FC = () => {
         key: "system",
         links: [
           { label: "Breathing", path: "/system/respiratory" },
+          { label: "Diabetes", path: "/system/diabetes" },
           { label: "Digestion and Eating", path: "/system/git" },
           { label: "Nervous", path: "/system/nervous" },
           { label: "Sexual and Reproductive", path: "/system/reproductive" },
           { label: "Skin Treatment", path: "/system/skin-treatment" },
           { label: "Kidneys and Renal", path: "/system/renal" },
-          { label: "Diabetes", path: "/system/diabetes" },
-          { label: "Ear & Eye Care", path: "/system/ear-eye-care" },
+          { label: "Ear & Eye Care", path: "/system/ent" },
           { label: "Oral Hygiene", path: "/system/oral-hygiene" },
           { label: "Muscles and Bones", path: "/system/msk" },
+
         ],
       },
       {
