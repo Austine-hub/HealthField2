@@ -315,9 +315,17 @@ const Header: React.FC = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   {section.path ? (
-                    <Link to={section.path} className={styles.navButton}>
-                      {section.label}
-                    </Link>
+                        <Link
+                          to={section.path}
+                          className={styles.navButton}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          {section.label}
+                        </Link>
+
                   ) : (
                     <>
                       <button
@@ -350,9 +358,17 @@ const Header: React.FC = () => {
                           <ul className={styles.navDropdownList}>
                             {section.links.map((link) => (
                               <li key={link.path} className={styles.navDropdownItem}>
-                                <Link to={link.path} className={styles.navDropdownLink}>
+                                <Link
+                                  to={link.path}
+                                  className={styles.navDropdownLink}
+                                  onClick={() => {
+                                    setActiveDropdown(null);
+                                    setMobileMenuOpen(false);
+                                  }}
+                                >
                                   {link.label}
                                 </Link>
+
                               </li>
                             ))}
                           </ul>

@@ -13,7 +13,7 @@
 
 @media (max-width: 768px) {
   .headerSpacer {
-    height: 45px !important ; /* smaller header on mobile */
+    height: 50px !important ; /* smaller header on mobile */
   }
 }
 

@@ -2,126 +2,104 @@
 
 import type { CartItem } from "../context/CartContext";
 
-/**
- * Configuration for WhatsApp Business
- */
+/* ---------------------------------------------------------------
+   WhatsApp Business Configuration
+--------------------------------------------------------------- */
 const WHATSAPP_CONFIG = {
-  // Replace with your business WhatsApp number (include country code, no + or spaces)
-  // Example: "254712345678" for Kenya
+  // ✅ Kenya number (no "+" or spaces)
   phoneNumber: "254796787207",
-  
-  // Message template customization
+
   greeting: "Hello! 👋",
   storeName: "Healthfield Pharmacy",
 } as const;
 
-/**
- * Currency formatter for consistent price display
- */
-const formatPrice = (amount: number): string => {
-  return new Intl.NumberFormat("en-KE", {
+/* ---------------------------------------------------------------
+   Helper: Currency Formatter
+--------------------------------------------------------------- */
+const formatPrice = (amount: number): string =>
+  new Intl.NumberFormat("en-KE", {
     style: "currency",
     currency: "KES",
     minimumFractionDigits: 0,
   }).format(amount);
-};
 
-/**
- * Generates a formatted WhatsApp message from cart items
- */
+/* ---------------------------------------------------------------
+   Generate Custom WhatsApp Message
+--------------------------------------------------------------- */
 export const generateWhatsAppMessage = (
   cartItems: CartItem[],
   subtotal: number
 ): string => {
-  if (!cartItems.length) {
-    return `${WHATSAPP_CONFIG.greeting}\n\nI'm interested in your products.`;
+  if (!cartItems?.length) {
+    return `${WHATSAPP_CONFIG.greeting}\n\nI'm interested in your products from *${WHATSAPP_CONFIG.storeName}*.`;
   }
 
-  // Build the message parts
-  const parts: string[] = [
-    WHATSAPP_CONFIG.greeting,
+  const messageParts: string[] = [
+    `${WHATSAPP_CONFIG.greeting}`,
     `I'd like to place an order from *${WHATSAPP_CONFIG.storeName}*:\n`,
+    "━━━━━━━━━━━━━━━━━━━━",
+    "*ORDER DETAILS:*",
   ];
 
-  // Add separator
-  parts.push("━━━━━━━━━━━━━━━━━━━━");
-  parts.push("*ORDER DETAILS*\n");
-
-  // Add each item with formatting
   cartItems.forEach((item, index) => {
     const itemTotal = item.price * item.quantity;
-    
-    parts.push(`*${index + 1}. ${item.name}*`);
-    
-    // Add variation if exists
-    if (item.variation) {
-      parts.push(`   Variant: ${item.variation}`);
-    }
-    
-    // Quantity and pricing
-    parts.push(`   Qty: ${item.quantity} × ${formatPrice(item.price)}`);
-    parts.push(`   Subtotal: ${formatPrice(itemTotal)}\n`);
+    messageParts.push(
+      `\n${index + 1}. *${item.name}*`,
+      item.variation ? `   Variant: ${item.variation}` : "",
+      `   Qty: ${item.quantity} × ${formatPrice(item.price)}`,
+      `   Subtotal: ${formatPrice(itemTotal)}`
+    );
   });
 
-  // Add totals section
-  parts.push("━━━━━━━━━━━━━━━━━━━━");
-  parts.push("*SUMMARY*");
-  parts.push(`Total Items: ${cartItems.reduce((sum, item) => sum + item.quantity, 0)}`);
-  parts.push(`*Grand Total: ${formatPrice(subtotal)}*`);
-  parts.push("━━━━━━━━━━━━━━━━━━━━\n");
-  
-  // Add closing
-  parts.push("Please confirm my order and let me know the next steps. Thank you! 🙏");
+  messageParts.push(
+    "\n━━━━━━━━━━━━━━━━━━━━",
+    "*SUMMARY:*",
+    `Total Items: ${cartItems.reduce((sum, item) => sum + item.quantity, 0)}`,
+    `*Grand Total:* ${formatPrice(subtotal)}`,
+    "━━━━━━━━━━━━━━━━━━━━\n",
+    "Please confirm my order and let me know the next steps. Thank you! 🙏"
+  );
 
-  return parts.join("\n");
+  return messageParts.filter(Boolean).join("\n");
 };
 
-/**
- * Opens WhatsApp with pre-filled message
- */
+/* ---------------------------------------------------------------
+   Open WhatsApp With Pre-Filled Message
+--------------------------------------------------------------- */
 export const openWhatsAppOrder = (message: string): void => {
-  // Encode the message for URL
-  const encodedMessage = encodeURIComponent(message);
-  
-  // Construct WhatsApp URL
-  // Use api.whatsapp.com for better cross-platform compatibility
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_CONFIG.phoneNumber}&text=${encodedMessage}`;
-  
-  // Open in new window/tab
+  const encodedMessage = encodeURIComponent(message.trim());
+
+  // ✅ Updated URL: wa.me works on both mobile & desktop
+  const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodedMessage}`;
+
+  // ✅ Open in a new tab safely
   window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 };
 
-/**
- * Validates phone number format
- */
-export const isValidWhatsAppNumber = (phone: string): boolean => {
-  // Basic validation: should be digits only, 10-15 characters
-  const phoneRegex = /^\d{10,15}$/;
-  return phoneRegex.test(phone);
-};
+/* ---------------------------------------------------------------
+   Phone Validation (Basic)
+--------------------------------------------------------------- */
+export const isValidWhatsAppNumber = (phone: string): boolean =>
+  /^\d{10,15}$/.test(phone);
 
-/**
- * Main handler: generates message and opens WhatsApp
- */
+/* ---------------------------------------------------------------
+   Main Handler
+--------------------------------------------------------------- */
 export const handleWhatsAppOrder = (
   cartItems: CartItem[],
   subtotal: number
 ): boolean => {
-  // Validate configuration
   if (!isValidWhatsAppNumber(WHATSAPP_CONFIG.phoneNumber)) {
-    console.error("Invalid WhatsApp number in configuration");
+    console.error("❌ Invalid WhatsApp number in configuration");
     return false;
   }
 
-  // Generate message
-  const message = generateWhatsAppMessage(cartItems, subtotal);
-  
-  // Open WhatsApp
   try {
+    const message = generateWhatsAppMessage(cartItems, subtotal);
     openWhatsAppOrder(message);
     return true;
-  } catch (error) {
-    console.error("Failed to open WhatsApp:", error);
+  } catch (err) {
+    console.error("❌ Failed to open WhatsApp:", err);
     return false;
   }
 };
