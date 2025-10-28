@@ -105,15 +105,17 @@ const Header: React.FC = () => {
         label: "Shop By Condition",
         key: "condition",
         links: [
-          { label: "Hypertension", path: "/conditions/hypertension" },
+          { label: "Hypertension", path: "/conditions/htn" },
           { label: "Diabetes", path: "/conditions/diabetes" },
-          { label: "Malaria", path: "/conditions/malaria" },
-          { label: "Fungal Infection", path: "/conditions/fungal-infection" },
-          { label: "Skin Treatment", path: "/conditions/skin-treatment" },
+          { label: "Cough, Cold & Flu", path: "/conditions/flu" },
           { label: "UTI Infections", path: "/conditions/uti-infections" },
-          { label: "Cough, Cold & Flu", path: "/conditions/cough-cold-flu" },
+          { label: "Skin Treatment", path: "/conditions/skin-treatment" },
           { label: "Ear & Eye Care", path: "/conditions/ear-eye-care" },
           { label: "Oral Hygiene", path: "/conditions/oral-hygiene" },
+          { label: "Malaria", path: "/conditions/malaria" },
+          { label: "Fungal Infection", path: "/conditions/fungal-infection" },
+         
+
         ],
       },
       {

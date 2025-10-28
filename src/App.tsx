@@ -58,6 +58,8 @@ import MSK from "./categories/Musculosketal";
 import SkinCare1 from "./pages/Derma";
 import Header from "./components/header/Header";
 import Order from "./outer/Order";
+import HTN from "./conditions/Hypertension";
+import CoughFluCold from "./conditions/CoughFluCold";
 
 // ===============================================================
 // 🧠 Lazy-loaded Routes for Performance Optimization
@@ -180,6 +182,9 @@ const App: FC = () => (
           {/* === Condition Routes === */}
           <Route path="/condition/heart" element={<CVS />} />
           <Route path="/condition/diabetes" element={<DM/>} />
+          <Route path="/conditions/htn" element={<HTN/>} />
+          <Route path="/conditions/flu" element={<CoughFluCold/>} />
+
           <Route path="/condition/women" element={<WomenHealthShop />} />
           <Route path="/condition/men" element={<MensHealth />} />
 
