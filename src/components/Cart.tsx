@@ -2,11 +2,20 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Trash2, ShoppingCart, AlertCircle, Minus, Plus } from "lucide-react";
+import { 
+  Trash2, 
+  ShoppingCart, 
+  AlertCircle, 
+  Minus, 
+  Plus,
+  MessageCircle,
+  ArrowRight 
+} from "lucide-react";
 import { toast } from "sonner";
 import clsx from "clsx";
 
 import { useCart } from "../context/CartContext";
+import { handleWhatsAppOrder } from "../utils/whatsappOrder";
 import styles from "./Cart.module.css";
 
 // --- Helpers -------------------------------------------------
@@ -123,6 +132,24 @@ const Cart: React.FC = () => {
     }
     navigate("/checkout");
   }, [cartItems.length, navigate]);
+
+  /**
+   * WhatsApp Order Handler
+   */
+  const handleWhatsAppClick = useCallback(() => {
+    if (!cartItems.length) {
+      toast.info("Your cart is empty. Add items before ordering via WhatsApp.");
+      return;
+    }
+
+    const success = handleWhatsAppOrder(cartItems, subtotal);
+    
+    if (success) {
+      toast.success("Opening WhatsApp...");
+    } else {
+      toast.error("Failed to open WhatsApp. Please check your settings.");
+    }
+  }, [cartItems, subtotal]);
 
   // keyboard shortcut: press "c" to clear (only when focused inside cart)
   useEffect(() => {
@@ -296,6 +323,48 @@ const Cart: React.FC = () => {
               <small>Secure checkout · Local currency: KES</small>
             </div>
           </div>
+
+          {/* === WhatsApp Order Section === */}
+          <motion.section 
+            className={styles.whatsappSection}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
+            <div className={styles.whatsappContent}>
+              <div className={styles.whatsappHeader}>
+                <div className={styles.whatsappIconWrapper}>
+                  <MessageCircle 
+                    className={styles.whatsappIcon} 
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className={styles.whatsappTextContent}>
+                  <h2 className={styles.whatsappTitle}>Want to Order?</h2>
+                  <p className={styles.whatsappDescription}>
+                    Order with us directly on WhatsApp for instant support, order tracking, or to place a new order.
+                  </p>
+                </div>
+              </div>
+
+              <motion.button
+                onClick={handleWhatsAppClick}
+                className={styles.whatsappButton}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                aria-label="Order via WhatsApp"
+              >
+                <span className={styles.whatsappButtonText}>
+                  Continue your Order on WhatsApp
+                </span>
+                <ArrowRight 
+                  className={styles.whatsappButtonIcon} 
+                  aria-hidden="true"
+                />
+              </motion.button>
+            </div>
+          </motion.section>
         </aside>
       </div>
 

@@ -327,3 +327,167 @@
     transition: none !important;
   }
 }
+
+
+/* Add these styles to your Cart.module.css */
+
+/* === WhatsApp Order Section === */
+.whatsappSection {
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+  transition: all 0.3s ease;
+}
+
+.whatsappSection:hover {
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+  transform: translateY(-2px);
+}
+
+.whatsappContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.whatsappHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.whatsappIconWrapper {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.whatsappIcon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.whatsappTextContent {
+  flex: 1;
+}
+
+.whatsappTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.whatsappDescription {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.whatsappButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: white;
+  color: #128C7E;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.whatsappButton:hover {
+  background: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.whatsappButton:active {
+  transform: scale(0.98);
+}
+
+.whatsappButton:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.whatsappButtonText {
+  flex: 1;
+  text-align: left;
+}
+
+.whatsappButtonIcon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.whatsappButton:hover .whatsappButtonIcon {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .whatsappSection {
+    padding: 1.25rem;
+  }
+
+  .whatsappHeader {
+    gap: 0.75rem;
+  }
+
+  .whatsappIconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .whatsappIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .whatsappTitle {
+    font-size: 1.125rem;
+  }
+
+  .whatsappDescription {
+    font-size: 0.8125rem;
+  }
+
+  .whatsappButton {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .whatsappSection {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+  }
+
+  .whatsappSection:hover {
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  }
+
+  .whatsappButton:hover {
+    background: #ffffff;
+  }
+}

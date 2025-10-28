@@ -151,9 +151,9 @@ const Order: React.FC<OrderProps> = ({
                 />
               </div>
               <div className={styles.whatsappTextContent}>
-                <h2 className={styles.whatsappTitle}>Need Help or Want to Order?</h2>
+                <h2 className={styles.whatsappTitle}> Want to Order?</h2>
                 <p className={styles.whatsappDescription}>
-                  Chat with us directly on WhatsApp for instant support, order tracking, or to place a new order.
+                  Order with us directly on WhatsApp for instant support, order tracking, or to place a new order.
                 </p>
               </div>
             </div>
@@ -167,7 +167,7 @@ const Order: React.FC<OrderProps> = ({
               aria-label="Order via WhatsApp"
             >
               <span className={styles.whatsappButtonText}>
-                Continue on WhatsApp
+                Continue your Order on WhatsApp
               </span>
               <ArrowRight 
                 className={styles.whatsappButtonIcon} 
