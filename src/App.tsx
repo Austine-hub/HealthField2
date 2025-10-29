@@ -155,6 +155,7 @@ const App: FC = () => (
             element={
               <>
                 <Hero />
+                <Offers1/> 
                 <Shop/>
                 <Offers />  
                 <ProductCarousel/>

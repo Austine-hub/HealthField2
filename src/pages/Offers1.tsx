@@ -6,14 +6,19 @@ import styles from "./Offers1.module.css";
 
 
 // === Import images ===
-import pic1 from "../assets/products/Allergy.png";
-import pic2 from "../assets/products/Anthelios.png";
-import pic3 from "../assets/products/Contraception.png";
-import pic4 from "../assets/products/Cough.png";
-import pic5 from "../assets/products/Headache.png";
-import pic6 from "../assets/products/Eno.png";
-import pic7 from "../assets/products/Diclofenac.png";
-import pic8 from "../assets/products/UTI.png";
+import pic1 from "../assets/products/FentyBeautyGlossBomb-universal-lip-luminizer.png";
+import pic2 from "../assets/products/laneige-lip-sleeping-mask-berry-20g.png";
+import pic3 from "../assets/products/Maybelline-fit-me-mattePlusporelessPoundation.png";
+import pic4 from "../assets/products/Rare-Beauty-Tinted-Moisturizer.png";
+import pic5 from "../assets/products/Rare-Beauty-Soft-Pinch-Liquid-Blush.png";
+import pic6 from "../assets/products/Charlotte-tilbury-glowgasm-beauty-light-wand.png";
+import pic7 from "../assets/products/OPI-Nail-Lacquer.png";
+import pic8 from "../assets/products/2025-Olive & June-Cuticle-Serum.png";
+import pic9 from "../assets/products/L’Oréal-LashParadiseVolumizingMascara.png";
+import pic10 from "../assets/products/Stila-Stay-AllDayWaterproofLiquidEyeliner.png";
+import pic11 from "../assets/products/CeraVe-Hydrating-Cleanser-236ml.png";
+import pic12 from "../assets/products/Mielle-Rosemary-Mint-Scalp.png";
+
 interface Offer {
   id: number;
   category: string;
@@ -118,7 +123,7 @@ const Offers1: React.FC = () => {
       id: 9,
       category: "Mascara",
       title: "L’Oréal Lash Paradise Volumizing Mascara",
-      image: "/api/placeholder/200/200",
+      image: pic9,
       originalPrice: 2100,
       discountedPrice: 1680,
       discount: 20,
@@ -127,7 +132,7 @@ const Offers1: React.FC = () => {
       id: 10,
       category: "Eyeliner",
       title: "Stila Stay All Day Waterproof Liquid Eyeliner",
-      image: "/api/placeholder/200/200",
+      image: pic10,
       originalPrice: 3100,
       discountedPrice: 2480,
       discount: 20,
@@ -138,7 +143,7 @@ const Offers1: React.FC = () => {
       id: 11,
       category: "Skincare",
       title: "CeraVe Hydrating Cleanser 236ml",
-      image: "/api/placeholder/200/200",
+      image: pic11,
       originalPrice: 2200,
       discountedPrice: 1760,
       discount: 20,
@@ -147,7 +152,7 @@ const Offers1: React.FC = () => {
       id: 12,
       category: "Hair Care",
       title: "Mielle Rosemary Mint Scalp & Hair Strengthening Oil",
-      image: "/api/placeholder/200/200",
+      image: pic12,
       originalPrice: 3200,
       discountedPrice: 2560,
       discount: 20,
