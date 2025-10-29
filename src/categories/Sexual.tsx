@@ -10,7 +10,7 @@ import { useCart } from "../context/CartContext";
 import styles from "./Sexual.module.css";
 
 // ✅ Local product images (place inside: src/assets/products/)
-import pic1 from "../assets/products/oxytocin-injection.png";
+import pic1 from "../assets/products/Oxytocin-injection.png";
 import pic2 from "../assets/products/misoprostol-tablets.png";
 import pic3 from "../assets/products/mifepristone.png";
 import pic4 from "../assets/products/combined-oral-contraceptive.png";
@@ -35,6 +35,7 @@ import pic22 from "../assets/products/azithromycin.png";
 import pic23 from "../assets/products/ceftriaxone.png";
 import pic24 from "../assets/products/magnesium-oxide.png";
 import pic25 from "../assets/products/iron-sucrose.png";
+
 
 // ===============================================================
 // 🩺 Offer Type Definition
@@ -196,4 +197,8 @@ const Sexual: React.FC = memo(() => {
 });
 
 export default Sexual;
+
+
+
+
 
