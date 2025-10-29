@@ -89,12 +89,12 @@ const Header: React.FC = () => {
         label: "Shop By Body System",
         key: "system",
         links: [
+          { label: "Sexual and Reproductive", path: "/system/reproductive" },
           { label: "Breathing and Respiratory System", path: "/system/respiratory" },
           { label: "Diabetes", path: "/system/diabetes" },
           { label: "Digestion and Eating", path: "/system/git" },
           { label: "Kidneys and Renal", path: "/system/renal" },
           { label: "Nervous", path: "/system/nervous" },
-          { label: "Sexual and Reproductive", path: "/system/reproductive" },
           { label: "Skin Treatment", path: "/system/skin-treatment" },
           { label: "Ear & Eye Care", path: "/system/ent" },
           { label: "Oral Hygiene", path: "/system/oral-hygiene" },
