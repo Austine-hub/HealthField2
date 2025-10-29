@@ -27,14 +27,14 @@ import pic14 from "../assets/products/labetalol.png";
 import pic15 from "../assets/products/betamethasone.png";
 import pic16 from "../assets/products/dexamethasone.png";
 import pic17 from "../assets/products/cephalexin.png";
-import pic18 from "../assets/products/amoxicillin-clavulanate.png";
+import pic18 from "../assets/products/Amoxicillin.png";
 import pic19 from "../assets/products/metronidazole-gel.png";
-import pic20 from "../assets/products/fluconazole.png";
-import pic21 from "../assets/products/acyclovir.png";
-import pic22 from "../assets/products/azithromycin.png";
-import pic23 from "../assets/products/ceftriaxone.png";
-import pic24 from "../assets/products/magnesium-oxide.png";
-import pic25 from "../assets/products/iron-sucrose.png";
+import pic20 from "../assets/products/Fluconazole.png";
+import pic21 from "../assets/products/Acyclovir.png";
+import pic22 from "../assets/products/Azithromycin.png";
+import pic23 from "../assets/products/Ceftriaxone.png";
+import pic24 from "../assets/products/Magnesium-oxide.png";
+import pic25 from "../assets/products/Iron-sucrose.png";
 
 
 // ===============================================================
