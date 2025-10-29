@@ -91,8 +91,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             </div>
           </section>
 
-
-             <section className={`${styles.linkSection} ${styles.phoneSection}`}>
+          <section className={`${styles.linkSection} ${styles.phoneSection}`}>
             <h3 className={styles.sectionTitle}>Order by Phone</h3>
             <p className={styles.phoneText}>
               Need help placing an order? Our support team is here for you.
@@ -101,6 +100,25 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               <FaPhoneAlt aria-hidden="true" /> 0796 787 207
             </a>
             <p className={styles.phoneHours}>(10am – 6pm)</p>
+          </section>
+
+          {/* ===== Authorized Pharmacy Section ===== */}
+          <section className={clsx(styles.linkSection, styles.authorized)}>
+            <h3 className={styles.sectionTitle}>Authorized Pharmacy</h3>
+            <p className={styles.authText}>
+              MYDAWA is a registered pharmacy governed by the Pharmacy and Poisons
+              Board of Kenya (PPB-K). Health Safety Code: <strong>P0940</strong>
+            </p>
+            <div className={styles.authImageContainer}>
+              <img
+                src="/license.png"
+                alt="Pharmacy and Poisons Board authorization"
+                loading="lazy"
+              />
+            </div>
+            <p className={styles.verifyText}>
+              To verify, send code <strong>P0940</strong> to <strong>21031</strong>
+            </p>
           </section>
         </div>
       </motion.div>
