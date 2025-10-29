@@ -2,6 +2,23 @@
 import React from "react";
 import styles from "./Shop.module.css";
 
+
+
+
+// ===============================
+// ✅ Local Image Imports
+// ===============================
+import pic1 from "../assets/products/sertraline.png";
+import pic2 from "../assets/products/alprazolam.png";
+import pic3 from "../assets/products/gabapentin.png";
+import pic4 from "../assets/products/duloxetine.png";
+import pic5 from "../assets/products/olanzapine.png";
+import pic6 from "../assets/products/levetiracetam.png";
+import pic7 from "../assets/products/donepezil.png";
+import pic8 from "../assets/products/fluoxetine.png";
+
+
+
 interface Product {
   id: number;
   name: string;
@@ -11,99 +28,83 @@ interface Product {
   stock: string;
 }
 
+
+
 const products: Product[] = [
   {
     id: 1,
-    name: "Cartil Omega 30’s",
-    image: "/images/cartil-omega.jpg",
-    price: 2395,
-    category: "Joint Supplements",
+    name: "Sertraline (Zoloft)",
+    image: pic1,
+    price: 1820,
+    category: "Antidepressant (SSRI)",
     stock: "In Stock",
   },
   {
     id: 2,
-    name: "Cartil Collagen Caps 30’s",
-    image: "/images/cartil-collagen.jpg",
-    price: 2747,
-    category: "Joint Supplements",
+    name: "Alprazolam (Xanax)",
+    image: pic2,
+    price: 960,
+    category: "Anxiolytic (Benzodiazepine)",
     stock: "In Stock",
   },
   {
     id: 3,
-    name: "Cartimove-D Tabs 30’s",
-    image: "/images/cartimove-d.jpg",
-    price: 1714,
-    category: "Joint Supplements",
+    name: "Gabapentin (Neurontin)",
+    image: pic3,
+    price: 2100,
+    category: "Anticonvulsant / Neuropathic Pain",
     stock: "In Stock",
   },
   {
     id: 4,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Duloxetine (Cymbalta)",
+    image: pic4,
+    price: 2350,
+    category: "Antidepressant / Nerve Pain",
     stock: "In Stock",
   },
-    {
+  {
     id: 5,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Olanzapine (Zyprexa)",
+    image: pic5,
+    price: 2640,
+    category: "Antipsychotic (Schizophrenia, Bipolar)",
     stock: "In Stock",
   },
-    {
+  {
     id: 6,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Levetiracetam (Keppra)",
+    image: pic6,
+    price: 1980,
+    category: "Antiepileptic",
     stock: "In Stock",
   },
-    {
+  {
     id: 7,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Donepezil (Aricept)",
+    image: pic7,
+    price: 2890,
+    category: "Cognitive Enhancer (Alzheimer’s)",
     stock: "In Stock",
   },
-    {
+  {
     id: 8,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Fluoxetine (Prozac)",
+    image: pic8,
+    price: 1750,
+    category: "Antidepressant (SSRI)",
     stock: "In Stock",
   },
-    {
-    id: 9,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
-    stock: "In Stock",
-  },
-
-      {
-    id: 10,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
-    stock: "In Stock",
-  },
-  // Add more products as needed...
 ];
 
 const CNS: React.FC = () => {
   return (
     <section className={styles.shopSection}>
       <div className={styles.header}>
-        <h2>Shop</h2>
+        <h2>CNS & Nervous System Drugs</h2>
         <div className={styles.subCategory}>
           <label>Subcategory:</label>
-          <span>Joint Supplements</span>
+          <span>CNS / Neurology</span>
         </div>
       </div>
 
@@ -123,7 +124,7 @@ const CNS: React.FC = () => {
             <div className={styles.details}>
               <p className={styles.category}>{product.category}</p>
               <h3 className={styles.name}>{product.name}</h3>
-              <p className={styles.price}>kes {product.price.toLocaleString()}</p>
+              <p className={styles.price}>KES {product.price.toLocaleString()}</p>
             </div>
 
             <div className={styles.actions}>

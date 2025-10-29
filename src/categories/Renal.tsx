@@ -11,89 +11,120 @@ interface Product {
   stock: string;
 }
 
+
+// ===============================
+// ✅ Local Image Imports
+// ===============================
+import pic1 from "../assets/products/furosemide.png";
+import pic2 from "../assets/products/spironolactone.png";
+import pic3 from "../assets/products/tamsulosin.png";
+import pic4 from "../assets/products/finasteride.png";
+import pic5 from "../assets/products/nitrofurantoin.png";
+import pic6 from "../assets/products/ciprofloxacin1.png";
+import pic7 from "../assets/products/sodiumbicarbonate.png";
+import pic8 from "../assets/products/kayexalate.png";
+import pic9 from "../assets/products/potassiumcitrate.png";
+import pic10 from "../assets/products/erythropoietin.png";
+import pic11 from "../assets/products/allopurinol.png";
+import pic12 from "../assets/products/hydrochlorothiazide.png";
+
 const products: Product[] = [
   {
     id: 1,
-    name: "Cartil Omega 30’s",
-    image: "/images/cartil-omega.jpg",
-    price: 2395,
-    category: "Joint Supplements",
+    name: "Furosemide 40mg Tablets (Lasix)",
+    image: pic1,
+    price: 220,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
   {
     id: 2,
-    name: "Cartil Collagen Caps 30’s",
-    image: "/images/cartil-collagen.jpg",
-    price: 2747,
-    category: "Joint Supplements",
+    name: "Spironolactone 25mg Tablets (Aldactone)",
+    image: pic2,
+    price: 480,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
   {
     id: 3,
-    name: "Cartimove-D Tabs 30’s",
-    image: "/images/cartimove-d.jpg",
-    price: 1714,
-    category: "Joint Supplements",
+    name: "Tamsulosin 0.4mg Capsules (Flomax)",
+    image: pic3,
+    price: 950,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
   {
     id: 4,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Finasteride 5mg Tablets (Proscar)",
+    image: pic4,
+    price: 890,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-    {
+  {
     id: 5,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Nitrofurantoin 100mg Capsules (Macrobid)",
+    image: pic5,
+    price: 720,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-    {
+  {
     id: 6,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Ciprofloxacin 500mg Tablets",
+    image: pic6,
+    price: 670,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-    {
+  {
     id: 7,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Sodium Bicarbonate Tablets 500mg",
+    image: pic7,
+    price: 250,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-    {
+  {
     id: 8,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Calcium Polystyrene Sulfonate Powder (Kayexalate)",
+    image: pic8,
+    price: 1150,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-    {
+  {
     id: 9,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Potassium Citrate Solution (Ural/Polycitra)",
+    image: pic9,
+    price: 780,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-
-      {
+  {
     id: 10,
-    name: "Cartimove Tabs 30’s",
-    image: "/images/cartimove.jpg",
-    price: 1420,
-    category: "Joint Supplements",
+    name: "Erythropoietin Injection (Eprex 4000IU)",
+    image: pic10,
+    price: 2800,
+    category: "Renal & Urinary Care",
     stock: "In Stock",
   },
-  // Add more products as needed...
+  {
+    id: 11,
+    name: "Allopurinol 300mg Tablets",
+    image: pic11,
+    price: 640,
+    category: "Renal & Urinary Care",
+    stock: "In Stock",
+  },
+  {
+    id: 12,
+    name: "Hydrochlorothiazide 25mg Tablets",
+    image: pic12,
+    price: 300,
+    category: "Renal & Urinary Care",
+    stock: "In Stock",
+  },
 ];
 
 const Renal: React.FC = () => {
@@ -103,7 +134,7 @@ const Renal: React.FC = () => {
         <h2>Shop</h2>
         <div className={styles.subCategory}>
           <label>Subcategory:</label>
-          <span>Joint Supplements</span>
+          <span>Renal/Urinary System</span>
         </div>
       </div>
 
