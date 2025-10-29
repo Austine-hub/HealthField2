@@ -156,11 +156,11 @@ const App: FC = () => (
               <>
                 <Hero />
                 <Shop/>
-                <Offers1/>
-                <SkinDrugs/>
-                <ProductCarousel />
-                <Offers />               
-                <BestSellers />            
+                <Offers />  
+                <ProductCarousel/>
+                <BestSellers /> 
+                <SkinDrugs/>                         
+                <Offers1/>           
                 <ShopByCategory />
                 <BeautyProducts />
 

@@ -6,21 +6,21 @@ import { useCart } from "../context/CartContext";
 
 
 // === Import images ===
-import pic1 from "../assets/products/Allergy.png";
-import pic2 from "../assets/products/Anthelios.png";
-import pic3 from "../assets/products/Contraception.png";
-import pic4 from "../assets/products/Cough.png";
-import pic5 from "../assets/products/Headache.png";
-import pic6 from "../assets/products/Eno.png";
-import pic7 from "../assets/products/Diclofenac.png";
-import pic8 from "../assets/products/UTI.png";
-import pic9 from "../assets/products/Allergy.png";
-import pic10 from "../assets/products/Anthelios.png";
-import pic11 from "../assets/products/Contraception.png";
-import pic12 from "../assets/products/Cough.png";
-import pic13 from "../assets/products/Headache.png";
-import pic14 from "../assets/products/Eno.png";
-import pic15 from "../assets/products/Diclofenac.png";
+import pic1 from "../assets/products/OneTouchSelectPlusGlucometerKit.png";
+import pic2 from "../assets/products/iProvenDigitalThermometer.png";
+import pic3 from "../assets/products/First Aid Kit Essentials (110 pcs).png";
+import pic4 from "../assets/products/Swift-Pregnancy-Test-Kit.png";
+import pic5 from "../assets/products/OmronBronzeBloodPressurMonitor.png";
+import pic6 from "../assets/products/Accu-ChekSoftclixLancets.png";
+import pic7 from "../assets/products/ElastoplastSensitivePlasters.png";
+import pic8 from "../assets/products/Vickswarmmisthumidifier.png";
+import pic9 from "../assets/products/Omronpeakflowmeter.png";
+import pic10 from "../assets/products/PurellAdvancedHandSanitizer.png";
+import pic11 from "../assets/products/Covid19Test.png";
+import pic12 from "../assets/products/ElectricHeatingPadForBack Pain.png";
+import pic13 from "../assets/products/PulseOximeter.png";
+import pic14 from "../assets/products/GelPack.png";
+import pic15 from "../assets/products/WalkingCane.png";
 
 interface Product {
   id: number;
@@ -95,144 +95,147 @@ const ProductCarousel: React.FC = () => {
     };
   }, [checkScrollPosition]);
 
-  // 🧾 Expanded Product Data (Top 15 Home Healthcare Items in USA)
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "OneTouch Select Plus Glucometer Kit",
-      description: "Accurate blood glucose monitoring kit with test strips and lancets.",
-      brand: "OneTouch",
-      price: 3500.0,
-      image: pic1,
-      trending: true,
-    },
-    {
-      id: 2,
-      name: "iProven Digital Thermometer",
-      description: "Fast and reliable thermometer for adults and children.",
-      brand: "iProven",
-      price: 850.0,
-      image: pic2,
-      trending: false,
-    },
-    {
-      id: 3,
-      name: "First Aid Kit Essentials 110pc",
-      description: "Comprehensive home first aid kit with bandages, scissors, and antiseptics.",
-      brand: "Johnson & Johnson",
-      price: 2800.0,
-      image: pic3,
-      trending: true,
-    },
-    {
-      id: 4,
-      name: "Swift Pregnancy Test Kit Cassette",
-      description: "Accurate detection of hCG levels for early pregnancy testing.",
-      brand: "Pharmaplus",
-      price: 300.0,
-      image: pic4,
-      trending: true,
-    },
-    {
-      id: 5,
-      name: "Omron Bronze Blood Pressure Monitor",
-      description: "Clinically validated digital BP monitor with easy one-touch operation.",
-      brand: "Omron",
-      price: 7800.0,
-      image: pic5,
-      trending: true,
-    },
-    {
-      id: 6,
-      name: "Accu-Chek Softclix Lancets 100s",
-      description: "Gentle and precise lancets for blood glucose testing.",
-      brand: "Accu-Chek",
-      price: 1600.0,
-      image: pic6,
-      trending: false,
-    },
-    {
-      id: 7,
-      name: "Elastoplast Sensitive Plasters 20's",
-      description: "Hypoallergenic plasters ideal for sensitive or delicate skin.",
-      brand: "Elastoplast",
-      price: 1155.0,
-      image: pic7,
-      trending: false,
-    },
-    {
-      id: 8,
-      name: "Vicks Warm Mist Humidifier",
-      description: "Adds moisture to air and relieves dry throat and nasal passages.",
-      brand: "Vicks",
-      price: 8900.0,
-      image: pic8,
-      trending: true,
-    },
-    {
-      id: 9,
-      name: "Omron Peak Flow Meter",
-      description: "Measures lung capacity for asthma and respiratory conditions.",
-      brand: "Omron",
-      price: 4200.0,
-      image: pic9,
-      trending: false,
-    },
-    {
-      id: 10,
-      name: "Purell Advanced Hand Sanitizer 500ml",
-      description: "Kills 99.9% of germs instantly with moisturizing formula.",
-      brand: "Purell",
-      price: 950.0,
-      image: pic10,
-      trending: false,
-    },
-    {
-      id: 11,
-      name: "Covid-19 Rapid Antigen Test Kit",
-      description: "FDA-approved test for quick and accurate COVID-19 detection.",
-      brand: "Abbott",
-      price: 1500.0,
-      image: pic11,
-      trending: true,
-    },
-    {
-      id: 12,
-      name: "Heating Pad for Back Pain Relief",
-      description: "Electric heating pad with adjustable temperature settings.",
-      brand: "Sunbeam",
-      price: 4500.0,
-      image: pic12,
-      trending: false,
-    },
-    {
-      id: 13,
-      name: "Pulse Oximeter Fingertip",
-      description: "Measures oxygen saturation and pulse rate in seconds.",
-      brand: "Contec",
-      price: 2500.0,
-      image: pic13,
-      trending: true,
-    },
-    {
-      id: 14,
-      name: "Reusable Ice Gel Pack (Hot/Cold)",
-      description: "Flexible and reusable pack for pain, swelling, and injuries.",
-      brand: "TheraPearl",
-      price: 1200.0,
-      image: pic14,
-      trending: false,
-    },
-    {
-      id: 15,
-      name: "Medline Adjustable Walking Cane",
-      description: "Lightweight aluminum cane for balance and support.",
-      brand: "Medline",
-      price: 5200.0,
-      image: pic15,
-      trending: false,
-    },
-  ];
+// 🧾 Top 15 Home Healthcare Essentials (Kenya Pricing 2025)
+// --------------------------------------------------------
+
+const products: Product[] = [
+  {
+    id: 1,
+    name: "OneTouch Select Plus Glucometer Kit",
+    description: "Accurate blood glucose monitoring kit with test strips and lancets.",
+    brand: "OneTouch",
+    price: 4500,
+    image: pic1,
+    trending: true,
+  },
+  {
+    id: 2,
+    name: "iProven Digital Thermometer",
+    description: "Fast and reliable thermometer for adults and children.",
+    brand: "iProven",
+    price: 950,
+    image: pic2,
+    trending: false,
+  },
+  {
+    id: 3,
+    name: "First Aid Kit Essentials (110 pcs)",
+    description: "Comprehensive first aid kit with bandages, scissors, and antiseptics.",
+    brand: "Johnson & Johnson",
+    price: 3200,
+    image: pic3,
+    trending: true,
+  },
+  {
+    id: 4,
+    name: "Swift Pregnancy Test Kit (Cassette)",
+    description: "Accurate early pregnancy detection kit for home use.",
+    brand: "Pharmaplus",
+    price: 250,
+    image: pic4,
+    trending: true,
+  },
+  {
+    id: 5,
+    name: "Omron Bronze Blood Pressure Monitor",
+    description: "Clinically validated BP monitor with one-touch digital operation.",
+    brand: "Omron",
+    price: 8500,
+    image: pic5,
+    trending: true,
+  },
+  {
+    id: 6,
+    name: "Accu-Chek Softclix Lancets (100s)",
+    description: "Gentle, precise lancets for blood glucose testing.",
+    brand: "Accu-Chek",
+    price: 1800,
+    image: pic6,
+    trending: false,
+  },
+  {
+    id: 7,
+    name: "Elastoplast Sensitive Plasters (20s)",
+    description: "Hypoallergenic plasters ideal for sensitive skin.",
+    brand: "Elastoplast",
+    price: 600,
+    image: pic7,
+    trending: false,
+  },
+  {
+    id: 8,
+    name: "Vicks Warm Mist Humidifier",
+    description: "Adds moisture and relieves dry throat and nasal irritation.",
+    brand: "Vicks",
+    price: 9500,
+    image: pic8,
+    trending: true,
+  },
+  {
+    id: 9,
+    name: "Omron Peak Flow Meter",
+    description: "Monitors lung function for asthma and respiratory care.",
+    brand: "Omron",
+    price: 4200,
+    image: pic9,
+    trending: false,
+  },
+  {
+    id: 10,
+    name: "Purell Advanced Hand Sanitizer (500ml)",
+    description: "Kills 99.9% of germs instantly while keeping hands moisturized.",
+    brand: "Purell",
+    price: 650,
+    image: pic10,
+    trending: false,
+  },
+  {
+    id: 11,
+    name: "COVID-19 Rapid Antigen Test Kit",
+    description: "Approved rapid test for accurate COVID-19 detection.",
+    brand: "Abbott",
+    price: 1200,
+    image: pic11,
+    trending: true,
+  },
+  {
+    id: 12,
+    name: "Electric Heating Pad for Back Pain",
+    description: "Adjustable heat therapy pad for muscle and joint pain.",
+    brand: "Sunbeam",
+    price: 3800,
+    image: pic12,
+    trending: false,
+  },
+  {
+    id: 13,
+    name: "Pulse Oximeter Fingertip",
+    description: "Instant oxygen saturation and pulse rate monitor.",
+    brand: "Contec",
+    price: 2500,
+    image: pic13,
+    trending: true,
+  },
+  {
+    id: 14,
+    name: "Reusable Hot & Cold Gel Pack",
+    description: "Flexible, reusable gel pack for pain and swelling relief.",
+    brand: "TheraPearl",
+    price: 950,
+    image: pic14,
+    trending: false,
+  },
+  {
+    id: 15,
+    name: "Medline Adjustable Walking Cane",
+    description: "Lightweight aluminum cane for improved balance and mobility.",
+    brand: "Medline",
+    price: 4800,
+    image: pic15,
+    trending: false,
+  },
+];
+
 
   return (
     <section className={styles.carouselSection}>
