@@ -1,8 +1,13 @@
-// src/components/Shop.tsx
-import React from "react";
+// ===============================================================
+// 🏪 Shop.tsx — Cleaned, Optimized & Functional (2025 Edition)
+// ===============================================================
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useCart } from "../context/CartContext";
 import styles from "./Shop.module.css";
 
-
+// ✅ Local product images
 import pic1 from "../assets/products/Amoxicillin.png";
 import pic2 from "../assets/products/Azithromycin.png";
 import pic3 from "../assets/products/Clarithromycin.png";
@@ -19,6 +24,9 @@ import pic13 from "../assets/products/Benylin-Dry-Cough.png";
 import pic14 from "../assets/products/Cetirizine.png";
 import pic15 from "../assets/products/Montelukast.png";
 
+// ===============================================================
+// 🧾 Types
+// ===============================================================
 interface Product {
   id: number;
   name: string;
@@ -28,146 +36,58 @@ interface Product {
   stock: string;
 }
 
+// ===============================================================
+// 🗂️ Product Data
+// ===============================================================
 const products: Product[] = [
-  {
-    id: 1,
-    name: "Amoxicillin 500mg Capsules (30’s)",
-    image: pic1,
-    price: 850,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 2,
-    name: "Azithromycin 500mg Tablets (6’s)",
-    image: pic2,
-    price: 1240,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 3,
-    name: "Clarithromycin 500mg Tablets (14’s)",
-    image: pic3,
-    price: 1680,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 4,
-    name: "Augmentin (Amoxicillin + Clavulanic Acid) 625mg Tabs (14’s)",
-    image: pic4,
-    price: 1950,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 5,
-    name: "Levofloxacin 500mg Tablets (10’s)",
-    image: pic5,
-    price: 1820,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 6,
-    name: "Cefuroxime Axetil 500mg Tablets (14’s)",
-    image: pic6,
-    price: 1720,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 7,
-    name: "Ceftriaxone 1g Injection (Single Vial)",
-    image: pic7,
-    price: 640,
-    category: "Antibiotic Injection",
-    stock: "In Stock",
-  },
-  {
-    id: 8,
-    name: "Erythromycin 500mg Tablets (20’s)",
-    image: pic8,
-    price: 980,
-    category: "Antibiotic",
-    stock: "In Stock",
-  },
-  {
-    id: 9,
-    name: "Ventolin Inhaler (Salbutamol 100mcg)",
-    image: pic9,
-    price: 850,
-    category: "Bronchodilator",
-    stock: "In Stock",
-  },
-  {
-    id: 10,
-    name: "Symbicort Inhaler (Budesonide + Formoterol)",
-    image: pic10,
-    price: 2850,
-    category: "Inhaler",
-    stock: "In Stock",
-  },
-  {
-    id: 11,
-    name: "Ambroxol Syrup 100ml",
-    image: pic11,
-    price: 520,
-    category: "Expectorant",
-    stock: "In Stock",
-  },
-  {
-    id: 12,
-    name: "Bromhexine Syrup 100ml",
-    image: pic12,
-    price: 490,
-    category: "Mucolytic",
-    stock: "In Stock",
-  },
-  {
-    id: 13,
-    name: "Benylin Dry Cough Syrup 100ml",
-    image: pic13,
-    price: 720,
-    category: "Cough Suppressant",
-    stock: "In Stock",
-  },
-  {
-    id: 14,
-    name: "Cetirizine 10mg Tablets (30’s)",
-    image: pic14,
-    price: 650,
-    category: "Antihistamine",
-    stock: "In Stock",
-  },
-  {
-    id: 15,
-    name: "Montelukast 10mg Tablets (30’s)",
-    image: pic15,
-    price: 1180,
-    category: "Respiratory Anti-inflammatory",
-    stock: "In Stock",
-  },
+  { id: 1, name: "Amoxicillin 500mg Capsules (30’s)", image: pic1, price: 850, category: "Antibiotic", stock: "In Stock" },
+  { id: 2, name: "Azithromycin 500mg Tablets (6’s)", image: pic2, price: 1240, category: "Antibiotic", stock: "In Stock" },
+  { id: 3, name: "Clarithromycin 500mg Tablets (14’s)", image: pic3, price: 1680, category: "Antibiotic", stock: "In Stock" },
+  { id: 4, name: "Augmentin (Amoxicillin + Clavulanic Acid) 625mg Tabs (14’s)", image: pic4, price: 1950, category: "Antibiotic", stock: "In Stock" },
+  { id: 5, name: "Levofloxacin 500mg Tablets (10’s)", image: pic5, price: 1820, category: "Antibiotic", stock: "In Stock" },
+  { id: 6, name: "Cefuroxime Axetil 500mg Tablets (14’s)", image: pic6, price: 1720, category: "Antibiotic", stock: "In Stock" },
+  { id: 7, name: "Ceftriaxone 1g Injection (Single Vial)", image: pic7, price: 640, category: "Injection", stock: "In Stock" },
+  { id: 8, name: "Erythromycin 500mg Tablets (20’s)", image: pic8, price: 980, category: "Antibiotic", stock: "In Stock" },
+  { id: 9, name: "Ventolin Inhaler (Salbutamol 100mcg)", image: pic9, price: 850, category: "Bronchodilator", stock: "In Stock" },
+  { id: 10, name: "Symbicort Inhaler (Budesonide + Formoterol)", image: pic10, price: 2850, category: "Inhaler", stock: "In Stock" },
+  { id: 11, name: "Ambroxol Syrup 100ml", image: pic11, price: 520, category: "Expectorant", stock: "In Stock" },
+  { id: 12, name: "Bromhexine Syrup 100ml", image: pic12, price: 490, category: "Mucolytic", stock: "In Stock" },
+  { id: 13, name: "Benylin Dry Cough Syrup 100ml", image: pic13, price: 720, category: "Cough Suppressant", stock: "In Stock" },
+  { id: 14, name: "Cetirizine 10mg Tablets (30’s)", image: pic14, price: 650, category: "Antihistamine", stock: "In Stock" },
+  { id: 15, name: "Montelukast 10mg Tablets (30’s)", image: pic15, price: 1180, category: "Respiratory Anti-inflammatory", stock: "In Stock" },
 ];
 
-  // Add more products as needed...
+// ===============================================================
+// 🛍️ Shop Component
+// ===============================================================
+const Shop: React.FC = memo(() => {
+  const { addToCart } = useCart();
 
+  const handleAddToCart = (product: Product) => {
+    addToCart({
+      id: String(product.id), // ✅ Convert number → string
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+      inStock: true,
+    });
+    toast.success(`${product.name} added to cart`);
+  };
 
-const Resp: React.FC = () => {
   return (
     <section className={styles.shopSection}>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <h2>Shop</h2>
         <div className={styles.subCategory}>
           <label>Subcategory:</label>
           <span>Respiratory Drugs</span>
         </div>
-      </div>
+      </header>
 
       <div className={styles.grid}>
         {products.map((product) => (
-          <div key={product.id} className={styles.card}>
+          <article key={product.id} className={styles.card}>
             <div className={styles.imageWrapper}>
               <img
                 src={product.image}
@@ -181,18 +101,27 @@ const Resp: React.FC = () => {
             <div className={styles.details}>
               <p className={styles.category}>{product.category}</p>
               <h3 className={styles.name}>{product.name}</h3>
-              <p className={styles.price}>kes {product.price.toLocaleString()}</p>
+              <p className={styles.price}>KES {product.price.toLocaleString()}</p>
             </div>
 
             <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to Cart</button>
-              <button className={styles.moreInfo}>More Info</button>
+              <button
+                className={styles.addToCart}
+                onClick={() => handleAddToCart(product)}
+              >
+                🛒 Add to Cart
+              </button>
+
+              <Link to={`/product/${product.id}`} className={styles.moreInfo}>
+                More Info
+              </Link>
             </div>
-          </div>
+
+          </article>
         ))}
       </div>
     </section>
   );
-};
+});
 
-export default Resp;
+export default Shop;

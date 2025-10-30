@@ -1,5 +1,9 @@
 // src/components/Shop.tsx
-import React from "react";
+
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useCart } from "../context/CartContext";
 import styles from "./Shop.module.css";
 
 interface Product {
@@ -127,7 +131,20 @@ const products: Product[] = [
   },
 ];
 
-const Renal: React.FC = () => {
+const Renal: React.FC = memo(() => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (product: Product) => {
+    addToCart({
+      id: String(product.id), // ✅ Convert number → string
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+      inStock: true,
+    });
+    toast.success(`${product.name} added to cart`);
+  };
   return (
     <section className={styles.shopSection}>
       <div className={styles.header}>
@@ -158,14 +175,23 @@ const Renal: React.FC = () => {
             </div>
 
             <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to Cart</button>
-              <button className={styles.moreInfo}>More Info</button>
+              <button
+                className={styles.addToCart}
+                onClick={() => handleAddToCart(product)}
+              >
+                🛒 Add to Cart
+              </button>
+
+              <Link to={`/product/${product.id}`} className={styles.moreInfo}>
+                More Info
+              </Link>
             </div>
+
           </div>
         ))}
       </div>
     </section>
   );
-};
+});
 
 export default Renal;
